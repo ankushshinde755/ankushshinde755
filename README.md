@@ -1,4 +1,4 @@
-<p align="center"><a href="https://anuraghazra.github.io"><img width="80%" alt="Hello, I'm Ankush. Working as Cloud Operations Engineer !" src="./assets/gh-readme-header.png" /></a></p> 
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=ankushshinde755)](https://github.com/anuraghazra/github-readme-stats)
 
 
 [![trophy](https://github-profile-trophy.vercel.app/?username=ankushshinde755&theme=onedark)](https://github.com/ryo-ma/github-profile-trophy)
