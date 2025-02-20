@@ -1,6 +1,6 @@
 ### Hello, I am Ankush. ###
   
-- Currently working as a cloud operartion engineer at [Acquia](https://www.acquia.com/)
+- Currently working as a Cloud Operartion Engineer at [Acquia](https://www.acquia.com/)
 
 [![Ankush's GitHub stats](https://github-readme-stats.vercel.app/api?username=ankushshinde755&show=reviews,discussions_started,discussions_answered,prs_merged&show_icons=true&theme=chartreuse-dark)](https://github.com/ankushshinde755/ankushshinde755)
 
