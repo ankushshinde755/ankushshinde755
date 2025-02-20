@@ -4,7 +4,7 @@
 
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=ankushshinde755&repo=ankushshinde755)](https://github.com/ankushshinde755/ankushshinde755)
 
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=ankushshinde755&repo=The-Gym)](https://github.com/ankushshinde755/The-Gym)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=ankushshinde755&repo=https://github.com/ankushshinde755/ops-runbook-marketing)](https://github.com/ankushshinde755/ops-runbook-marketing)
 
 
 [![trophy](https://github-profile-trophy.vercel.app/?username=ankushshinde755&theme=onedark)](https://github.com/ryo-ma/github-profile-trophy)
