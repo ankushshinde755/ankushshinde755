@@ -1,6 +1,9 @@
+<p align="center"><a href="https://anuraghazra.github.io"><img width="80%" alt="Hello, I'm Ankush. Working as Cloud Operations Engineer !" src="./assets/gh-readme-header.png" /></a></p> 
+
+
 [![trophy](https://github-profile-trophy.vercel.app/?username=ankushshinde755&theme=onedark)](https://github.com/ryo-ma/github-profile-trophy)
 
-- ☁️💻 Working as Cloud Operations Engineer 
+- ☁️💻 
 
 
 
