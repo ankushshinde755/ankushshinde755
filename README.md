@@ -1,8 +1,6 @@
 [![trophy](https://github-profile-trophy.vercel.app/?username=ankushshinde755&theme=onedark)](https://github.com/ryo-ma/github-profile-trophy)
-- 👋 Hi, I’m @ankushshinde755
-- 👀 I’m interested in Cloud
-- 🌱 I’m currently learning Clod
-- 💞️ Working as Cloud Operations Engineer 
+
+- ☁️💻 Working as Cloud Operations Engineer 
 
 
 
