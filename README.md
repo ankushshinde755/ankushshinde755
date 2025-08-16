@@ -1,6 +1,6 @@
 ### Hello, I am Ankush. ###
   
-- Currently working as a Cloud Operartion Engineer at [Acquia](https://www.acquia.com/)
+- Currently working as a Cloud Application Engineer at [Acquia](https://www.acquia.com/)
 [![trophy](https://github-profile-trophy.vercel.app/?username=ankushshinde755&theme=onedark)](https://github.com/ankushshinde755/ankushshinde755)
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=ankushshinde755&repo=ankushshinde755&theme=chartreuse-dark)](https://github.com/ankushshinde755/ankushshinde755)
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=ankushshinde755&repo=github-profile-achievements&theme=chartreuse-dark)](https://github.com/ankushshinde755/github-profile-achievements)
