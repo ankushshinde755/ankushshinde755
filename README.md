@@ -69,7 +69,7 @@
 
 <h2 align="center"><img src="https://img.icons8.com/color-glass/48/1AFF13/handshake.png"/> Let's Connect</h2>
 <p align="center">
-  <a href="https://linkedin.com/in/ankushshinde755">
+  <a href="https://www.linkedin.com/in/ankush-shinde-58a67a14b">
     <img src="https://img.shields.io/badge/-LinkedIn-1AFF13?style=for-the-badge&logo=linkedin&logoColor=white" />
   </a>
   <a href="mailto:ankushshinde755@gmail.com">
