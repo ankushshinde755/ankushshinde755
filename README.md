@@ -1,6 +1,6 @@
 <!-- Profile Header Typing Effect -->
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Mono&weight=600&size=25&pause=900&color=39FF14&center=true&width=600&lines=Hi+%F0%9F%91%8B%2C+I'm+Ankush+Shinde!;Cloud+Application+Engineer+@+Acquia;Green+Cloud+Advocate+%F0%9F%8C%B2;AI+⚡️+Open+Source+💻;Let's+build+#Sustainable+Tech+💧" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Mono&weight=600&size=25&pause=900&color=39FF14&center=true&width=600&lines=Hi+%F0%9F%91%8B%2C+I'm+Ankush+Shinde!;Cloud+Application+Engineer+@+Acquia;AI+⚡️+Open+Source+💻;Let's+build+#Sustainable+Tech+💧" alt="Typing SVG" />
 </p>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=1AFF13&height=200&section=header&text=Welcome%20to%20my%20profile!%20%F0%9F%92%8E&fontSize=50&fontColor=252525&animation=twinkling" alt="banner" width="100%"/>
