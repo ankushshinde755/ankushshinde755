@@ -1,0 +1,18 @@
+name: Metrics embed
+on:
+  schedule: [{cron: "0 * * * *"}]
+  workflow_dispatch:
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: lowlighter/metrics@v3.34
+        with:
+          filename: metrics.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          user: ankushshinde755
+          template: classic
+          base: header, activity, community, repositories, metadata
+          config_timezone: Asia/Kolkata
+          repositories_forks: yes
+          commits_authoring: ankushshinde755
