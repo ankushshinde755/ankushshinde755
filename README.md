@@ -1,7 +1,7 @@
 ### Hello, I am Ankush. ###
   
 - Currently working as a Cloud Application Engineer at [Acquia](https://www.acquia.com/)
-- 
+
 [![trophy](https://github-profile-trophy.vercel.app/?username=ankushshinde755&theme=onedark)](https://github.com/ankushshinde755/ankushshinde755)
 
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=ankushshinde755&repo=ankushshinde755&theme=chartreuse-dark)](https://github.com/ankushshinde755/ankushshinde755)
@@ -11,7 +11,7 @@
 [![Ankush's GitHub stats](https://github-readme-stats.vercel.app/api?username=ankushshinde755&show=reviews,discussions_started,discussions_answered,prs_merged&show_icons=true&theme=chartreuse-dark)](https://github.com/ankushshinde755/ankushshinde755)
 
 #### Top Repositories
-<a href="https://github.com/ankushshinde755/ankushshinde755">
+a href="https://github.com/ankushshinde755/ankushshinde755">
   <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=ankushshinde755&repo=ankushshinde755&theme=buefy" />
 </a>
 <a href="https://github.com/ankushshinde755/The-Gym">
