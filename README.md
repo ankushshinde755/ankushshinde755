@@ -64,12 +64,10 @@
 <p align="center">
 
   <a href="https://github.com/ankushshinde755/ankushshinde755" target="_blank">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=ankushshinde755&repo=ankushshinde755&theme=chartreuse-dark&hide_border=true" alt="ankushshinde755 profile repo"/><br>
     <img src="https://media.giphy.com/media/PiQejEf31116URju4V/giphy.gif" alt="coding" width="150"/>
   </a>
   &nbsp;&nbsp;&nbsp;
   <a href="https://github.com/ankushshinde755/The-Gym" target="_blank">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=ankushshinde755&repo=The-Gym&theme=chartreuse-dark&hide_border=true" alt="The-Gym repo"/><br>
     <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="fitness" width="150"/>
   </a>
 </p>
