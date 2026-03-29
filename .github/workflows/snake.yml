@@ -1,20 +1,24 @@
-name: Metrics embed
+name: generate-snake-game-from-github-contribution-grid
 on:
-  schedule: [{cron: "0 * * * *"}]
+  schedule:
+    - cron: "0 0 * * *"
   workflow_dispatch:
 permissions:
   contents: write
 jobs:
-  github-metrics:
+  generate:
     runs-on: ubuntu-latest
     steps:
-      - uses: lowlighter/metrics@v3.34
+      - uses: actions/checkout@v4
+      - uses: Platane/snk@v3.4.1
         with:
-          filename: metrics.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-          user: ankushshinde755
-          template: classic
-          base: header, activity, community, repositories, metadata
-          config_timezone: Asia/Kolkata
-          repositories_forks: yes
-          commits_authoring: ankushshinde755
+          github_user_name: ankushshinde755
+          outputs: |
+            dist/github-contribution-grid-snake.svg
+      - name: push github-contribution-grid-snake.svg to the output branch
+        uses: crazy-max/ghaction-github-pages@v4.0.0
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
