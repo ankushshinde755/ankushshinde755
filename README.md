@@ -47,4 +47,4 @@
 Run this directly in your terminal to launch the interactive CLI profile:
 
 ```bash
-curl -fsSL "[https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py?v=fix1](https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py?v=fix1)" -o /tmp/cli.py && python3 -u /tmp/cli.py
+curl -sSL https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py | python3
