@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ankush Shinde — Cloud Console</title>
+  <title>Ankush Shinde — Cloud Console Extreme</title>
   <style>
     :root {
       --bg-primary: #060913;
@@ -18,6 +18,10 @@
       --text-muted: #94a3b8;
       --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+      --orb-1-color: #0284c7;
+      --orb-2-color: #7c3aed;
+      --orb-3-color: #059669;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -33,6 +37,19 @@
       line-height: 1.5;
     }
 
+    /* Matrix Rain Canvas */
+    #matrix-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
     /* Floating Liquid Background Orbs */
     .liquid-orb {
       position: fixed;
@@ -41,11 +58,12 @@
       z-index: 0;
       pointer-events: none;
       opacity: 0.35;
+      transition: background 0.8s ease;
       animation: driftOrb 20s ease-in-out infinite alternate;
     }
-    .orb-1 { width: 440px; height: 440px; background: #0284c7; top: -80px; left: -100px; }
-    .orb-2 { width: 480px; height: 480px; background: #7c3aed; bottom: -100px; right: -80px; animation-duration: 24s; }
-    .orb-3 { width: 340px; height: 340px; background: #059669; top: 45%; left: 35%; animation-duration: 18s; }
+    .orb-1 { width: 440px; height: 440px; background: var(--orb-1-color); top: -80px; left: -100px; }
+    .orb-2 { width: 480px; height: 480px; background: var(--orb-2-color); bottom: -100px; right: -80px; animation-duration: 24s; }
+    .orb-3 { width: 340px; height: 340px; background: var(--orb-3-color); top: 45%; left: 35%; animation-duration: 18s; }
 
     @keyframes driftOrb {
       0% { transform: translate(0, 0) scale(1); }
@@ -58,6 +76,35 @@
       margin: 0 auto;
       position: relative;
       z-index: 1;
+    }
+
+    /* Controls Header Bar */
+    .controls-bar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .control-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--accent-blue);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: all 0.2s ease;
+    }
+
+    .control-btn:hover {
+      background: rgba(56, 189, 248, 0.2);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+      transform: translateY(-1px);
     }
 
     /* Glass Cards Base */
@@ -118,7 +165,7 @@
     }
 
     h1 { font-size: 34px; color: #ffffff; letter-spacing: -0.5px; }
-    h1 span { color: var(--accent-blue); }
+    h1 span { color: var(--accent-blue); transition: color 0.5s ease; }
     p.subtitle { color: var(--text-muted); font-size: 15px; margin-top: 4px; }
 
     /* Interactive Terminal */
@@ -142,7 +189,7 @@
     }
 
     .term-dots { display: flex; gap: 8px; }
-    .term-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+    .term-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; cursor: pointer; }
     .btn-red { background: #ef4444; }
     .btn-yellow { background: #f59e0b; }
     .btn-green { background: #10b981; }
@@ -198,12 +245,6 @@
       gap: 18px;
     }
 
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-    }
-
     /* Chips & Badges */
     .chip {
       display: inline-block;
@@ -215,10 +256,20 @@
       font-size: 11px;
       font-family: var(--font-mono);
       margin: 2px;
+      transition: all 0.2s ease;
+      cursor: default;
+    }
+
+    .chip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
     }
 
     .chip-purple { border-color: rgba(192, 132, 252, 0.4); color: var(--accent-purple); }
+    .chip-purple:hover { box-shadow: 0 0 10px rgba(192, 132, 252, 0.4); }
+
     .chip-green { border-color: rgba(57, 255, 20, 0.4); color: var(--accent-green); }
+    .chip-green:hover { box-shadow: 0 0 10px rgba(57, 255, 20, 0.4); }
 
     /* Timeline Styling */
     .exp-item {
@@ -267,18 +318,28 @@
     a.glass-btn:hover {
       background: rgba(56, 189, 248, 0.3);
       box-shadow: 0 0 14px rgba(56, 189, 248, 0.4);
+      transform: translateY(-2px);
     }
   </style>
 </head>
 <body>
+
+<canvas id="matrix-canvas"></canvas>
 
 <div class="liquid-orb orb-1"></div>
 <div class="liquid-orb orb-2"></div>
 <div class="liquid-orb orb-3"></div>
 
 <div class="container">
+  <!-- Top Control Bar -->
+  <div class="controls-bar">
+    <button class="control-btn" id="sound-btn" onclick="toggleSound()">🔊 Sound: ON</button>
+    <button class="control-btn" id="matrix-btn" onclick="toggleMatrix()">💚 Matrix FX</button>
+    <button class="control-btn" onclick="cycleTheme()">🎨 Liquid Theme</button>
+  </div>
+
   <!-- Header Glass Card -->
-  <div class="glass-panel">
+  <div class="glass-panel" onclick="playSynthSound('click')">
     <div class="header-top">
       <div class="status-badge">
         <span class="dot"></span> SYSTEMS ONLINE
@@ -287,7 +348,7 @@
         LOCATION: IND / GLOBAL
       </div>
     </div>
-    <h1>ANKUSH <span>SHINDE</span></h1>
+    <h1>ANKUSH <span id="brand-span">SHINDE</span></h1>
     <p class="subtitle">Cloud Application Engineer @ Acquia • DevOps, Big Data & AI Prototyping</p>
   </div>
 
@@ -295,27 +356,27 @@
   <div class="terminal-window">
     <div class="terminal-header">
       <div class="term-dots">
-        <span class="term-dot btn-red"></span>
-        <span class="term-dot btn-yellow"></span>
-        <span class="term-dot btn-green"></span>
+        <span class="term-dot btn-red" onclick="playSynthSound('error')"></span>
+        <span class="term-dot btn-yellow" onclick="playSynthSound('warn')"></span>
+        <span class="term-dot btn-green" onclick="playSynthSound('success')"></span>
       </div>
       <div class="terminal-title">bash — ankush@cloud-console:~</div>
     </div>
     <div class="terminal-body" id="term-body">
-      <div class="term-out">Welcome to Ankush Shinde's Interactive Console v2.0. Type <span class="highlight">'help'</span> for available commands.</div>
+      <div class="term-out">Welcome to Ankush Shinde's Extreme Console v3.0. Type <span class="highlight">'help'</span> for commands.</div>
       <div class="term-out"><span class="prompt">ankush@cloud-console:~$</span> <span class="cmd">whoami</span></div>
       <div class="term-out">Cloud Application Engineer at Acquia specializing in cloud platform stability, big data observability, and infrastructure automation.</div>
     </div>
     <div style="padding: 0 20px 16px;">
       <div class="terminal-input-line">
         <span class="prompt">ankush@cloud-console:~$</span>
-        <input type="text" class="term-input" id="term-input" placeholder="Type 'help', 'skills', 'projects', 'exp', or 'clear'..." autofocus />
+        <input type="text" class="term-input" id="term-input" placeholder="Type 'help', 'skills', 'projects', 'exp', 'theme', or 'clear'..." autofocus />
       </div>
     </div>
   </div>
 
   <!-- Career Experience -->
-  <div class="glass-panel">
+  <div class="glass-panel" onclick="playSynthSound('click')">
     <div class="section-title">💼 Career Experience</div>
     
     <div class="exp-item">
@@ -341,80 +402,224 @@
   </div>
 
   <!-- Technical Arsenal -->
-  <div class="glass-panel">
+  <div class="glass-panel" onclick="playSynthSound('click')">
     <div class="section-title">🛠️ Technical Arsenal</div>
     
     <div style="margin-bottom: 12px;">
       <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">Cloud & Infrastructure:</div>
-      <span class="chip">AWS</span>
-      <span class="chip">Google Cloud (GCP)</span>
-      <span class="chip">Linux</span>
-      <span class="chip">Terraform</span>
-      <span class="chip">Docker</span>
-      <span class="chip">Teleport</span>
-      <span class="chip">Networking</span>
+      <span class="chip" onclick="playSynthSound('key')">AWS</span>
+      <span class="chip" onclick="playSynthSound('key')">Google Cloud (GCP)</span>
+      <span class="chip" onclick="playSynthSound('key')">Linux</span>
+      <span class="chip" onclick="playSynthSound('key')">Terraform</span>
+      <span class="chip" onclick="playSynthSound('key')">Docker</span>
+      <span class="chip" onclick="playSynthSound('key')">Teleport</span>
+      <span class="chip" onclick="playSynthSound('key')">Networking</span>
     </div>
 
     <div style="margin-bottom: 12px;">
       <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">Big Data Platforms:</div>
-      <span class="chip chip-purple">Snowflake</span>
-      <span class="chip chip-purple">Apache Spark</span>
-      <span class="chip chip-purple">Apache Hive</span>
-      <span class="chip chip-purple">Cloudera</span>
-      <span class="chip chip-purple">Oozie</span>
-      <span class="chip chip-purple">CDP</span>
+      <span class="chip chip-purple" onclick="playSynthSound('key')">Snowflake</span>
+      <span class="chip chip-purple" onclick="playSynthSound('key')">Apache Spark</span>
+      <span class="chip chip-purple" onclick="playSynthSound('key')">Apache Hive</span>
+      <span class="chip chip-purple" onclick="playSynthSound('key')">Cloudera</span>
+      <span class="chip chip-purple" onclick="playSynthSound('key')">Oozie</span>
+      <span class="chip chip-purple" onclick="playSynthSound('key')">CDP</span>
     </div>
 
     <div>
       <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">Observability, Scripting & AI:</div>
-      <span class="chip chip-green">Splunk</span>
-      <span class="chip chip-green">Sumo Logic</span>
-      <span class="chip chip-green">Looker</span>
-      <span class="chip chip-green">Python</span>
-      <span class="chip chip-green">Shell Scripting</span>
-      <span class="chip chip-green">AI-Assisted Prototyping</span>
+      <span class="chip chip-green" onclick="playSynthSound('key')">Splunk</span>
+      <span class="chip chip-green" onclick="playSynthSound('key')">Sumo Logic</span>
+      <span class="chip chip-green" onclick="playSynthSound('key')">Looker</span>
+      <span class="chip chip-green" onclick="playSynthSound('key')">Python</span>
+      <span class="chip chip-green" onclick="playSynthSound('key')">Shell Scripting</span>
+      <span class="chip chip-green" onclick="playSynthSound('key')">AI-Assisted Prototyping</span>
     </div>
   </div>
 
   <!-- Featured Projects -->
-  <div class="glass-panel">
+  <div class="glass-panel" onclick="playSynthSound('click')">
     <div class="section-title">🚀 Featured Projects & Repositories</div>
     
     <div class="grid-2">
       <div style="background: rgba(2, 6, 23, 0.6); padding: 16px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2);">
         <h3 style="font-size: 15px; color: var(--accent-blue);">ankushshinde755 (Profile README)</h3>
         <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Liquid Glass dynamic GitHub profile showcasing live telemetry, contribution streams, and badges.</p>
-        <a href="https://github.com/ankushshinde755/ankushshinde755" target="_blank" class="glass-btn">View Repository →</a>
+        <a href="https://github.com/ankushshinde755/ankushshinde755" target="_blank" class="glass-btn" onclick="playSynthSound('success')">View Repository →</a>
       </div>
 
       <div style="background: rgba(2, 6, 23, 0.6); padding: 16px; border-radius: 10px; border: 1px solid rgba(192, 132, 252, 0.2);">
         <h3 style="font-size: 15px; color: var(--accent-purple);">The-Gym</h3>
         <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Fitness and workout tracking web platform project.</p>
-        <a href="https://github.com/ankushshinde755/The-Gym" target="_blank" class="glass-btn">View Repository →</a>
+        <a href="https://github.com/ankushshinde755/The-Gym" target="_blank" class="glass-btn" onclick="playSynthSound('success')">View Repository →</a>
       </div>
     </div>
   </div>
 
   <!-- Footer -->
   <div style="text-align: center; font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); padding: 12px 0;">
-    ⚡ DESIGNED WITH LIQUID GLASS ARCHITECTURE • ANKUSH SHINDE
+    ⚡ EXTREME LIQUID GLASS ARCHITECTURE • ANKUSH SHINDE
   </div>
 </div>
 
 <script>
-  /* Terminal Interactive Engine */
+  /* ================= WEB AUDIO SYNTHESIZER ================= */
+  let soundEnabled = true;
+  let audioCtx = null;
+
+  function initAudio() {
+    if (!audioCtx) {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      if (AudioContext) audioCtx = new AudioContext();
+    }
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+  }
+
+  function playSynthSound(type) {
+    if (!soundEnabled) return;
+    try {
+      initAudio();
+      if (!audioCtx) return;
+
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      const now = audioCtx.currentTime;
+
+      if (type === 'key') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(800 + Math.random() * 200, now);
+        gain.gain.setValueAtTime(0.03, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.03);
+        osc.start(now);
+        osc.stop(now + 0.03);
+      } else if (type === 'click') {
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(523.25, now);
+        osc.frequency.setValueAtTime(659.25, now + 0.05);
+        gain.gain.setValueAtTime(0.08, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+        osc.start(now);
+        osc.stop(now + 0.12);
+      } else if (type === 'success') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(587.33, now); // D5
+        osc.frequency.setValueAtTime(880, now + 0.08); // A5
+        gain.gain.setValueAtTime(0.1, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+        osc.start(now);
+        osc.stop(now + 0.2);
+      } else if (type === 'warn') {
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(329.63, now);
+        gain.gain.setValueAtTime(0.1, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+        osc.start(now);
+        osc.stop(now + 0.18);
+      } else if (type === 'error') {
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(180, now);
+        gain.gain.setValueAtTime(0.12, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+        osc.start(now);
+        osc.stop(now + 0.25);
+      }
+    } catch(e) { console.debug('Audio error:', e); }
+  }
+
+  function toggleSound() {
+    soundEnabled = !soundEnabled;
+    const btn = document.getElementById('sound-btn');
+    if (soundEnabled) {
+      btn.innerHTML = '🔊 Sound: ON';
+      btn.style.color = 'var(--accent-blue)';
+      playSynthSound('click');
+    } else {
+      btn.innerHTML = '🔇 Sound: OFF';
+      btn.style.color = 'var(--text-muted)';
+    }
+  }
+
+  /* ================= LIQUID THEME ENGINE ================= */
+  const themes = [
+    { name: 'Cyan Neon', orb1: '#0284c7', orb2: '#7c3aed', orb3: '#059669', brand: '#38bdf8' },
+    { name: 'Purple Vapor', orb1: '#7c3aed', orb2: '#db2777', orb3: '#0284c7', brand: '#c084fc' },
+    { name: 'Matrix Green', orb1: '#059669', orb2: '#16a34a', orb3: '#0284c7', brand: '#39FF14' }
+  ];
+  let currentThemeIdx = 0;
+
+  function cycleTheme() {
+    playSynthSound('click');
+    currentThemeIdx = (currentThemeIdx + 1) % themes.length;
+    const t = themes[currentThemeIdx];
+    document.documentElement.style.setProperty('--orb-1-color', t.orb1);
+    document.documentElement.style.setProperty('--orb-2-color', t.orb2);
+    document.documentElement.style.setProperty('--orb-3-color', t.orb3);
+    document.getElementById('brand-span').style.color = t.brand;
+  }
+
+  /* ================= MATRIX RAIN EFFECT ================= */
+  let matrixActive = false;
+  const canvas = document.getElementById('matrix-canvas');
+  const ctx = canvas.getContext('2d');
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  const matrixChars = '01ANKUSHSHINDEACQUIACLOUD0101';
+  const fontSize = 14;
+  let columns = Math.floor(canvas.width / fontSize);
+  let drops = Array(columns).fill(1);
+
+  function drawMatrix() {
+    if (!matrixActive) return;
+    ctx.fillStyle = 'rgba(6, 9, 19, 0.1)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#39FF14';
+    ctx.font = fontSize + 'px monospace';
+
+    for (let i = 0; i < drops.length; i++) {
+      const text = matrixChars.charAt(Math.floor(Math.random() * matrixChars.length));
+      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+        drops[i] = 0;
+      }
+      drops[i]++;
+    }
+  }
+  setInterval(drawMatrix, 35);
+
+  function toggleMatrix() {
+    playSynthSound('click');
+    matrixActive = !matrixActive;
+    canvas.style.opacity = matrixActive ? '0.4' : '0';
+    document.getElementById('matrix-btn').style.color = matrixActive ? '#39FF14' : 'var(--accent-blue)';
+  }
+
+  /* ================= INTERACTIVE TERMINAL ENGINE ================= */
   const termInput = document.getElementById('term-input');
   const termBody = document.getElementById('term-body');
 
   const commands = {
-    'help': 'Available commands: <span class="highlight">skills</span>, <span class="highlight">projects</span>, <span class="highlight">exp</span>, <span class="highlight">contact</span>, <span class="highlight">clear</span>',
+    'help': 'Available commands: <span class="highlight">skills</span>, <span class="highlight">projects</span>, <span class="highlight">exp</span>, <span class="highlight">contact</span>, <span class="highlight">theme</span>, <span class="highlight">matrix</span>, <span class="highlight">clear</span>',
     'skills': 'Cloud: AWS, GCP, Terraform, Linux | Big Data: Snowflake, Spark, Hive, Cloudera | Tools: Python, Splunk, Sumo Logic, AI Prototyping',
     'projects': '1. ankushshinde755 (GitHub Profile) | 2. The-Gym (Workout Platform)',
     'exp': '1. Cloud Application Engineer @ Acquia (May 2021–Present) | 2. Customer Service Associate @ Amazon (2020–2021)',
-    'contact': 'LinkedIn: linkedin.com/in/ankush-shinde-58a67a14b/ | GitHub: github.com/ankushshinde755'
+    'contact': 'LinkedIn: linkedin.com/in/ankush-shinde-58a67a14b/ | GitHub: github.com/ankushshinde755',
+    'theme': 'Cycled theme colors!',
+    'matrix': 'Toggled Matrix stream!'
   };
 
   termInput.addEventListener('keydown', (e) => {
+    playSynthSound('key');
+
     if (e.key === 'Enter') {
       const inputVal = termInput.value.trim().toLowerCase();
       termInput.value = '';
@@ -430,11 +635,20 @@
       responseLine.className = 'term-out';
 
       if (inputVal === 'clear') {
+        playSynthSound('click');
         termBody.innerHTML = '';
         return;
+      } else if (inputVal === 'theme') {
+        cycleTheme();
+        responseLine.innerHTML = '🎨 Liquid theme cycled!';
+      } else if (inputVal === 'matrix') {
+        toggleMatrix();
+        responseLine.innerHTML = '💚 Matrix stream toggled!';
       } else if (commands[inputVal]) {
+        playSynthSound('success');
         responseLine.innerHTML = commands[inputVal];
       } else {
+        playSynthSound('error');
         responseLine.innerHTML = `Command not found: '${inputVal}'. Type <span class="highlight">'help'</span> for list of commands.`;
       }
 
@@ -443,7 +657,7 @@
     }
   });
 
-  /* 3D Card Perspective Tilt Effect */
+  /* ================= 3D CARD PERSPECTIVE TILT EFFECT ================= */
   document.querySelectorAll('.glass-panel').forEach(card => {
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
@@ -461,6 +675,12 @@
     card.addEventListener('mouseleave', () => {
       card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
     });
+  });
+
+  /* Keyboard Hotkeys */
+  window.addEventListener('keydown', (e) => {
+    if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+    if (e.key === 'm' || e.key === 'M') toggleSound();
   });
 </script>
 
