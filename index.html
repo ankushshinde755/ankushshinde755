@@ -504,6 +504,47 @@
       font-family: var(--font-mono);
     }
 
+    /* OPTION 2: ARCHITECTURE CANVAS STYLING */
+    .arch-canvas-box {
+      background: rgba(2, 6, 23, 0.75);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      position: relative;
+    }
+
+    .arch-node {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.22s ease;
+    }
+
+    .arch-node:hover {
+      border-color: var(--accent-purple);
+      transform: translateY(-3px);
+      box-shadow: 0 0 16px rgba(192, 132, 252, 0.4);
+    }
+
+    .arch-node-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-top: 6px;
+    }
+
+    .arch-node-subtitle {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+
     /* INCIDENT SIMULATOR DRAWER */
     .sim-step-btn {
       background: rgba(15, 23, 42, 0.9);
@@ -547,6 +588,7 @@
   <div class="controls-bar">
     <button class="control-btn" id="sound-btn" onclick="toggleSound()">🔊 Sound: ON</button>
     <button class="control-btn active-green" id="matrix-btn" onclick="toggleMatrix()">💚 Matrix FX: ON (50%)</button>
+    <button class="control-btn" style="color: var(--accent-purple); border-color: rgba(192, 132, 252, 0.4);" onclick="openAiModal()">🤖 AI Console</button>
     <button class="control-btn" style="color: var(--accent-red); border-color: rgba(248, 113, 113, 0.4);" onclick="openSimModal()">🚨 SRE Simulator</button>
     <button class="control-btn" onclick="cycleTheme()">🎨 Liquid Theme</button>
   </div>
@@ -611,14 +653,57 @@
       <div class="terminal-title">bash — ankush@cloud-console:~</div>
     </div>
     <div class="terminal-body" id="term-body">
-      <div class="term-out">Welcome to Ankush Shinde's Peak Console v5.3. Type <span class="highlight">'help'</span> or <span class="highlight">'sre'</span> to launch the Incident Simulator.</div>
+      <div class="term-out">Welcome to Ankush Shinde's Peak Console v5.4. Type <span class="highlight">'help'</span>, <span class="highlight">'ai'</span>, or <span class="highlight">'sre'</span> to test interactive features.</div>
       <div class="term-out"><span class="prompt">ankush@cloud-console:~$</span> <span class="cmd">whoami</span></div>
       <div class="term-out">Cloud Application Engineer at Acquia specializing in cloud platform stability, big data observability, and infrastructure automation.</div>
     </div>
     <div style="padding: 0 20px 16px;">
       <div class="terminal-input-line">
         <span class="prompt">ankush@cloud-console:~$</span>
-        <input type="text" class="term-input" id="term-input" placeholder="Type 'help', 'sre', 'certs', 'achievements', 'linkedin', or 'clear'..." autofocus />
+        <input type="text" class="term-input" id="term-input" placeholder="Type 'help', 'ai', 'sre', 'certs', 'achievements', 'linkedin', or 'clear'..." autofocus />
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION 2: INTERACTIVE CLOUD ARCHITECTURE CANVAS PANEL -->
+  <div class="glass-panel" onclick="playSynthSound('click')">
+    <div class="section-title"><i class="fa-solid fa-network-wired" style="color: var(--accent-purple);"></i> Interactive Enterprise Cloud Topology Canvas (Click Nodes to Inspect)</div>
+    
+    <div class="arch-canvas-box">
+      <div class="arch-node" onclick="openArchModal('ingress')">
+        <i class="devicon-amazonwebservices-plain-wordmark colored" style="font-size: 24px;"></i>
+        <div class="arch-node-title">Route53 / ALB Ingress</div>
+        <div class="arch-node-subtitle">Traffic Routing</div>
+      </div>
+
+      <div class="arch-node" onclick="openArchModal('k8s')">
+        <i class="devicon-kubernetes-plain colored" style="font-size: 24px;"></i>
+        <div class="arch-node-title">EKS / GKE Clusters</div>
+        <div class="arch-node-subtitle">Application Layer</div>
+      </div>
+
+      <div class="arch-node" onclick="openArchModal('snowflake')">
+        <i class="fa-solid fa-snowflake" style="font-size: 24px; color: var(--accent-blue);"></i>
+        <div class="arch-node-title">Snowflake Warehouse</div>
+        <div class="arch-node-subtitle">Big Data Storage</div>
+      </div>
+
+      <div class="arch-node" onclick="openArchModal('splunk')">
+        <i class="fa-solid fa-chart-line" style="font-size: 24px; color: var(--accent-green);"></i>
+        <div class="arch-node-title">Splunk / Sumo Logic</div>
+        <div class="arch-node-subtitle">Observability</div>
+      </div>
+
+      <div class="arch-node" onclick="openArchModal('terraform')">
+        <i class="devicon-terraform-plain colored" style="font-size: 24px;"></i>
+        <div class="arch-node-title">Terraform IaC</div>
+        <div class="arch-node-subtitle">Infrastructure Automation</div>
+      </div>
+
+      <div class="arch-node" onclick="openArchModal('cdp')">
+        <i class="fa-solid fa-database" style="font-size: 24px; color: var(--accent-amber);"></i>
+        <div class="arch-node-title">AgilOne CDP Engine</div>
+        <div class="arch-node-subtitle">Data Platform Orchestration</div>
       </div>
     </div>
   </div>
@@ -877,6 +962,37 @@
   </div>
 </div>
 
+<!-- OPTION 3: MODAL OVERLAY FOR AI KNOWLEDGE ASSISTANT DRAWER -->
+<div class="modal-overlay" id="ai-modal" onclick="closeAiModal()">
+  <div class="modal-card" onclick="event.stopPropagation()">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+      <h3 style="color: var(--accent-purple); font-size: 16px;"><i class="fa-solid fa-brain"></i> Interactive AI Knowledge Assistant</h3>
+      <button class="glass-btn" onclick="closeAiModal()" style="margin:0;">✕ Close</button>
+    </div>
+    <div style="font-size: 12.5px; color: #cbd5e1; line-height: 1.6;">
+      <div style="margin-bottom: 12px; color: var(--text-muted);">
+        Ask the assistant about Ankush's experience, certifications, AWS skills, or education:
+      </div>
+
+      <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+        <input type="text" id="ai-query-input" placeholder="e.g. 'acquia', 'aws', 'certifications', 'mca'..." style="flex:1; background: rgba(2, 6, 23, 0.85); border: 1px solid var(--border-color); padding: 8px 12px; border-radius: 8px; color: white; outline: none; font-family: var(--font-mono); font-size: 12px;" onkeydown="if(event.key==='Enter') queryAiKnowledge();" />
+        <button class="glass-btn" style="margin:0; background: rgba(192, 132, 252, 0.2); border-color: rgba(192, 132, 252, 0.5);" onclick="queryAiKnowledge()">Ask AI</button>
+      </div>
+
+      <div id="ai-response-box" style="background: rgba(2, 6, 23, 0.85); border: 1px solid rgba(192, 132, 252, 0.3); padding: 14px; border-radius: 8px; font-family: var(--font-mono); font-size: 11.5px; min-height: 100px; color: #e2e8f0;">
+        💡 Type a query or click prompt chips below:
+      </div>
+
+      <div style="margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap;">
+        <span class="chip chip-purple" style="cursor:pointer;" onclick="setAiQuery('acquia')">Acquia Role</span>
+        <span class="chip" style="cursor:pointer;" onclick="setAiQuery('aws')">AWS Certs</span>
+        <span class="chip chip-green" style="cursor:pointer;" onclick="setAiQuery('education')">Education</span>
+        <span class="chip chip-amber" style="cursor:pointer;" onclick="setAiQuery('cli')">Ankush CLI</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   /* ================= REAL-TIME PING TELEMETRY ENGINE ================= */
   async function measurePing(url) {
@@ -1080,8 +1196,10 @@
   const termBody = document.getElementById('term-body');
 
   const commands = {
-    'help': 'Available commands: <span class="highlight">sre</span>, <span class="highlight">certs</span>, <span class="highlight">achievements</span>, <span class="highlight">education</span>, <span class="highlight">linkedin</span>, <span class="highlight">skills</span>, <span class="highlight">projects</span>, <span class="highlight">exp</span>, <span class="highlight">clear</span>',
+    'help': 'Available commands: <span class="highlight">ai</span>, <span class="highlight">sre</span>, <span class="highlight">cli</span>, <span class="highlight">certs</span>, <span class="highlight">achievements</span>, <span class="highlight">education</span>, <span class="highlight">linkedin</span>, <span class="highlight">skills</span>, <span class="highlight">projects</span>, <span class="highlight">exp</span>, <span class="highlight">clear</span>',
+    'ai': 'Opening Interactive AI Knowledge Assistant...',
     'sre': 'Launching SRE Interactive Incident Simulator...',
+    'cli': 'Local Terminal CLI Command: <span class="highlight">pip install ankush-cli</span> (Run: ankush info)',
     'certs': 'AWS: Cloud Practitioner, S3 Glacier, DevOps | GCP: Transformer Models, LLM, BERT | Microsoft: Cloud Computing, Azure AI | Acquia: Talent Ambassador',
     'achievements': '1. Runbook Migration to GitHub | 2. Service Cloud Ticket Auto-Resolution | 3. All-in-One CDP CLI Utility',
     'education': '1. MCA (Sinhgad Institute 2017-2020) | 2. BSc ECS (Sahakar Maharshi College)',
@@ -1118,6 +1236,9 @@
         playSynthSound('click');
         termBody.innerHTML = '';
         return;
+      } else if (inputVal === 'ai' || inputVal === 'ask') {
+        openAiModal();
+        responseLine.innerHTML = commands['ai'];
       } else if (inputVal === 'sre' || inputVal === 'simulate-incident') {
         openSimModal();
         responseLine.innerHTML = commands['sre'];
@@ -1137,6 +1258,59 @@
       termBody.scrollTop = termBody.scrollHeight;
     }
   });
+
+  /* ================= OPTION 2: ARCHITECTURE CANVAS MODAL LOGIC ================= */
+  const archData = {
+    'ingress': '• AWS Route53 & Application Load Balancer (ALB) Ingress.<br/>• Directs multi-tenant traffic across SSL/TLS endpoints with zero-downtime health probes.',
+    'k8s': '• Amazon EKS & GCP Kubernetes Engine (GKE).<br/>• Managed containerized workload autoscaling (HPA) and high availability.',
+    'snowflake': '• Snowflake Data Warehouse & Cloud Analytics.<br/>• Orchestrates enterprise data pipelines with automated query optimization.',
+    'splunk': '• Splunk & Sumo Logic Log Telemetry.<br/>• Proactive alerting, error rate monitoring, and 5xx failure root-cause analysis.',
+    'terraform': '• Infrastructure as Code (IaC) via HashiCorp Terraform.<br/>• Provisions reproducible cloud environments across AWS & GCP ecosystems.',
+    'cdp': '• Customer Data Platform (CDP) Orchestration.<br/>• Multi-timezone workflow engine managing CAMPAIGN, REPORT, and FEED runs.'
+  };
+
+  function openArchModal(key) {
+    playSynthSound('click');
+    const content = archData[key];
+    if (!content) return;
+    document.getElementById('modal-title').innerText = '🌐 Enterprise Node Topology Inspection';
+    document.getElementById('modal-content').innerHTML = content;
+    document.getElementById('inspect-modal').classList.add('active');
+  }
+
+  /* ================= OPTION 3: AI KNOWLEDGE ASSISTANT LOGIC ================= */
+  function openAiModal() {
+    playSynthSound('click');
+    document.getElementById('ai-modal').classList.add('active');
+  }
+
+  function closeAiModal() {
+    playSynthSound('click');
+    document.getElementById('ai-modal').classList.remove('active');
+  }
+
+  function setAiQuery(q) {
+    document.getElementById('ai-query-input').value = q;
+    queryAiKnowledge();
+  }
+
+  function queryAiKnowledge() {
+    playSynthSound('success');
+    const q = document.getElementById('ai-query-input').value.trim().toLowerCase();
+    const box = document.getElementById('ai-response-box');
+
+    if (q.includes('acquia') || q.includes('role') || q.includes('work')) {
+      box.innerHTML = '🤖 <strong>AI Assistant:</strong> Ankush serves as a Cloud Application Engineer at Acquia (May 2021 – Present), maintaining high-availability enterprise cloud platforms, big data pipelines, and infrastructure automation.';
+    } else if (q.includes('aws') || q.includes('cert') || q.includes('credentials')) {
+      box.innerHTML = '🤖 <strong>AI Assistant:</strong> Ankush holds multiple AWS certifications including Cloud Practitioner Essentials, Amazon S3 Glacier, DevOps on AWS, and AWS CLI Basics.';
+    } else if (q.includes('mca') || q.includes('edu') || q.includes('degree')) {
+      box.innerHTML = '🤖 <strong>AI Assistant:</strong> Ankush completed his Master of Computer Applications (MCA) at Sinhgad Institute (2017–2020) and BSc (ECS) at Sahakar Maharshi College.';
+    } else if (q.includes('cli') || q.includes('tool')) {
+      box.innerHTML = '🤖 <strong>AI Assistant:</strong> Ankush engineered custom CLI utilities for AgilOne CDP operations, including workflow inspection, runbook automation, and Oozie job termination.';
+    } else {
+      box.innerHTML = `🤖 <strong>AI Assistant:</strong> Ankush Shinde is a Cloud Application Engineer at Acquia with expertise in AWS, GCP, Snowflake, Terraform, Linux, and AI Prototyping. Try asking about 'Acquia', 'AWS', or 'Education'.`;
+    }
+  }
 
   /* ================= INCIDENT SIMULATOR LOGIC ================= */
   function openSimModal() {
@@ -1227,6 +1401,7 @@
     if (e.key === 'Escape') {
       closeInspectModal();
       closeSimModal();
+      closeAiModal();
     }
   });
 </script>
