@@ -6,51 +6,45 @@
 <!-- ANIMATED TYPING SUBHEADER -->
 <p align="center">
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=21&pause=1000&color=38BDF8&center=true&vCenter=true&width=750&lines=Cloud+Application+Engineer+%40+Acquia;DevOps+%E2%80%A2+SRE+%E2%80%A2+Cloud+Infrastructure;Building+Scalable+%26+Resilient+Systems" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=21&pause=1000&color=38BDF8&center=true&vCenter=true&width=750&lines=Cloud+Application+Engineer+%40+Acquia;DevOps+%E2%80%A2+SRE+%E2%80%A2+Cloud+Infrastructure;Welcome+to+my+Interactive+Index" alt="Typing SVG" />
   </a>
 </p>
 
-<!-- HIGH-END SHIELDS & BADGES MATRIX -->
-<p align="center">
-  <img src="https://img.shields.io/badge/ROLE-CLOUD_APP_ENGINEER-0f172a?style=for-the-badge&logo=amazonaws&logoColor=38bdf8&labelColor=0b1120&v=1" />
-  <img src="https://img.shields.io/badge/COMPANY-ACQUIA-0f172a?style=for-the-badge&logo=drupal&logoColor=c084fc&labelColor=0b1120&v=1" />
-  <img src="https://img.shields.io/badge/FOCUS-DEVOPS_%26_AUTOMATION-0f172a?style=for-the-badge&logo=docker&logoColor=38bdf8&labelColor=0b1120&v=1" />
-</p>
-
-<!-- INTERACTIVE SITE & PORTFOLIO LAUNCHER -->
+<!-- ANIMATED ARROW & HIGH-VISIBILITY LAUNCHER -->
 <p align="center">
   <a href="https://ankushshinde755.github.io/ankushshinde755/" target="_blank">
-    <img src="https://img.shields.io/badge/LAUNCH%20LIVE%20CONSOLE-0284c7?style=for-the-badge&logo=googlechrome&logoColor=white&v=1" height="40" alt="Launch Live Console" />
-  </a>
-  &nbsp;&nbsp;
-  <a href="https://www.linkedin.com/in/ankush-shinde-58a67a14b/" target="_blank">
-    <img src="https://img.shields.io/badge/LINKEDIN-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&v=1" height="40" alt="LinkedIn" />
+    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=800&size=20&pause=500&color=39FF14&center=true&vCenter=true&width=500&lines=%E2%9A%A1+CLICK+BELOW+TO+EXPLORE+LIVE+CONSOLE+%E2%96%BD;%E2%96%BC+%E2%96%BC+%E2%96%BC+LAUNCH+FULL+INDEX+PAGE+%E2%96%BC+%E2%96%BC+%E2%96%BC" alt="Directional Indicator" />
   </a>
 </p>
 
+<p align="center">
+  <a href="https://ankushshinde755.github.io/ankushshinde755/" target="_blank">
+    <img src="https://img.shields.io/badge/%F0%9F%9A%80_OPEN_FULL_INTERACTIVE_INDEX_%E2%9E%9A-0284c7?style=for-the-badge&logo=googlechrome&logoColor=white&v=1" height="58" alt="Launch Live Index" />
+  </a>
+</p>
+
+<!-- HIGHLIGHTED GLASS CALLOUT BOX -->
+<div align="center">
+  <table align="center" width="100%">
+    <tr>
+      <td align="center" style="background: #0f172a; border: 2px solid #38bdf8; border-radius: 12px; padding: 16px;">
+        <span style="font-size: 16px; color: #38bdf8; font-weight: bold;">
+          👉 <a href="https://ankushshinde755.github.io/ankushshinde755/" style="color: #38bdf8; text-decoration: underline;">https://ankushshinde755.github.io/ankushshinde755/</a> 👈
+        </span>
+        <br/>
+        <span style="font-size: 12px; color: #94a3b8;">
+          <em>Visit the full web dashboard for real-time telemetry, architecture details, and project demos.</em>
+        </span>
+      </td>
+    </tr>
+  </table>
+</div>
+
 ---
 
-### ⚡ OPERATIONAL PROFILE
-
-<table align="center" width="100%">
-  <tr>
-    <td style="background: #0f172a; border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; padding: 18px;">
-      <ul>
-        <li>👨‍💻 <b>Current Role:</b> Cloud Application Engineer at <a href="https://www.acquia.com/" style="color:#c084fc; font-weight:bold;">Acquia</a> (May 2021 – Present)</li>
-        <li>🛠️ <b>Domain Expertise:</b> DevOps, SRE, Cloud Infrastructure (AWS/GCP), Terraform & Containerization</li>
-        <li>🚀 <b>Core Focus:</b> Multi-tenant application stability, big data observability, and deployment pipelines</li>
-        <li>🎓 <b>Education:</b> Master of Computer Applications (MCA) & B.Sc. Entire Computer Science (ECS)</li>
-        <li>🌐 <b>Interactive Web Console:</b> <a href="https://ankushshinde755.github.io/ankushshinde755/" style="color:#38bdf8; font-weight:bold;">ankushshinde755.github.io/ankushshinde755/</a></li>
-      </ul>
-    </td>
-  </tr>
-</table>
-
----
-
-### 💻 QUICK TERMINAL COMMAND
+### 💻 QUICK TERMINAL ACCESS
 
 Run this directly in your terminal to launch the interactive CLI profile:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py | python3
+curl -fsSL "[https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py?v=fix1](https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py?v=fix1)" -o /tmp/cli.py && python3 -u /tmp/cli.py
