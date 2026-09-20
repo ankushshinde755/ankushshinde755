@@ -15,11 +15,14 @@ def typewriter(text, delay=0.01):
         time.sleep(delay)
     print()
 
-def main():
+def print_banner():
     print(f"\n{CYAN}{BOLD}┌─────────────────────────────────────────────────────────────┐{RESET}")
     print(f"{CYAN}{BOLD}│  ANKUSH SHINDE • Cloud Application Engineer @ Acquia        │{RESET}")
     print(f"{CYAN}{BOLD}└─────────────────────────────────────────────────────────────┘{RESET}\n")
 
+def main():
+    print_banner()
+    
     typewriter(f"{PURPLE}{BOLD}=== OPERATIONAL PROFILE ==={RESET}")
     typewriter(f"{CYAN}• Role:{RESET} Cloud Application Engineer at {PURPLE}Acquia{RESET}")
     typewriter(f"{CYAN}• Focus:{RESET} DevOps, SRE, Cloud Infrastructure & Automation")
