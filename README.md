@@ -10,7 +10,7 @@
   </a>
 </p>
 
-<!-- GLOWING PILL BADGES -->
+<!-- TOP STATUS CHIPS -->
 <p align="center">
   <img src="https://img.shields.io/badge/ROLE-CLOUD_APP_ENGINEER-0f172a?style=for-the-badge&logo=amazonaws&logoColor=38bdf8&labelColor=0b1120" />
   <img src="https://img.shields.io/badge/COMPANY-ACQUIA-0f172a?style=for-the-badge&logo=drupal&logoColor=c084fc&labelColor=0b1120" />
@@ -21,6 +21,14 @@
 
 <!-- OPERATIONAL PROFILE CARD -->
 ### ⚡ OPERATIONAL PROFILE
+
+<!-- PROFILE CHIPS -->
+<p align="left">
+  <img src="https://img.shields.io/badge/Cloud-AWS_|_GCP-0b1120?style=flat-square&logo=googlecloud&logoColor=38bdf8" />
+  <img src="https://img.shields.io/badge/Data-Snowflake_|_Spark_|_Hive-0b1120?style=flat-square&logo=apachespark&logoColor=c084fc" />
+  <img src="https://img.shields.io/badge/Infra-Terraform_|_Linux-0b1120?style=flat-square&logo=terraform&logoColor=38bdf8" />
+  <img src="https://img.shields.io/badge/Workflow-AI_Prototyping-0b1120?style=flat-square&logo=openai&logoColor=39FF14" />
+</p>
 
 <table align="center" width="100%">
   <tr>
@@ -35,6 +43,34 @@
     </td>
   </tr>
 </table>
+
+---
+
+<!-- TECH STACK MATRIX -->
+### 🛠️ TECH ARSENAL
+
+<!-- CATEGORIZED TECH CHIPS -->
+<p align="left">
+  <b>Cloud & Infra:</b>
+  <img src="https://img.shields.io/badge/AWS-232F3E?style=flat&logo=amazon-aws&logoColor=white" />
+  <img src="https://img.shields.io/badge/GCP-4285F4?style=flat&logo=google-cloud&logoColor=white" />
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black" />
+  <img src="https://img.shields.io/badge/Terraform-7B42BC?style=flat&logo=terraform&logoColor=white" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white" />
+  <br/>
+  <b>Data Platform:</b>
+  <img src="https://img.shields.io/badge/Snowflake-29B5E8?style=flat&logo=snowflake&logoColor=white" />
+  <img src="https://img.shields.io/badge/Spark-E25A1C?style=flat&logo=apachespark&logoColor=white" />
+  <img src="https://img.shields.io/badge/Hive-FDEE21?style=flat&logo=apachehive&logoColor=black" />
+  <img src="https://img.shields.io/badge/Cloudera-F48020?style=flat&logo=cloudera&logoColor=white" />
+  <img src="https://img.shields.io/badge/Looker-4285F4?style=flat&logo=looker&logoColor=white" />
+  <br/>
+  <b>Observability:</b>
+  <img src="https://img.shields.io/badge/Splunk-000000?style=flat&logo=splunk&logoColor=white" />
+  <img src="https://img.shields.io/badge/Sumo_Logic-000000?style=flat&logo=sumologic&logoColor=white" />
+  <img src="https://img.shields.io/badge/Salesforce-00A1E0?style=flat&logo=salesforce&logoColor=white" />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" />
+</p>
 
 ---
 
