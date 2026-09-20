@@ -1,95 +1,92 @@
-<!-- Profile Header Typing Effect -->
+<!-- LIQUID GLASS HERO BANNER -->
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Mono&weight=600&size=25&pause=900&color=39FF14&center=true&width=600&lines=Hi+%F0%9F%91%8B%2C+I'm+Ankush!+Cloud+Application+Engineer;Cloud+Application+Engineer+@+Acquia;AI+⚡️+Open+Source+💻;Let's+build+#Sustainable+Tech+💧" alt="Typing SVG" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0b1120,40:0284c7,75:7c3aed,100:0284c7&height=220&section=header&text=ANKUSH%20SHINDE&fontSize=42&fontColor=ffffff&fontAlignY=38&animation=twinkling&stroke=38bdf8&strokeWidth=1" width="100%" alt="Header Banner"/>
 </p>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=1AFF13&height=200&section=header&text=Welcome%20to%20my%20profile!%20%F0%9F%92%8E&fontSize=50&fontColor=252525&animation=twinkling" alt="banner" width="100%"/>
+<!-- ANIMATED TYPING SUBHEADER -->
+<p align="center">
+  <a href="https://git.io/typing-svg">
+    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=21&pause=1000&color=38BDF8&center=true&vCenter=true&width=700&lines=Cloud+Application+Engineer+%40+Acquia;DevOps+%E2%80%A2+SRE+%E2%80%A2+Cloud+Infrastructure;Building+Scalable+%26+Resilient+Systems" alt="Typing SVG" />
+  </a>
+</p>
+
+<!-- GLOWING PILL BADGES -->
+<p align="center">
+  <img src="https://img.shields.io/badge/ROLE-CLOUD_APP_ENGINEER-0f172a?style=for-the-badge&logo=amazonaws&logoColor=38bdf8&labelColor=0b1120" />
+  <img src="https://img.shields.io/badge/COMPANY-ACQUIA-0f172a?style=for-the-badge&logo=drupal&logoColor=c084fc&labelColor=0b1120" />
+  <img src="https://img.shields.io/badge/FOCUS-DEVOPS_%26_AUTOMATION-0f172a?style=for-the-badge&logo=docker&logoColor=38bdf8&labelColor=0b1120" />
+</p>
 
 ---
 
-<h2 align="center"><img src="https://img.icons8.com/color/48/000000/about.png" width="28"/> About Me</h2>
+<!-- OPERATIONAL PROFILE -->
+### ⚡ OPERATIONAL PROFILE
 
-<table>
-<tr>
-<td>
-<ul>
-  <li>👨‍💻 <b style="color:#1AFF13">Cloud Application Engineer</b> at <a href="https://www.acquia.com/" style="color:#1AFF13">Acquia</a></li>
-  <li>🌟 <b style="color:#1AFF13">Open Source & Automation Enthusiast</b></li>
-  <li>🌱 Currently exploring <b style="color:#1AFF13">DevOps, SRE, and Cloud Infrastructure</b></li>
-  <li>🌍 Love building for <b style="color:#1AFF13">Positive, Green-sustainable Impact</b></li>
-  <li>🎯 <b style="color:#1AFF13">Always learning and sharing</b></li>
-</ul>
-</td>
-<td>
-  <img src="https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif" alt="computer gif" width="180px"/>
-</td>
-</tr>
+<table align="center" width="100%">
+  <tr>
+    <td style="background: #0f172a; border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; padding: 18px;">
+      <ul>
+        <li>👨‍💻 <b>Current Role:</b> Cloud Application Engineer at <a href="https://www.acquia.com/" style="color:#c084fc; font-weight:bold;">Acquia</a></li>
+        <li>🛠️ <b>Domain Expertise:</b> DevOps, SRE, Automation & Cloud Infrastructure</li>
+        <li>🚀 <b>Core Focus:</b> Designing high-availability application delivery pipelines</li>
+        <li>🌟 <b>Community:</b> Active in Open Source tooling and infrastructure automation</li>
+      </ul>
+    </td>
+  </tr>
 </table>
 
 ---
 
-<p align="center"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Mono&size=20&duration=1700&pause=600&color=1AFF13&center=true&vCenter=true&multiline=true&lines=☘️+Green+Code+for+a+Green+World!+☘️;#OpenSource;#CloudNative;#LiveToCode" alt="Live Green Text"/></p>
-
----
-
-<h2 align="center"><img src="https://img.icons8.com/arcade/64/1AFF13/trophy.png" width="32"/> My GitHub Achievements & Stats</h2>
+<!-- GITHUB TELEMETRY & STATS -->
+### 📊 SYSTEM TELEMETRY
 
 <p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=ankushshinde755&theme=onedark&no-bg=true&no-frame=true&column=6&margin-w=10&margin-h=15&title=MultiLanguage,Stars,Follower,Commits,Repositories,PullRequest" />
-</p>
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=ankushshinde755&show_icons=true&theme=chartreuse-dark&hide_border=true&icon_color=39FF14&title_color=1AFF13&text_color=A9FEAC" height="180"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ankushshinde755&layout=compact&theme=chartreuse-dark&hide_border=true&title_color=1AFF13&text_color=A9FEAC&icon_color=39FF14&bg_color=252525" height="180"/>
+  <img src="https://github-readme-stats-fast.vercel.app/api?username=ankushshinde755&show_icons=true&theme=tokyonight&hide_border=true&title_color=38bdf8&text_color=cbd5e1&icon_color=c084fc&bg_color=0f172a" height="175" />
+  &nbsp;
+  <img src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=ankushshinde755&layout=compact&theme=tokyonight&hide_border=true&title_color=c084fc&text_color=cbd5e1&icon_color=38bdf8&bg_color=0f172a" height="175" />
 </p>
 
+<!-- LOCAL REPOSITORY METRICS SVG -->
 <p align="center">
-  <img src="https://github.com/ankushshinde755/ankushshinde755/blob/main/metrics.svg" alt="Metrics" />
+  <img src="./metrics.svg" alt="GitHub Metrics" width="98%" />
 </p>
 
 ---
 
-<h2 align="center"><img src="https://img.icons8.com/color/48/39FF14/activity-history--v1.png" width="32"/> My Recent GitHub Activity</h2>
+<!-- ANIMATED CONTRIBUTION STREAM -->
+### 🐍 CONTRIBUTION STREAM
 
 <p align="center">
-  <img src="https://github.com/ankushshinde755/ankushshinde755/raw/output/github-contribution-grid-snake.svg" alt="Snake animation" />
+  <img src="https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/output/github-contribution-grid-snake.svg" alt="Contribution Snake Stream" width="98%" />
 </p>
 
 ---
 
-<h2 align="center">
-  <img src="https://img.icons8.com/fluency/48/1AFF13/source-code.png" width="36"/>
-  Featured Projects
-</h2>
+<!-- FEATURED REPOSITORIES & CONNECT HUB -->
+### 🚀 FEATURED REPOSITORIES & CONNECT
 
 <p align="center">
-
-  <a href="https://github.com/ankushshinde755/ankushshinde755" target="_blank">
-    <img src="https://media.giphy.com/media/PiQejEf31116URju4V/giphy.gif" alt="coding" width="150"/>
+  <a href="https://github.com/ankushshinde755/ankushshinde755">
+    <img src="https://img.shields.io/badge/REPO-ankushshinde755-0f172a?style=for-the-badge&logo=github&logoColor=38bdf8&labelColor=0b1120" height="42"/>
   </a>
-  &nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/ankushshinde755/The-Gym" target="_blank">
-    <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="fitness" width="150"/>
+  &nbsp;&nbsp;
+  <a href="https://github.com/ankushshinde755/The-Gym">
+    <img src="https://img.shields.io/badge/REPO-The--Gym-0f172a?style=for-the-badge&logo=github&logoColor=c084fc&labelColor=0b1120" height="42"/>
   </a>
 </p>
 
----
-
-<h2 align="center">
-  <img src="https://img.icons8.com/color-glass/48/0077B5/handshake.png" width="36"/>
-  Let's Connect
-</h2>
 <p align="center">
   <a href="https://www.linkedin.com/in/ankush-shinde-58a67a14b/" target="_blank">
-    <img src="https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
   </a>
+  &nbsp;
   <a href="https://ankushshinde755.github.io/" target="_blank">
-    <img src="https://img.shields.io/badge/-Portfolio-black?style=for-the-badge&logo=About.me&logoColor=white" alt="Portfolio"/>
+    <img src="https://img.shields.io/badge/Portfolio_Console-0f172a?style=for-the-badge&logo=firefox&logoColor=38bdf8&labelColor=0b1120" />
   </a>
 </p>
 
 ---
 
-<!---
-ankushshinde755/ankushshinde755 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
--->
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0b1120,50:7c3aed,100:0284c7&height=80&section=footer" width="100%"/>
+</p>
