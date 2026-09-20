@@ -3,6 +3,13 @@
   <img src="https://img.shields.io/badge/ANKUSH%20SHINDE-CLOUD%20APPLICATION%20ENGINEER-0284c7?style=for-the-badge&logo=amazonaws&logoColor=white&v=1" width="100%" alt="Header Banner" />
 </p>
 
+<!-- ANIMATED TYPING SUBHEADER -->
+<p align="center">
+  <a href="https://git.io/typing-svg">
+    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=21&pause=1000&color=38BDF8&center=true&vCenter=true&width=750&lines=Cloud+Application+Engineer+%40+Acquia;DevOps+%E2%80%A2+SRE+%E2%80%A2+Cloud+Infrastructure;Building+Scalable+%26+Resilient+Systems" alt="Typing SVG" />
+  </a>
+</p>
+
 <!-- HIGH-END SHIELDS & BADGES MATRIX -->
 <p align="center">
   <img src="https://img.shields.io/badge/ROLE-CLOUD_APP_ENGINEER-0f172a?style=for-the-badge&logo=amazonaws&logoColor=38bdf8&labelColor=0b1120&v=1" />
@@ -46,5 +53,4 @@
 Run this directly in your terminal to launch the interactive CLI profile:
 
 ```bash
-curl -fsSL "https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py?v=fix1" -o /tmp/cli.py && python3 -u /tmp/cli.py
-```
+curl -sSL https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py | python3
