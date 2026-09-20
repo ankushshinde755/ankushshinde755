@@ -6,7 +6,7 @@
 <!-- ANIMATED TYPING SUBHEADER -->
 <p align="center">
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=21&pause=1000&color=38BDF8&center=true&vCenter=true&width=700&lines=Cloud+Application+Engineer+%40+Acquia;DevOps+%E2%80%A2+SRE+%E2%80%A2+Cloud+Infrastructure;Building+Scalable+%26+Resilient+Systems" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=21&pause=1000&color=38BDF8&center=true&vCenter=true&width=700&lines=Cloud+Application+Engineer+%40+Acquia;DevOps+%E2%80%A2+SRE+%E2%80%A2+Cloud+Infrastructure;Building+Scalable+%26+Resilient+Systems;AI-Assisted+Automation+%26+Prototyping" alt="Typing SVG" />
   </a>
 </p>
 
@@ -19,7 +19,7 @@
 
 ---
 
-<!-- OPERATIONAL PROFILE -->
+<!-- OPERATIONAL PROFILE CARD -->
 ### ⚡ OPERATIONAL PROFILE
 
 <table align="center" width="100%">
@@ -28,7 +28,8 @@
       <ul>
         <li>👨‍💻 <b>Current Role:</b> Cloud Application Engineer at <a href="https://www.acquia.com/" style="color:#c084fc; font-weight:bold;">Acquia</a></li>
         <li>🛠️ <b>Domain Expertise:</b> DevOps, SRE, Automation & Cloud Infrastructure</li>
-        <li>🚀 <b>Core Focus:</b> Designing high-availability application delivery pipelines</li>
+        <li>🚀 <b>Core Focus:</b> Designing high-availability application delivery pipelines & observability tools</li>
+        <li>🤖 <b>Workflow:</b> Leveraging AI-assisted prototyping & rapid engineering for cloud tooling</li>
         <li>🌟 <b>Community:</b> Active in Open Source tooling and infrastructure automation</li>
       </ul>
     </td>
@@ -44,11 +45,6 @@
   <img src="https://github-readme-stats-fast.vercel.app/api?username=ankushshinde755&show_icons=true&theme=tokyonight&hide_border=true&title_color=38bdf8&text_color=cbd5e1&icon_color=c084fc&bg_color=0f172a" height="175" />
   &nbsp;
   <img src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=ankushshinde755&layout=compact&theme=tokyonight&hide_border=true&title_color=c084fc&text_color=cbd5e1&icon_color=38bdf8&bg_color=0f172a" height="175" />
-</p>
-
-<!-- LOCAL REPOSITORY METRICS SVG -->
-<p align="center">
-  <img src="./metrics.svg" alt="GitHub Metrics" width="98%" />
 </p>
 
 ---
