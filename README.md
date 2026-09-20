@@ -1,42 +1,50 @@
-<!-- RELIABLE DYNAMIC HERO BANNER -->
+<!-- HIGH-TECH GLASS BANNER -->
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0b1120,40:0284c7,75:7c3aed,100:0284c7&height=200&section=header&text=ANKUSH%20SHINDE&fontSize=42&fontColor=ffffff&fontAlignY=38&animation=twinkling&stroke=38bdf8&strokeWidth=1" width="100%" alt="Header Banner"/>
+  <img src="https://img.shields.io/badge/ANKUSH%20SHINDE-CLOUD%20APPLICATION%20ENGINEER-0284c7?style=for-the-badge&logo=amazonaws&logoColor=white&v=1" width="100%" alt="Header Banner" />
 </p>
 
 <!-- ANIMATED TYPING SUBHEADER -->
 <p align="center">
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=20&pause=1000&color=38BDF8&center=true&vCenter=true&width=700&lines=Cloud+Application+Engineer+%40+Acquia;DevOps+%E2%80%A2+SRE+%E2%80%A2+Cloud+Infrastructure;Building+Scalable+%26+Resilient+Systems" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=21&pause=1000&color=38BDF8&center=true&vCenter=true&width=750&lines=Cloud+Application+Engineer+%40+Acquia;DevOps+%E2%80%A2+SRE+%E2%80%A2+Cloud+Infrastructure;Welcome+to+my+Interactive+Index" alt="Typing SVG" />
   </a>
 </p>
 
-<!-- ROLE BADGES -->
-<p align="center">
-  <img src="https://img.shields.io/badge/ROLE-CLOUD_APP_ENGINEER-0f172a?style=for-the-badge&logo=amazonaws&logoColor=38bdf8&labelColor=0b1120" />
-  <img src="https://img.shields.io/badge/COMPANY-ACQUIA-0f172a?style=for-the-badge&logo=drupal&logoColor=c084fc&labelColor=0b1120" />
-  <img src="https://img.shields.io/badge/LOCATION-PUNE_INDIA-0f172a?style=for-the-badge&logo=googlemaps&logoColor=38bdf8&labelColor=0b1120" />
-</p>
-
----
-
-<!-- INTERACTIVE CONSOLE LINK -->
+<!-- ANIMATED ARROW & HIGH-VISIBILITY LAUNCHER -->
 <p align="center">
   <a href="https://ankushshinde755.github.io/ankushshinde755/" target="_blank">
-    <img src="https://img.shields.io/badge/🚀_LAUNCH_INTERACTIVE_WEB_CONSOLE-0f172a?style=for-the-badge&logo=firefox&logoColor=38bdf8&labelColor=0b1120" height="45" />
+    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=800&size=20&pause=500&color=39FF14&center=true&vCenter=true&width=500&lines=%E2%9A%A1+CLICK+BELOW+TO+EXPLORE+LIVE+CONSOLE+%E2%96%BD;%E2%96%BC+%E2%96%BC+%E2%96%BC+LAUNCH+FULL+INDEX+PAGE+%E2%96%BC+%E2%96%BC+%E2%96%BC" alt="Directional Indicator" />
   </a>
 </p>
 
+<p align="center">
+  <a href="https://ankushshinde755.github.io/ankushshinde755/" target="_blank">
+    <img src="https://img.shields.io/badge/%F0%9F%9A%80_OPEN_FULL_INTERACTIVE_INDEX_%E2%9E%9A-0284c7?style=for-the-badge&logo=googlechrome&logoColor=white&v=1" height="58" alt="Launch Live Index" />
+  </a>
+</p>
+
+<!-- HIGHLIGHTED GLASS CALLOUT BOX -->
 <div align="center">
-  👉 <i><a href="https://ankushshinde755.github.io/ankushshinde755/">https://ankushshinde755.github.io/ankushshinde755/</a></i><br/>
-  <sub>Visit the full web dashboard for real-time telemetry, architecture details, and project demos.</sub>
+  <table align="center" width="100%">
+    <tr>
+      <td align="center" style="background: #0f172a; border: 2px solid #38bdf8; border-radius: 12px; padding: 16px;">
+        <span style="font-size: 16px; color: #38bdf8; font-weight: bold;">
+          👉 <a href="https://ankushshinde755.github.io/ankushshinde755/" style="color: #38bdf8; text-decoration: underline;">https://ankushshinde755.github.io/ankushshinde755/</a> 👈
+        </span>
+        <br/>
+        <span style="font-size: 12px; color: #94a3b8;">
+          <em>Visit the full web dashboard for real-time telemetry, architecture details, and project demos.</em>
+        </span>
+      </td>
+    </tr>
+  </table>
 </div>
 
 ---
 
-<!-- QUICK TERMINAL ACCESS -->
 ### 💻 QUICK TERMINAL ACCESS
 
 Run this directly in your terminal to launch the interactive CLI profile:
 
 ```bash
-curl -sSL [https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py](https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py) | python3
+curl -sSL https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py | python3
