@@ -14,6 +14,7 @@
       --accent-purple: #c084fc;
       --accent-green: #39FF14;
       --accent-amber: #fbbf24;
+      --accent-linkedin: #0077b5;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -311,6 +312,12 @@
 
     .chip-amber { border-color: rgba(251, 191, 36, 0.4); color: var(--accent-amber); }
 
+    .chip-linkedin {
+      border-color: rgba(0, 119, 181, 0.5);
+      color: #38bdf8;
+      background: rgba(0, 119, 181, 0.15);
+    }
+
     /* Timeline Styling */
     .exp-item {
       position: relative;
@@ -360,6 +367,17 @@
       background: rgba(56, 189, 248, 0.3);
       box-shadow: 0 0 14px rgba(56, 189, 248, 0.4);
       transform: translateY(-2px);
+    }
+
+    a.linkedin-btn {
+      background: rgba(0, 119, 181, 0.25);
+      border-color: rgba(0, 119, 181, 0.6);
+      color: #ffffff;
+    }
+
+    a.linkedin-btn:hover {
+      background: rgba(0, 119, 181, 0.45);
+      box-shadow: 0 0 16px rgba(0, 119, 181, 0.6);
     }
 
     /* Security Notice Callout Box */
@@ -434,8 +452,18 @@
         <span>UTC: <strong style="color: var(--accent-green);" id="clock-utc">00:00:00</strong></span>
       </div>
     </div>
-    <h1>ANKUSH <span id="brand-span">SHINDE</span></h1>
-    <p class="subtitle">Cloud Application Engineer @ Acquia • DevOps, Big Data & AI Prototyping</p>
+    
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+      <div>
+        <h1>ANKUSH <span id="brand-span">SHINDE</span></h1>
+        <p class="subtitle">Cloud Application Engineer @ Acquia • DevOps, Big Data & AI Prototyping</p>
+      </div>
+      <!-- Direct LinkedIn Quick Connect Header Launcher -->
+      <a href="https://www.linkedin.com/in/ankush-shinde-58a67a14b/" target="_blank" class="glass-btn linkedin-btn" onclick="playSynthSound('success')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+        Connect on LinkedIn
+      </a>
+    </div>
 
     <!-- LIVE TELEMETRY PING PILLS -->
     <div class="ping-telemetry-bar">
@@ -463,15 +491,44 @@
       <div class="terminal-title">bash — ankush@cloud-console:~</div>
     </div>
     <div class="terminal-body" id="term-body">
-      <div class="term-out">Welcome to Ankush Shinde's Peak Console v4.0. Type <span class="highlight">'help'</span> or press <span class="highlight">Tab</span>.</div>
+      <div class="term-out">Welcome to Ankush Shinde's Peak Console v4.1. Type <span class="highlight">'help'</span> or press <span class="highlight">Tab</span>.</div>
       <div class="term-out"><span class="prompt">ankush@cloud-console:~$</span> <span class="cmd">whoami</span></div>
       <div class="term-out">Cloud Application Engineer at Acquia specializing in cloud platform stability, big data observability, and infrastructure automation.</div>
     </div>
     <div style="padding: 0 20px 16px;">
       <div class="terminal-input-line">
         <span class="prompt">ankush@cloud-console:~$</span>
-        <input type="text" class="term-input" id="term-input" placeholder="Type 'help', 'skills', 'projects', 'company-projects', or 'clear'..." autofocus />
+        <input type="text" class="term-input" id="term-input" placeholder="Type 'help', 'linkedin', 'skills', 'projects', or 'clear'..." autofocus />
       </div>
+    </div>
+  </div>
+
+  <!-- Dedicated LinkedIn Integration Panel -->
+  <div class="glass-panel" onclick="playSynthSound('click')">
+    <div class="section-title">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-blue)"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+      LinkedIn Profile Sync & Endorsements
+    </div>
+
+    <div style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px;">
+      Cloud Application Engineer with 4+ years of experience across Cloud Operations, Customer Support, Networking, Ethical Hacking, and AI Workflows. Direct frontline interface for enterprise client operations at Acquia.
+    </div>
+
+    <div style="margin-bottom: 12px;">
+      <span class="chip chip-linkedin">AWS & GCP Infrastructure</span>
+      <span class="chip chip-linkedin">Snowflake & Apache Spark</span>
+      <span class="chip chip-linkedin">DevOps & IaC Automation</span>
+      <span class="chip chip-linkedin">Linux & Networking</span>
+      <span class="chip chip-linkedin">AI-Assisted Prototyping</span>
+    </div>
+
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+      <a href="https://www.linkedin.com/in/ankush-shinde-58a67a14b/" target="_blank" class="glass-btn linkedin-btn" onclick="playSynthSound('success')">
+        🌐 Open LinkedIn Profile
+      </a>
+      <button class="glass-btn" style="background: rgba(192, 132, 252, 0.15); border-color: rgba(192, 132, 252, 0.4);" onclick="copyLinkedInUrl()">
+        📋 Copy Profile Link
+      </button>
     </div>
   </div>
 
@@ -631,6 +688,13 @@
 </div>
 
 <script>
+  /* ================= LINKEDIN QUICK COPY ================= */
+  function copyLinkedInUrl() {
+    playSynthSound('success');
+    navigator.clipboard.writeText('https://www.linkedin.com/in/ankush-shinde-58a67a14b/');
+    alert('✅ LinkedIn profile URL copied to clipboard!');
+  }
+
   /* ================= REAL-TIME PING TELEMETRY ENGINE ================= */
   async function measurePing(url) {
     const start = performance.now();
@@ -818,7 +882,8 @@
   const termBody = document.getElementById('term-body');
 
   const commands = {
-    'help': 'Available commands: <span class="highlight">skills</span>, <span class="highlight">projects</span>, <span class="highlight">company-projects</span>, <span class="highlight">exp</span>, <span class="highlight">ping</span>, <span class="highlight">contact</span>, <span class="highlight">theme</span>, <span class="highlight">matrix</span>, <span class="highlight">clear</span>',
+    'help': 'Available commands: <span class="highlight">linkedin</span>, <span class="highlight">skills</span>, <span class="highlight">projects</span>, <span class="highlight">company-projects</span>, <span class="highlight">exp</span>, <span class="highlight">ping</span>, <span class="highlight">contact</span>, <span class="highlight">theme</span>, <span class="highlight">matrix</span>, <span class="highlight">clear</span>',
+    'linkedin': 'Opening LinkedIn Profile: <a href="https://www.linkedin.com/in/ankush-shinde-58a67a14b/" target="_blank" style="color:#38bdf8;">linkedin.com/in/ankush-shinde-58a67a14b/</a>',
     'skills': 'Cloud: AWS, GCP, Terraform, Linux | Big Data: Snowflake, Spark, Hive, Cloudera | Tools: Python, Splunk, Sumo Logic, AI Prototyping',
     'projects': '1. ankushshinde755 (Profile README) | 2. The-Gym | 3. AgilOne Campaign CLI | 4. SRE Automation Utilities',
     'company-projects': '1. Multi-Tenant Cloud Data Platform (Snowflake/Kubernetes) | 2. Distributed Spark/Hive Cluster Telemetry',
@@ -854,6 +919,10 @@
         playSynthSound('click');
         termBody.innerHTML = '';
         return;
+      } else if (inputVal === 'linkedin') {
+        playSynthSound('success');
+        window.open('https://www.linkedin.com/in/ankush-shinde-58a67a14b/', '_blank');
+        responseLine.innerHTML = commands['linkedin'];
       } else if (inputVal === 'theme') {
         cycleTheme();
         responseLine.innerHTML = '🎨 Liquid theme cycled!';
