@@ -43,7 +43,7 @@
 
 ### 💻 QUICK TERMINAL COMMAND
 
-Run this directly in your terminal to view my interactive CLI profile:
+Run this directly in your terminal to launch the interactive CLI:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py | python3
+python3 -c "$(curl -fsSL [https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py](https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py))"
