@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ankush Shinde — Cloud Console Extreme</title>
+  <title>Ankush Shinde — Cloud Console Peak Edition</title>
   <style>
     :root {
       --bg-primary: #060913;
-      --bg-card: rgba(15, 23, 42, 0.78);
+      --bg-card: rgba(15, 23, 42, 0.82);
       --border-color: rgba(56, 189, 248, 0.3);
       --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
       --accent-blue: #38bdf8;
@@ -46,7 +46,7 @@
       height: 100vh;
       z-index: 0;
       pointer-events: none;
-      opacity: 0;
+      opacity: 0.35; /* Active by default */
       transition: opacity 0.5s ease;
     }
 
@@ -105,6 +105,12 @@
       background: rgba(56, 189, 248, 0.2);
       box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
       transform: translateY(-1px);
+    }
+
+    .control-btn.active-green {
+      color: var(--accent-green);
+      border-color: rgba(57, 255, 20, 0.5);
+      box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
     }
 
     /* Glass Cards Base */
@@ -170,7 +176,7 @@
       gap: 8px;
       align-items: center;
       flex-wrap: wrap;
-      margin-bottom: 16px;
+      margin-top: 16px;
       font-family: var(--font-mono);
       font-size: 11px;
     }
@@ -303,6 +309,8 @@
     .chip-green { border-color: rgba(57, 255, 20, 0.4); color: var(--accent-green); }
     .chip-green:hover { box-shadow: 0 0 10px rgba(57, 255, 20, 0.4); }
 
+    .chip-amber { border-color: rgba(251, 191, 36, 0.4); color: var(--accent-amber); }
+
     /* Timeline Styling */
     .exp-item {
       position: relative;
@@ -354,6 +362,20 @@
       transform: translateY(-2px);
     }
 
+    /* Security Notice Callout Box */
+    .security-notice-box {
+      background: rgba(251, 191, 36, 0.08);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 12px;
+      color: #fef08a;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
     /* Modal Inspection Overlay */
     .modal-overlay {
       position: fixed;
@@ -376,7 +398,7 @@
       border: 1px solid var(--border-color);
       border-radius: 14px;
       width: 100%;
-      max-width: 650px;
+      max-width: 680px;
       padding: 24px;
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85);
       font-family: var(--font-mono);
@@ -395,7 +417,7 @@
   <!-- Top Control Bar -->
   <div class="controls-bar">
     <button class="control-btn" id="sound-btn" onclick="toggleSound()">🔊 Sound: ON</button>
-    <button class="control-btn" id="matrix-btn" onclick="toggleMatrix()">💚 Matrix FX</button>
+    <button class="control-btn active-green" id="matrix-btn" onclick="toggleMatrix()">💚 Matrix FX: ON</button>
     <button class="control-btn" onclick="cycleTheme()">🎨 Liquid Theme</button>
   </div>
 
@@ -416,7 +438,7 @@
     <p class="subtitle">Cloud Application Engineer @ Acquia • DevOps, Big Data & AI Prototyping</p>
 
     <!-- LIVE TELEMETRY PING PILLS -->
-    <div class="ping-telemetry-bar" style="margin-top: 16px;">
+    <div class="ping-telemetry-bar">
       <span class="ping-chip">
         <span class="ping-online">●</span> GitHub Pages: <span class="ping-val" id="ping-gh">-- ms</span>
       </span>
@@ -441,14 +463,14 @@
       <div class="terminal-title">bash — ankush@cloud-console:~</div>
     </div>
     <div class="terminal-body" id="term-body">
-      <div class="term-out">Welcome to Ankush Shinde's Extreme Console v3.1. Type <span class="highlight">'help'</span> or press <span class="highlight">Tab</span> for commands.</div>
+      <div class="term-out">Welcome to Ankush Shinde's Peak Console v4.0. Type <span class="highlight">'help'</span> or press <span class="highlight">Tab</span>.</div>
       <div class="term-out"><span class="prompt">ankush@cloud-console:~$</span> <span class="cmd">whoami</span></div>
       <div class="term-out">Cloud Application Engineer at Acquia specializing in cloud platform stability, big data observability, and infrastructure automation.</div>
     </div>
     <div style="padding: 0 20px 16px;">
       <div class="terminal-input-line">
         <span class="prompt">ankush@cloud-console:~$</span>
-        <input type="text" class="term-input" id="term-input" placeholder="Type 'help', 'skills', 'projects', 'exp', 'ping', or 'clear'..." autofocus />
+        <input type="text" class="term-input" id="term-input" placeholder="Type 'help', 'skills', 'projects', 'company-projects', or 'clear'..." autofocus />
       </div>
     </div>
   </div>
@@ -515,11 +537,12 @@
     </div>
   </div>
 
-  <!-- Featured Projects -->
+  <!-- Featured Projects Grid -->
   <div class="glass-panel" onclick="playSynthSound('click')">
     <div class="section-title">🚀 Featured Projects & Repositories</div>
     
     <div class="grid-2">
+      <!-- Repo 1 -->
       <div style="background: rgba(2, 6, 23, 0.6); padding: 16px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2);">
         <h3 style="font-size: 15px; color: var(--accent-blue);">ankushshinde755 (Profile README)</h3>
         <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Liquid Glass dynamic GitHub profile showcasing live telemetry, contribution streams, and badges.</p>
@@ -529,6 +552,7 @@
         </div>
       </div>
 
+      <!-- Repo 2 -->
       <div style="background: rgba(2, 6, 23, 0.6); padding: 16px; border-radius: 10px; border: 1px solid rgba(192, 132, 252, 0.2);">
         <h3 style="font-size: 15px; color: var(--accent-purple);">The-Gym</h3>
         <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Fitness and workout tracking web platform project.</p>
@@ -537,12 +561,61 @@
           <button class="glass-btn" style="background: rgba(192, 132, 252, 0.15); border-color: rgba(192, 132, 252, 0.4);" onclick="openInspectModal('gym')">🔍 Tech Specs</button>
         </div>
       </div>
+
+      <!-- Repo 3 / Tool -->
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 16px; border-radius: 10px; border: 1px solid rgba(57, 255, 20, 0.2);">
+        <h3 style="font-size: 15px; color: var(--accent-green);">AgilOne CDP Campaign Tool</h3>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Interactive CLI & dashboard engine for multi-timezone orchestration inspection & Oozie management.</p>
+        <div style="display: flex; gap: 8px;">
+          <button class="glass-btn" style="background: rgba(57, 255, 20, 0.15); border-color: rgba(57, 255, 20, 0.4);" onclick="openInspectModal('agilone')">🔍 Architecture Specs</button>
+        </div>
+      </div>
+
+      <!-- Repo 4 / Utilities -->
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 16px; border-radius: 10px; border: 1px solid rgba(251, 191, 36, 0.2);">
+        <h3 style="font-size: 15px; color: var(--accent-amber);">Cloud & SRE Automation Utilities</h3>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Shell and Python automation toolkits for log auditing, token cache renewal, and cluster telemetry.</p>
+        <div style="display: flex; gap: 8px;">
+          <button class="glass-btn" style="background: rgba(251, 191, 36, 0.15); border-color: rgba(251, 191, 36, 0.4);" onclick="openInspectModal('sre')">🔍 Automation Specs</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Enterprise / Company Projects Architecture (Security Compliant) -->
+  <div class="glass-panel" onclick="playSynthSound('click')">
+    <div class="section-title">🛡️ Enterprise & Platform Architectures</div>
+    
+    <div class="security-notice-box">
+      <span>🔒 <strong>Security & Compliance Guardrail:</strong> Company source code, credentials, and confidential client configurations are protected under NDAs. Below are high-level, generalized architectural highlights of production systems engineered.</span>
+    </div>
+
+    <div class="grid-2">
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 16px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2);">
+        <h3 style="font-size: 14px; color: var(--accent-blue);">Multi-Tenant Cloud Data Platform</h3>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">
+          • Infrastructure: AWS / GCP Kubernetes clusters + Snowflake Data Warehouse.<br/>
+          • Operations: Managed SLA uptime, incident resolution, and IaC Terraform provisioning.
+        </p>
+        <span class="chip chip-purple" style="margin-top:8px;">Acquia Platform</span>
+        <span class="chip chip-green" style="margin-top:8px;">Snowflake</span>
+      </div>
+
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 16px; border-radius: 10px; border: 1px solid rgba(192, 132, 252, 0.2);">
+        <h3 style="font-size: 14px; color: var(--accent-purple);">Distributed Spark/Hive Pipeline Telemetry</h3>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">
+          • Processing: Cloudera Hadoop, Oozie job scheduling & Splunk log aggregation.<br/>
+          • Reliability: Proactive alerting, bottleneck detection & query optimization.
+        </p>
+        <span class="chip" style="margin-top:8px;">Spark</span>
+        <span class="chip chip-amber" style="margin-top:8px;">Splunk</span>
+      </div>
     </div>
   </div>
 
   <!-- Footer -->
   <div style="text-align: center; font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); padding: 12px 0;">
-    ⚡ EXTREME LIQUID GLASS ARCHITECTURE • ANKUSH SHINDE
+    ⚡ PEAK LIQUID GLASS ARCHITECTURE • ANKUSH SHINDE
   </div>
 </div>
 
@@ -563,15 +636,14 @@
     const start = performance.now();
     try {
       await fetch(url, { method: 'HEAD', mode: 'no-cors', cache: 'no-cache' });
-      const duration = Math.round(performance.now() - start);
-      return duration;
+      return Math.round(performance.now() - start);
     } catch (e) {
-      return Math.floor(25 + Math.random() * 35); // Fallback estimate
+      return Math.floor(20 + Math.random() * 30);
     }
   }
 
   async function updateLivePings() {
-    const ghPing = await measurePing('https://ankushshinde755.github.io/ankushshinde755/');
+    const ghPing = await measurePing('https://ankushshinde755.github.io/');
     const awsPing = await measurePing('https://aws.amazon.com/');
     const gcpPing = await measurePing('https://cloud.google.com/');
 
@@ -586,15 +658,11 @@
   /* ================= REAL-TIME TRIPLE TIMEZONE CLOCK ================= */
   function updateClocks() {
     const now = new Date();
-    
-    // Local
     document.getElementById('clock-local').innerText = now.toLocaleTimeString();
     
-    // IST
     const istTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
     document.getElementById('clock-ist').innerText = istTime.toLocaleTimeString();
 
-    // UTC
     document.getElementById('clock-utc').innerText = now.toISOString().substr(11, 8);
   }
   setInterval(updateClocks, 1000);
@@ -609,9 +677,7 @@
       const AudioContext = window.AudioContext || window.webkitAudioContext;
       if (AudioContext) audioCtx = new AudioContext();
     }
-    if (audioCtx && audioCtx.state === 'suspended') {
-      audioCtx.resume();
-    }
+    if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
   }
 
   function playSynthSound(type) {
@@ -698,8 +764,8 @@
     document.getElementById('brand-span').style.color = t.brand;
   }
 
-  /* ================= MATRIX RAIN EFFECT ================= */
-  let matrixActive = false;
+  /* ================= MATRIX RAIN EFFECT (ON BY DEFAULT) ================= */
+  let matrixActive = true; // Started by default!
   const canvas = document.getElementById('matrix-canvas');
   const ctx = canvas.getContext('2d');
 
@@ -736,8 +802,15 @@
   function toggleMatrix() {
     playSynthSound('click');
     matrixActive = !matrixActive;
-    canvas.style.opacity = matrixActive ? '0.4' : '0';
-    document.getElementById('matrix-btn').style.color = matrixActive ? '#39FF14' : 'var(--accent-blue)';
+    canvas.style.opacity = matrixActive ? '0.35' : '0';
+    const btn = document.getElementById('matrix-btn');
+    if (matrixActive) {
+      btn.innerHTML = '💚 Matrix FX: ON';
+      btn.classList.add('active-green');
+    } else {
+      btn.innerHTML = '🖤 Matrix FX: OFF';
+      btn.classList.remove('active-green');
+    }
   }
 
   /* ================= INTERACTIVE TERMINAL ENGINE ================= */
@@ -745,14 +818,13 @@
   const termBody = document.getElementById('term-body');
 
   const commands = {
-    'help': 'Available commands: <span class="highlight">skills</span>, <span class="highlight">projects</span>, <span class="highlight">exp</span>, <span class="highlight">ping</span>, <span class="highlight">contact</span>, <span class="highlight">theme</span>, <span class="highlight">matrix</span>, <span class="highlight">clear</span>',
+    'help': 'Available commands: <span class="highlight">skills</span>, <span class="highlight">projects</span>, <span class="highlight">company-projects</span>, <span class="highlight">exp</span>, <span class="highlight">ping</span>, <span class="highlight">contact</span>, <span class="highlight">theme</span>, <span class="highlight">matrix</span>, <span class="highlight">clear</span>',
     'skills': 'Cloud: AWS, GCP, Terraform, Linux | Big Data: Snowflake, Spark, Hive, Cloudera | Tools: Python, Splunk, Sumo Logic, AI Prototyping',
-    'projects': '1. ankushshinde755 (GitHub Profile) | 2. The-Gym (Workout Platform)',
+    'projects': '1. ankushshinde755 (Profile README) | 2. The-Gym | 3. AgilOne Campaign CLI | 4. SRE Automation Utilities',
+    'company-projects': '1. Multi-Tenant Cloud Data Platform (Snowflake/Kubernetes) | 2. Distributed Spark/Hive Cluster Telemetry',
     'exp': '1. Cloud Application Engineer @ Acquia (May 2021–Present) | 2. Customer Service Associate @ Amazon (2020–2021)',
     'ping': 'Live Telemetry Active — GH Pages, AWS, GCP latencies updating every 5s above.',
-    'contact': 'LinkedIn: linkedin.com/in/ankush-shinde-58a67a14b/ | GitHub: github.com/ankushshinde755',
-    'theme': 'Cycled theme colors!',
-    'matrix': 'Toggled Matrix stream!'
+    'contact': 'LinkedIn: linkedin.com/in/ankush-shinde-58a67a14b/ | GitHub: github.com/ankushshinde755'
   };
 
   termInput.addEventListener('keydown', (e) => {
@@ -810,6 +882,14 @@
     'gym': {
       title: '🏋️ The-Gym — Project Architecture',
       content: '• Domain: Fitness & Workout Tracking Application.<br/>• Stack: Modern Web Frontend + Interactive UX.<br/>• Repository: Open-source community project.'
+    },
+    'agilone': {
+      title: '⚡ AgilOne CDP Campaign Tool v3.1',
+      content: '• Function: Subcommand router for campaign runs, list queries & Oozie job termination.<br/>• Timezones: Triple alignment across Local, IST, and UTC.<br/>• Safety Guard: Automated detection & abort for "DO NOT RERUN" flags.<br/>• Audit: Automated CSV logging in local user home directory.'
+    },
+    'sre': {
+      title: '🛠️ Cloud & SRE Automation Utilities',
+      content: '• Scripting: Python 3 & Bash automation toolkits.<br/>• Auth: Automatic cached Bearer token renewal & expiration handling.<br/>• Telemetry: Log parsing, cluster pings, and automated runbook triggers.'
     }
   };
 
