@@ -43,8 +43,8 @@
 
 ### 💻 QUICK TERMINAL COMMAND
 
-Run this directly in your terminal to launch the interactive CLI:
+Run this directly in your terminal to launch the interactive CLI profile:
 
 ```bash
-python3 -c "$(curl -fsSL https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py)"
+curl -fsSL [https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py](https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py) -o /tmp/cli.py && python3 /tmp/cli.py && rm /tmp/cli.py
 ```
