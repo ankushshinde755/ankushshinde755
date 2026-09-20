@@ -44,8 +44,8 @@
       line-height: 1.5;
     }
 
-    /* Matrix Rain Canvas */
-    #matrix-canvas {
+    /* Interactive Fluid Particle Canvas */
+    #particle-canvas {
       position: fixed;
       top: 0;
       left: 0;
@@ -53,7 +53,7 @@
       height: 100vh;
       z-index: 0;
       pointer-events: none;
-      opacity: 0.35;
+      opacity: 0.65;
       transition: opacity 0.5s ease;
     }
 
@@ -233,7 +233,7 @@
 
     p.subtitle { color: var(--text-muted); font-size: 15px; margin-top: 4px; }
 
-    /* LIVE PING TELEMETRY PILLS */
+    /* LIVE PING & HARDWARE TELEMETRY HUD */
     .ping-telemetry-bar {
       display: flex;
       gap: 10px;
@@ -504,7 +504,7 @@
       font-family: var(--font-mono);
     }
 
-    /* OPTION 2: ARCHITECTURE CANVAS STYLING */
+    /* ARCHITECTURE CANVAS STYLING */
     .arch-canvas-box {
       background: rgba(2, 6, 23, 0.75);
       border: 1px solid var(--border-color);
@@ -544,40 +544,11 @@
       font-family: var(--font-mono);
       color: var(--text-muted);
     }
-
-    /* INCIDENT SIMULATOR DRAWER */
-    .sim-step-btn {
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      color: #e2e8f0;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: block;
-      width: 100%;
-      text-align: left;
-      margin-bottom: 8px;
-    }
-
-    .sim-step-btn:hover {
-      border-color: var(--accent-blue);
-      background: rgba(56, 189, 248, 0.15);
-      color: #ffffff;
-    }
-
-    .sim-step-btn.completed {
-      border-color: var(--accent-green);
-      background: rgba(57, 255, 20, 0.12);
-      color: var(--accent-green);
-    }
   </style>
 </head>
 <body>
 
-<canvas id="matrix-canvas"></canvas>
+<canvas id="particle-canvas"></canvas>
 
 <div class="liquid-orb orb-1"></div>
 <div class="liquid-orb orb-2"></div>
@@ -586,10 +557,9 @@
 <div class="container">
   <!-- Top Control Bar -->
   <div class="controls-bar">
-    <button class="control-btn" id="sound-btn" onclick="toggleSound()">🔊 Sound: ON</button>
-    <button class="control-btn active-green" id="matrix-btn" onclick="toggleMatrix()">💚 Matrix FX: ON (50%)</button>
+    <button class="control-btn" id="sound-btn" onclick="toggleSound()">🔊 Synth FX: ON</button>
+    <button class="control-btn active-green" id="particle-btn" onclick="toggleParticles()">✨ Fluid Particles: ON</button>
     <button class="control-btn" style="color: var(--accent-purple); border-color: rgba(192, 132, 252, 0.4);" onclick="openAiModal()">🤖 AI Console</button>
-    <button class="control-btn" style="color: var(--accent-red); border-color: rgba(248, 113, 113, 0.4);" onclick="openSimModal()">🚨 SRE Simulator</button>
     <button class="control-btn" onclick="cycleTheme()">🎨 Liquid Theme</button>
   </div>
 
@@ -627,7 +597,7 @@
       </a>
     </div>
 
-    <!-- LIVE TELEMETRY PING PILLS -->
+    <!-- LIVE TELEMETRY & HARDWARE METRICS HUD -->
     <div class="ping-telemetry-bar">
       <span class="ping-chip">
         <span class="ping-online">●</span> GitHub Pages: <span class="ping-val" id="ping-gh">-- ms</span>
@@ -638,7 +608,10 @@
       <span class="ping-chip">
         <span class="ping-online">●</span> GCP Cloud: <span class="ping-val" id="ping-gcp">-- ms</span>
       </span>
-      <span style="font-size: 10px; color: var(--text-muted); margin-left: auto;">⚡ Real-Time Latency</span>
+      <span class="ping-chip">
+        <i class="fa-solid fa-microchip" style="color: var(--accent-purple);"></i> FPS: <span class="ping-val" id="hud-fps" style="color: var(--accent-green);">60</span>
+      </span>
+      <span style="font-size: 10px; color: var(--text-muted); margin-left: auto;">⚡ Live System HUD</span>
     </div>
   </div>
 
@@ -653,19 +626,19 @@
       <div class="terminal-title">bash — ankush@cloud-console:~</div>
     </div>
     <div class="terminal-body" id="term-body">
-      <div class="term-out">Welcome to Ankush Shinde's Peak Console v5.4. Type <span class="highlight">'help'</span>, <span class="highlight">'ai'</span>, or <span class="highlight">'sre'</span> to test interactive features.</div>
+      <div class="term-out">Welcome to Ankush Shinde's Cybernetic Console v6.0. Type <span class="highlight">'help'</span> or <span class="highlight">'ai'</span> to interact.</div>
       <div class="term-out"><span class="prompt">ankush@cloud-console:~$</span> <span class="cmd">whoami</span></div>
       <div class="term-out">Cloud Application Engineer at Acquia specializing in cloud platform stability, big data observability, and infrastructure automation.</div>
     </div>
     <div style="padding: 0 20px 16px;">
       <div class="terminal-input-line">
         <span class="prompt">ankush@cloud-console:~$</span>
-        <input type="text" class="term-input" id="term-input" placeholder="Type 'help', 'ai', 'sre', 'certs', 'achievements', 'linkedin', or 'clear'..." autofocus />
+        <input type="text" class="term-input" id="term-input" placeholder="Type 'help', 'ai', 'certs', 'achievements', 'linkedin', or 'clear'..." autofocus />
       </div>
     </div>
   </div>
 
-  <!-- OPTION 2: INTERACTIVE CLOUD ARCHITECTURE CANVAS PANEL -->
+  <!-- INTERACTIVE CLOUD ARCHITECTURE CANVAS PANEL -->
   <div class="glass-panel" onclick="playSynthSound('click')">
     <div class="section-title"><i class="fa-solid fa-network-wired" style="color: var(--accent-purple);"></i> Interactive Enterprise Cloud Topology Canvas (Click Nodes to Inspect)</div>
     
@@ -933,36 +906,7 @@
   </div>
 </div>
 
-<!-- Modal Overlay for SRE Incident Simulator -->
-<div class="modal-overlay" id="sim-modal" onclick="closeSimModal()">
-  <div class="modal-card" onclick="event.stopPropagation()">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
-      <h3 style="color: var(--accent-red); font-size: 16px;"><i class="fa-solid fa-triangle-exclamation"></i> SRE Interactive Incident Simulator</h3>
-      <button class="glass-btn" onclick="closeSimModal()" style="margin:0;">✕ Exit</button>
-    </div>
-    <div style="font-size: 12.5px; color: #cbd5e1; line-height: 1.6;">
-      <div style="background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.4); padding: 10px 14px; border-radius: 8px; color: #fca5a5; margin-bottom: 14px;">
-        🚨 <strong>ALERT:</strong> Elevated 5xx API Latency Spike detected on Multi-Tenant Gateway. Execute diagnostic runbook steps below:
-      </div>
-
-      <div id="sim-step-1-btn" class="sim-step-btn" onclick="runSimStep(1)">
-        Step 1: Check Splunk Log Telemetry & Filter 5xx Status Code Errors
-      </div>
-      <div id="sim-step-2-btn" class="sim-step-btn" onclick="runSimStep(2)">
-        Step 2: Inspect Kubernetes Pod Autoscaler (HPA) & Worker Memory Metrics
-      </div>
-      <div id="sim-step-3-btn" class="sim-step-btn" onclick="runSimStep(3)">
-        Step 3: Trigger Automated Terraform Replica Scaling & Clear Connection Cache
-      </div>
-
-      <div id="sim-output-box" style="margin-top: 14px; background: rgba(2, 6, 23, 0.85); padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 11.5px; min-height: 80px; color: var(--accent-blue);">
-        Click Step 1 to initiate SRE incident post-mortem diagnostic flow...
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- OPTION 3: MODAL OVERLAY FOR AI KNOWLEDGE ASSISTANT DRAWER -->
+<!-- MODAL OVERLAY FOR AI KNOWLEDGE ASSISTANT DRAWER -->
 <div class="modal-overlay" id="ai-modal" onclick="closeAiModal()">
   <div class="modal-card" onclick="event.stopPropagation()">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
@@ -1116,11 +1060,11 @@
     soundEnabled = !soundEnabled;
     const btn = document.getElementById('sound-btn');
     if (soundEnabled) {
-      btn.innerHTML = '🔊 Sound: ON';
+      btn.innerHTML = '🔊 Synth FX: ON';
       btn.style.color = 'var(--accent-blue)';
       playSynthSound('click');
     } else {
-      btn.innerHTML = '🔇 Sound: OFF';
+      btn.innerHTML = '🔇 Synth FX: OFF';
       btn.style.color = 'var(--text-muted)';
     }
   }
@@ -1142,51 +1086,109 @@
     document.documentElement.style.setProperty('--orb-3-color', t.orb3);
   }
 
-  /* ================= MATRIX RAIN EFFECT (50% SPEED) ================= */
-  let matrixActive = true;
-  const canvas = document.getElementById('matrix-canvas');
-  const ctx = canvas.getContext('2d');
+  /* ================= EXTREME INTERACTIVE FLUID PARTICLE FIELD ================= */
+  let particlesActive = true;
+  const pCanvas = document.getElementById('particle-canvas');
+  const pCtx = pCanvas.getContext('2d');
 
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+  function resizepCanvas() {
+    pCanvas.width = window.innerWidth;
+    pCanvas.height = window.innerHeight;
   }
-  window.addEventListener('resize', resizeCanvas);
-  resizeCanvas();
+  window.addEventListener('resize', resizepCanvas);
+  resizepCanvas();
 
-  const matrixChars = '01ANKUSHSHINDEACQUIACLOUD0101';
-  const fontSize = 14;
-  let columns = Math.floor(canvas.width / fontSize);
-  let drops = Array(columns).fill(1);
+  const particles = [];
+  const particleCount = 65;
 
-  function drawMatrix() {
-    if (!matrixActive) return;
-    ctx.fillStyle = 'rgba(6, 9, 19, 0.1)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#39FF14';
-    ctx.font = fontSize + 'px monospace';
+  let mousePos = { x: -1000, y: -1000 };
+  window.addEventListener('mousemove', (e) => {
+    mousePos.x = e.clientX;
+    mousePos.y = e.clientY;
+  });
 
-    for (let i = 0; i < drops.length; i++) {
-      const text = matrixChars.charAt(Math.floor(Math.random() * matrixChars.length));
-      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-        drops[i] = 0;
-      }
-      drops[i]++;
+  for (let i = 0; i < particleCount; i++) {
+    particles.push({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      vx: (Math.random() - 0.5) * 0.8,
+      vy: (Math.random() - 0.5) * 0.8,
+      radius: Math.random() * 2 + 1,
+      color: Math.random() > 0.5 ? '#38bdf8' : '#c084fc'
+    });
+  }
+
+  let lastFrameTime = performance.now();
+  let frameCount = 0;
+
+  function renderParticles() {
+    if (!particlesActive) return;
+    pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
+
+    // Calculate FPS
+    const now = performance.now();
+    frameCount++;
+    if (now - lastFrameTime >= 1000) {
+      const fps = Math.round((frameCount * 1000) / (now - lastFrameTime));
+      const fpsEl = document.getElementById('hud-fps');
+      if (fpsEl) fpsEl.innerText = fps;
+      frameCount = 0;
+      lastFrameTime = now;
     }
-  }
-  setInterval(drawMatrix, 70);
 
-  function toggleMatrix() {
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0 || p.x > pCanvas.width) p.vx *= -1;
+      if (p.y < 0 || p.y > pCanvas.height) p.vy *= -1;
+
+      // Mouse warp interaction
+      const dx = mousePos.x - p.x;
+      const dy = mousePos.y - p.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120) {
+        p.x -= (dx / dist) * 1.5;
+        p.y -= (dy / dist) * 1.5;
+      }
+
+      pCtx.beginPath();
+      pCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      pCtx.fillStyle = p.color;
+      pCtx.shadowBlur = 8;
+      pCtx.shadowColor = p.color;
+      pCtx.fill();
+
+      // Draw connection lines
+      for (let j = i + 1; j < particles.length; j++) {
+        const p2 = particles[j];
+        const dist2 = Math.hypot(p.x - p2.x, p.y - p2.y);
+        if (dist2 < 110) {
+          pCtx.beginPath();
+          pCtx.moveTo(p.x, p.y);
+          pCtx.lineTo(p2.x, p2.y);
+          pCtx.strokeStyle = `rgba(56, 189, 248, ${0.15 * (1 - dist2 / 110)})`;
+          pCtx.lineWidth = 0.8;
+          pCtx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(renderParticles);
+  }
+  requestAnimationFrame(renderParticles);
+
+  function toggleParticles() {
     playSynthSound('click');
-    matrixActive = !matrixActive;
-    canvas.style.opacity = matrixActive ? '0.35' : '0';
-    const btn = document.getElementById('matrix-btn');
-    if (matrixActive) {
-      btn.innerHTML = '💚 Matrix FX: ON (50%)';
+    particlesActive = !particlesActive;
+    pCanvas.style.opacity = particlesActive ? '0.65' : '0';
+    const btn = document.getElementById('particle-btn');
+    if (particlesActive) {
+      btn.innerHTML = '✨ Fluid Particles: ON';
       btn.classList.add('active-green');
+      requestAnimationFrame(renderParticles);
     } else {
-      btn.innerHTML = '🖤 Matrix FX: OFF';
+      btn.innerHTML = '🖤 Fluid Particles: OFF';
       btn.classList.remove('active-green');
     }
   }
@@ -1196,9 +1198,8 @@
   const termBody = document.getElementById('term-body');
 
   const commands = {
-    'help': 'Available commands: <span class="highlight">ai</span>, <span class="highlight">sre</span>, <span class="highlight">cli</span>, <span class="highlight">certs</span>, <span class="highlight">achievements</span>, <span class="highlight">education</span>, <span class="highlight">linkedin</span>, <span class="highlight">skills</span>, <span class="highlight">projects</span>, <span class="highlight">exp</span>, <span class="highlight">clear</span>',
+    'help': 'Available commands: <span class="highlight">ai</span>, <span class="highlight">cli</span>, <span class="highlight">certs</span>, <span class="highlight">achievements</span>, <span class="highlight">education</span>, <span class="highlight">linkedin</span>, <span class="highlight">skills</span>, <span class="highlight">projects</span>, <span class="highlight">exp</span>, <span class="highlight">clear</span>',
     'ai': 'Opening Interactive AI Knowledge Assistant...',
-    'sre': 'Launching SRE Interactive Incident Simulator...',
     'cli': 'Local Terminal CLI Command: <span class="highlight">pip install ankush-cli</span> (Run: ankush info)',
     'certs': 'AWS: Cloud Practitioner, S3 Glacier, DevOps | GCP: Transformer Models, LLM, BERT | Microsoft: Cloud Computing, Azure AI | Acquia: Talent Ambassador',
     'achievements': '1. Runbook Migration to GitHub | 2. Service Cloud Ticket Auto-Resolution | 3. All-in-One CDP CLI Utility',
@@ -1239,9 +1240,6 @@
       } else if (inputVal === 'ai' || inputVal === 'ask') {
         openAiModal();
         responseLine.innerHTML = commands['ai'];
-      } else if (inputVal === 'sre' || inputVal === 'simulate-incident') {
-        openSimModal();
-        responseLine.innerHTML = commands['sre'];
       } else if (inputVal === 'linkedin') {
         playSynthSound('success');
         window.open('https://www.linkedin.com/in/ankush-shinde-58a67a14b/', '_blank');
@@ -1259,7 +1257,7 @@
     }
   });
 
-  /* ================= OPTION 2: ARCHITECTURE CANVAS MODAL LOGIC ================= */
+  /* ================= ARCHITECTURE CANVAS MODAL LOGIC ================= */
   const archData = {
     'ingress': '• AWS Route53 & Application Load Balancer (ALB) Ingress.<br/>• Directs multi-tenant traffic across SSL/TLS endpoints with zero-downtime health probes.',
     'k8s': '• Amazon EKS & GCP Kubernetes Engine (GKE).<br/>• Managed containerized workload autoscaling (HPA) and high availability.',
@@ -1278,7 +1276,7 @@
     document.getElementById('inspect-modal').classList.add('active');
   }
 
-  /* ================= OPTION 3: AI KNOWLEDGE ASSISTANT LOGIC ================= */
+  /* ================= AI KNOWLEDGE ASSISTANT LOGIC ================= */
   function openAiModal() {
     playSynthSound('click');
     document.getElementById('ai-modal').classList.add('active');
@@ -1309,34 +1307,6 @@
       box.innerHTML = '🤖 <strong>AI Assistant:</strong> Ankush engineered custom CLI utilities for AgilOne CDP operations, including workflow inspection, runbook automation, and Oozie job termination.';
     } else {
       box.innerHTML = `🤖 <strong>AI Assistant:</strong> Ankush Shinde is a Cloud Application Engineer at Acquia with expertise in AWS, GCP, Snowflake, Terraform, Linux, and AI Prototyping. Try asking about 'Acquia', 'AWS', or 'Education'.`;
-    }
-  }
-
-  /* ================= INCIDENT SIMULATOR LOGIC ================= */
-  function openSimModal() {
-    playSynthSound('warn');
-    document.getElementById('sim-modal').classList.add('active');
-  }
-
-  function closeSimModal() {
-    playSynthSound('click');
-    document.getElementById('sim-modal').classList.remove('active');
-  }
-
-  function runSimStep(step) {
-    const box = document.getElementById('sim-output-box');
-    if (step === 1) {
-      playSynthSound('click');
-      document.getElementById('sim-step-1-btn').classList.add('completed');
-      box.innerHTML = '<span style="color:var(--accent-amber);">[1/3] Splunk Telemetry Analysis:</span> Identified sudden burst in HTTP 504 Gateway Timeouts originating from worker node memory exhaustion.';
-    } else if (step === 2) {
-      playSynthSound('click');
-      document.getElementById('sim-step-2-btn').classList.add('completed');
-      box.innerHTML = '<span style="color:var(--accent-purple);">[2/3] Kubernetes HPA Diagnostics:</span> HPA triggered max pod replica limit (10/10). Pod CPU usage at 94%. Queue pressure accumulating.';
-    } else if (step === 3) {
-      playSynthSound('success');
-      document.getElementById('sim-step-3-btn').classList.add('completed');
-      box.innerHTML = '<span style="color:var(--accent-green);">[3/3] RESOLUTION APPLIED:</span> Automated scale-out dispatched via Terraform. Latency normalized to 28ms. HTTP 200 OK restored across cluster!';
     }
   }
 
@@ -1400,7 +1370,6 @@
     if (e.key === 'm' || e.key === 'M') toggleSound();
     if (e.key === 'Escape') {
       closeInspectModal();
-      closeSimModal();
       closeAiModal();
     }
   });
