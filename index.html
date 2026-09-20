@@ -7,42 +7,85 @@
   <style>
     :root {
       --bg-primary: #060913;
-      --bg-card: rgba(15, 23, 42, 0.85);
+      --bg-card: rgba(15, 23, 42, 0.78);
       --border-color: rgba(56, 189, 248, 0.3);
+      --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
       --accent-blue: #38bdf8;
       --accent-purple: #c084fc;
       --accent-green: #39FF14;
+      --accent-amber: #fbbf24;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
-      --font-mono: "JetBrains Mono", monospace, monospace;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       background-color: var(--bg-primary);
-      background-image: 
-        radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.15) 0px, transparent 40%),
-        radial-gradient(circle at 85% 80%, rgba(192, 132, 252, 0.15) 0px, transparent 40%);
       color: var(--text-main);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: var(--font-sans);
       min-height: 100vh;
-      padding: 30px;
+      padding: 30px 20px;
+      position: relative;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* Floating Liquid Background Orbs */
+    .liquid-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.35;
+      animation: driftOrb 20s ease-in-out infinite alternate;
+    }
+    .orb-1 { width: 440px; height: 440px; background: #0284c7; top: -80px; left: -100px; }
+    .orb-2 { width: 480px; height: 480px; background: #7c3aed; bottom: -100px; right: -80px; animation-duration: 24s; }
+    .orb-3 { width: 340px; height: 340px; background: #059669; top: 45%; left: 35%; animation-duration: 18s; }
+
+    @keyframes driftOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(45px, 55px) scale(1.1); }
+      100% { transform: translate(-35px, -45px) scale(0.92); }
     }
 
     .container {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
-    header {
+    /* Glass Cards Base */
+    .glass-panel {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: 14px;
       padding: 24px;
       margin-bottom: 24px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(20px) saturate(180%);
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6), var(--glass-specular);
+      transition: transform 0.2s cubic-bezier(0.2, 0, 0.2, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+      transform-style: preserve-3d;
+    }
+
+    .glass-panel:hover {
+      border-color: rgba(56, 189, 248, 0.6);
+      box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.7), 0 0 20px rgba(56, 189, 248, 0.2);
+    }
+
+    /* Header Styling */
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 12px;
     }
 
     .status-badge {
@@ -57,7 +100,6 @@
       font-size: 11px;
       font-family: var(--font-mono);
       font-weight: 700;
-      margin-bottom: 12px;
     }
 
     .dot {
@@ -66,120 +108,361 @@
       background-color: var(--accent-green);
       border-radius: 50%;
       box-shadow: 0 0 8px var(--accent-green);
+      animation: pulseGlow 1.8s infinite;
     }
 
-    h1 { font-size: 32px; color: #ffffff; }
-    h1 span { color: var(--accent-blue); }
-    p.subtitle { color: var(--text-muted); font-size: 15px; margin-top: 6px; }
+    @keyframes pulseGlow {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(0.9); opacity: 0.8; }
+    }
 
-    .terminal-card {
+    h1 { font-size: 34px; color: #ffffff; letter-spacing: -0.5px; }
+    h1 span { color: var(--accent-blue); }
+    p.subtitle { color: var(--text-muted); font-size: 15px; margin-top: 4px; }
+
+    /* Interactive Terminal */
+    .terminal-window {
       background: rgba(2, 6, 23, 0.95);
       border: 1px solid var(--border-color);
       border-radius: 12px;
       overflow: hidden;
       font-family: var(--font-mono);
       margin-bottom: 24px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
     }
 
-    .term-header {
-      background: rgba(15, 23, 42, 0.9);
+    .terminal-header {
+      background: rgba(15, 23, 42, 0.95);
       padding: 10px 16px;
       border-bottom: 1px solid var(--border-color);
       display: flex;
-      gap: 8px;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    .term-btn { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+    .term-dots { display: flex; gap: 8px; }
+    .term-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
     .btn-red { background: #ef4444; }
     .btn-yellow { background: #f59e0b; }
     .btn-green { background: #10b981; }
 
-    .term-body {
+    .terminal-title { font-size: 11px; color: var(--text-muted); }
+
+    .terminal-body {
       padding: 20px;
-      font-size: 13px;
+      font-size: 12.5px;
       line-height: 1.6;
       color: #cbd5e1;
+      max-height: 280px;
+      overflow-y: auto;
     }
 
     .prompt { color: var(--accent-blue); }
-    .cmd { color: #f8fafc; }
+    .cmd { color: #f8fafc; font-weight: 600; }
+    .term-out { color: var(--text-muted); margin-bottom: 8px; }
     .highlight { color: var(--accent-purple); font-weight: bold; }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
+    .terminal-input-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
     }
 
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 20px;
-      transition: transform 0.2s ease, border-color 0.2s ease;
+    .term-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      width: 100%;
     }
 
-    .card:hover {
-      transform: translateY(-3px);
-      border-color: var(--accent-blue);
-    }
-
-    .card h3 { font-size: 16px; color: var(--accent-blue); margin-bottom: 8px; }
-    .card p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
-
-    a.btn-link {
-      display: inline-block;
-      margin-top: 12px;
-      color: var(--accent-purple);
-      text-decoration: none;
+    /* Section Titles */
+    .section-title {
+      font-size: 18px;
       font-weight: 700;
-      font-size: 13px;
+      color: var(--accent-blue);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Grid Layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    /* Chips & Badges */
+    .chip {
+      display: inline-block;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent-blue);
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      margin: 2px;
+    }
+
+    .chip-purple { border-color: rgba(192, 132, 252, 0.4); color: var(--accent-purple); }
+    .chip-green { border-color: rgba(57, 255, 20, 0.4); color: var(--accent-green); }
+
+    /* Timeline Styling */
+    .exp-item {
+      position: relative;
+      padding-left: 20px;
+      border-left: 2px solid rgba(56, 189, 248, 0.3);
+      margin-bottom: 18px;
+    }
+
+    .exp-item:last-child { margin-bottom: 0; }
+
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent-blue);
+      box-shadow: 0 0 10px var(--accent-blue);
+    }
+
+    .exp-role { font-size: 15px; font-weight: 700; color: #ffffff; }
+    .exp-company { font-size: 13px; color: var(--accent-purple); font-weight: 600; }
+    .exp-date { font-size: 11px; font-family: var(--font-mono); color: var(--text-muted); margin-bottom: 6px; }
+    .exp-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
+
+    /* Links */
+    a.glass-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      margin-top: 10px;
+    }
+
+    a.glass-btn:hover {
+      background: rgba(56, 189, 248, 0.3);
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.4);
     }
   </style>
 </head>
 <body>
 
+<div class="liquid-orb orb-1"></div>
+<div class="liquid-orb orb-2"></div>
+<div class="liquid-orb orb-3"></div>
+
 <div class="container">
-  <header>
-    <div class="status-badge">
-      <span class="dot"></span> SYSTEMS ONLINE
+  <!-- Header Glass Card -->
+  <div class="glass-panel">
+    <div class="header-top">
+      <div class="status-badge">
+        <span class="dot"></span> SYSTEMS ONLINE
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">
+        LOCATION: IND / GLOBAL
+      </div>
     </div>
     <h1>ANKUSH <span>SHINDE</span></h1>
-    <p class="subtitle">Cloud Application Engineer @ Acquia • Infrastructure & AI Prototyping</p>
-  </header>
+    <p class="subtitle">Cloud Application Engineer @ Acquia • DevOps, Big Data & AI Prototyping</p>
+  </div>
 
-  <div class="terminal-card">
-    <div class="term-header">
-      <span class="term-btn btn-red"></span>
-      <span class="term-btn btn-yellow"></span>
-      <span class="term-btn btn-green"></span>
+  <!-- Interactive Terminal -->
+  <div class="terminal-window">
+    <div class="terminal-header">
+      <div class="term-dots">
+        <span class="term-dot btn-red"></span>
+        <span class="term-dot btn-yellow"></span>
+        <span class="term-dot btn-green"></span>
+      </div>
+      <div class="terminal-title">bash — ankush@cloud-console:~</div>
     </div>
-    <div class="term-body">
-      <span class="prompt">ankush@cloud-console:~$</span> <span class="cmd">whoami</span><br/>
-      Cloud Application Engineer with 4+ years of experience maintaining, automating, and scaling cloud platforms at <span class="highlight">Acquia</span>.<br/><br/>
-      <span class="prompt">ankush@cloud-console:~$</span> <span class="cmd">cat stack.json</span><br/>
-      {<br/>
-      &nbsp;&nbsp;"cloud": ["AWS", "GCP", "Linux", "Terraform"],<br/>
-      &nbsp;&nbsp;"big_data": ["Snowflake", "Apache Spark", "Hive", "Cloudera"],<br/>
-      &nbsp;&nbsp;"observability": ["Splunk", "Sumo Logic", "Looker"]<br/>
-      }
+    <div class="terminal-body" id="term-body">
+      <div class="term-out">Welcome to Ankush Shinde's Interactive Console v2.0. Type <span class="highlight">'help'</span> for available commands.</div>
+      <div class="term-out"><span class="prompt">ankush@cloud-console:~$</span> <span class="cmd">whoami</span></div>
+      <div class="term-out">Cloud Application Engineer at Acquia specializing in cloud platform stability, big data observability, and infrastructure automation.</div>
+    </div>
+    <div style="padding: 0 20px 16px;">
+      <div class="terminal-input-line">
+        <span class="prompt">ankush@cloud-console:~$</span>
+        <input type="text" class="term-input" id="term-input" placeholder="Type 'help', 'skills', 'projects', 'exp', or 'clear'..." autofocus />
+      </div>
     </div>
   </div>
 
-  <div class="grid">
-    <div class="card">
-      <h3>🚀 Interactive Tools</h3>
-      <p>Building automated operational utilities and AI-assisted cloud dashboards for rapid monitoring.</p>
-      <a href="https://github.com/ankushshinde755" class="btn-link">View GitHub →</a>
+  <!-- Career Experience -->
+  <div class="glass-panel">
+    <div class="section-title">💼 Career Experience</div>
+    
+    <div class="exp-item">
+      <div class="exp-role">Cloud Application Engineer</div>
+      <div class="exp-company">Acquia (May 2021 – Present)</div>
+      <div class="exp-date">Full-Time • Cloud Operations & Reliability</div>
+      <div class="exp-desc">
+        • Monitoring, maintaining, and troubleshooting multi-tenant enterprise cloud environments.<br/>
+        • Provisioning and managing resources via Infrastructure as Code (IaC).<br/>
+        • Direct technical frontline for enterprise clients during cloud incidents and maintenance.<br/>
+        • Designing proactive monitoring and alerting frameworks for high-availability systems.
+      </div>
     </div>
 
-    <div class="card">
-      <h3>💼 Experience</h3>
-      <p>Cloud Application Engineer at Acquia (2021–Present). Specialized in cloud reliability & client operations.</p>
-      <a href="https://www.linkedin.com/in/ankush-shinde-58a67a14b/" class="btn-link">LinkedIn Profile →</a>
+    <div class="exp-item">
+      <div class="exp-role">Customer Service Associate (CSA)</div>
+      <div class="exp-company">Amazon (Sept 2020 – March 2021)</div>
+      <div class="exp-date">6 Months • Customer Technical Support</div>
+      <div class="exp-desc">
+        • Resolved complex customer technical issues across Prime, Shopping, Prime Video, and Fire TV platforms.
+      </div>
     </div>
+  </div>
+
+  <!-- Technical Arsenal -->
+  <div class="glass-panel">
+    <div class="section-title">🛠️ Technical Arsenal</div>
+    
+    <div style="margin-bottom: 12px;">
+      <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">Cloud & Infrastructure:</div>
+      <span class="chip">AWS</span>
+      <span class="chip">Google Cloud (GCP)</span>
+      <span class="chip">Linux</span>
+      <span class="chip">Terraform</span>
+      <span class="chip">Docker</span>
+      <span class="chip">Teleport</span>
+      <span class="chip">Networking</span>
+    </div>
+
+    <div style="margin-bottom: 12px;">
+      <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">Big Data Platforms:</div>
+      <span class="chip chip-purple">Snowflake</span>
+      <span class="chip chip-purple">Apache Spark</span>
+      <span class="chip chip-purple">Apache Hive</span>
+      <span class="chip chip-purple">Cloudera</span>
+      <span class="chip chip-purple">Oozie</span>
+      <span class="chip chip-purple">CDP</span>
+    </div>
+
+    <div>
+      <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">Observability, Scripting & AI:</div>
+      <span class="chip chip-green">Splunk</span>
+      <span class="chip chip-green">Sumo Logic</span>
+      <span class="chip chip-green">Looker</span>
+      <span class="chip chip-green">Python</span>
+      <span class="chip chip-green">Shell Scripting</span>
+      <span class="chip chip-green">AI-Assisted Prototyping</span>
+    </div>
+  </div>
+
+  <!-- Featured Projects -->
+  <div class="glass-panel">
+    <div class="section-title">🚀 Featured Projects & Repositories</div>
+    
+    <div class="grid-2">
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 16px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2);">
+        <h3 style="font-size: 15px; color: var(--accent-blue);">ankushshinde755 (Profile README)</h3>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Liquid Glass dynamic GitHub profile showcasing live telemetry, contribution streams, and badges.</p>
+        <a href="https://github.com/ankushshinde755/ankushshinde755" target="_blank" class="glass-btn">View Repository →</a>
+      </div>
+
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 16px; border-radius: 10px; border: 1px solid rgba(192, 132, 252, 0.2);">
+        <h3 style="font-size: 15px; color: var(--accent-purple);">The-Gym</h3>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Fitness and workout tracking web platform project.</p>
+        <a href="https://github.com/ankushshinde755/The-Gym" target="_blank" class="glass-btn">View Repository →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div style="text-align: center; font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); padding: 12px 0;">
+    ⚡ DESIGNED WITH LIQUID GLASS ARCHITECTURE • ANKUSH SHINDE
   </div>
 </div>
+
+<script>
+  /* Terminal Interactive Engine */
+  const termInput = document.getElementById('term-input');
+  const termBody = document.getElementById('term-body');
+
+  const commands = {
+    'help': 'Available commands: <span class="highlight">skills</span>, <span class="highlight">projects</span>, <span class="highlight">exp</span>, <span class="highlight">contact</span>, <span class="highlight">clear</span>',
+    'skills': 'Cloud: AWS, GCP, Terraform, Linux | Big Data: Snowflake, Spark, Hive, Cloudera | Tools: Python, Splunk, Sumo Logic, AI Prototyping',
+    'projects': '1. ankushshinde755 (GitHub Profile) | 2. The-Gym (Workout Platform)',
+    'exp': '1. Cloud Application Engineer @ Acquia (May 2021–Present) | 2. Customer Service Associate @ Amazon (2020–2021)',
+    'contact': 'LinkedIn: linkedin.com/in/ankush-shinde-58a67a14b/ | GitHub: github.com/ankushshinde755'
+  };
+
+  termInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const inputVal = termInput.value.trim().toLowerCase();
+      termInput.value = '';
+
+      if (!inputVal) return;
+
+      const userLine = document.createElement('div');
+      userLine.className = 'term-out';
+      userLine.innerHTML = `<span class="prompt">ankush@cloud-console:~$</span> <span class="cmd">${inputVal}</span>`;
+      termBody.appendChild(userLine);
+
+      const responseLine = document.createElement('div');
+      responseLine.className = 'term-out';
+
+      if (inputVal === 'clear') {
+        termBody.innerHTML = '';
+        return;
+      } else if (commands[inputVal]) {
+        responseLine.innerHTML = commands[inputVal];
+      } else {
+        responseLine.innerHTML = `Command not found: '${inputVal}'. Type <span class="highlight">'help'</span> for list of commands.`;
+      }
+
+      termBody.appendChild(responseLine);
+      termBody.scrollTop = termBody.scrollHeight;
+    }
+  });
+
+  /* 3D Card Perspective Tilt Effect */
+  document.querySelectorAll('.glass-panel').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * -3;
+      const rotateY = ((x - centerX) / centerX) * 3;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+    });
+  });
+</script>
 
 </body>
 </html>
