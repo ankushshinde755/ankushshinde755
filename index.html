@@ -12,7 +12,7 @@
   <style>
     :root {
       --bg-primary: #060913;
-      --bg-card: rgba(15, 23, 42, 0.82);
+      --bg-card: rgba(15, 23, 42, 0.85);
       --border-color: rgba(56, 189, 248, 0.3);
       --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
       --accent-blue: #38bdf8;
@@ -37,7 +37,7 @@
       color: var(--text-main);
       font-family: var(--font-sans);
       min-height: 100vh;
-      padding: 30px 20px;
+      padding: 24px 16px;
       position: relative;
       overflow-x: hidden;
       line-height: 1.5;
@@ -60,16 +60,16 @@
     .liquid-orb {
       position: fixed;
       border-radius: 50%;
-      filter: blur(100px);
+      filter: blur(110px);
       z-index: 0;
       pointer-events: none;
       opacity: 0.35;
       transition: background 0.8s ease;
       animation: driftOrb 20s ease-in-out infinite alternate;
     }
-    .orb-1 { width: 440px; height: 440px; background: var(--orb-1-color); top: -80px; left: -100px; }
-    .orb-2 { width: 480px; height: 480px; background: var(--orb-2-color); bottom: -100px; right: -80px; animation-duration: 24s; }
-    .orb-3 { width: 340px; height: 340px; background: var(--orb-3-color); top: 45%; left: 35%; animation-duration: 18s; }
+    .orb-1 { width: 500px; height: 500px; background: var(--orb-1-color); top: -80px; left: -100px; }
+    .orb-2 { width: 550px; height: 550px; background: var(--orb-2-color); bottom: -100px; right: -80px; animation-duration: 24s; }
+    .orb-3 { width: 400px; height: 400px; background: var(--orb-3-color); top: 45%; left: 35%; animation-duration: 18s; }
 
     @keyframes driftOrb {
       0% { transform: translate(0, 0) scale(1); }
@@ -77,8 +77,10 @@
       100% { transform: translate(-35px, -45px) scale(0.92); }
     }
 
+    /* EXPANDED CONTAINER - ELIMINATES WASTED SIDE SPACE */
     .container {
-      max-width: 1000px;
+      max-width: 1400px;
+      width: 94%;
       margin: 0 auto;
       position: relative;
       z-index: 1;
@@ -195,10 +197,46 @@
       100% { transform: scale(0.9); opacity: 0.8; }
     }
 
+    /* UNIQUE ANIMATED NAME EFFECT (Glitch + Holographic Gradient) */
+    .animated-name {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #ffffff 0%, #38bdf8 45%, #c084fc 80%, #39FF14 100%);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmerGradient 6s ease infinite;
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    @keyframes shimmerGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .animated-name:hover {
+      animation: shimmerGradient 2s ease infinite, glitchPulse 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    }
+
+    @keyframes glitchPulse {
+      0% { transform: translate(0); filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.8)); }
+      20% { transform: translate(-2px, 2px); filter: drop-shadow(-2px 0 15px rgba(192, 132, 252, 0.8)); }
+      40% { transform: translate(-2px, -2px); filter: drop-shadow(2px 0 15px rgba(57, 255, 20, 0.8)); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+      100% { transform: translate(0); filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.8)); }
+    }
+
+    p.subtitle { color: var(--text-muted); font-size: 15px; margin-top: 4px; }
+
     /* LIVE PING TELEMETRY PILLS */
     .ping-telemetry-bar {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       align-items: center;
       flex-wrap: wrap;
       margin-top: 16px;
@@ -210,7 +248,7 @@
       background: rgba(2, 6, 23, 0.85);
       border: 1px solid rgba(148, 163, 184, 0.25);
       border-radius: 6px;
-      padding: 4px 10px;
+      padding: 4px 12px;
       color: var(--text-muted);
       display: inline-flex;
       align-items: center;
@@ -219,10 +257,6 @@
 
     .ping-val { color: var(--accent-blue); font-weight: 700; }
     .ping-online { color: var(--accent-green); font-size: 9px; }
-
-    h1 { font-size: 34px; color: #ffffff; letter-spacing: -0.5px; }
-    h1 span { color: var(--accent-blue); transition: color 0.5s ease; }
-    p.subtitle { color: var(--text-muted); font-size: 15px; margin-top: 4px; }
 
     /* Interactive Terminal */
     .terminal-window {
@@ -294,17 +328,17 @@
       gap: 10px;
     }
 
-    /* Grid Layouts */
+    /* Responsive Expanded Grid Layouts */
     .grid-2 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 20px;
     }
 
     .grid-3 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px;
     }
 
     /* Interactive Icon Chips */
@@ -315,11 +349,11 @@
       background: rgba(15, 23, 42, 0.9);
       border: 1px solid rgba(56, 189, 248, 0.3);
       color: var(--accent-blue);
-      padding: 5px 12px;
+      padding: 6px 14px;
       border-radius: 8px;
-      font-size: 11.5px;
+      font-size: 12px;
       font-family: var(--font-mono);
-      margin: 3px;
+      margin: 4px;
       transition: all 0.2s ease;
       cursor: default;
     }
@@ -339,32 +373,63 @@
 
     .chip-amber { border-color: rgba(251, 191, 36, 0.4); color: var(--accent-amber); }
 
-    /* Timeline Styling */
-    .exp-item {
+    /* ANIMATED CAREER TIMELINE ENHANCEMENTS */
+    .timeline-container {
       position: relative;
-      padding-left: 20px;
-      border-left: 2px solid rgba(56, 189, 248, 0.3);
-      margin-bottom: 18px;
+      padding-left: 28px;
     }
 
-    .exp-item:last-child { margin-bottom: 0; }
-
-    .exp-item::before {
+    .timeline-container::before {
       content: '';
       position: absolute;
-      left: -6px;
-      top: 4px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--accent-blue);
-      box-shadow: 0 0 10px var(--accent-blue);
+      left: 8px;
+      top: 8px;
+      bottom: 12px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent-blue) 0%, var(--accent-purple) 60%, transparent 100%);
     }
 
-    .exp-role { font-size: 15px; font-weight: 700; color: #ffffff; }
-    .exp-company { font-size: 13px; color: var(--accent-purple); font-weight: 600; }
-    .exp-date { font-size: 11px; font-family: var(--font-mono); color: var(--text-muted); margin-bottom: 6px; }
-    .exp-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
+    .exp-card-animated {
+      position: relative;
+      background: rgba(2, 6, 23, 0.65);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 22px;
+      transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+    }
+
+    .exp-card-animated:last-child { margin-bottom: 0; }
+
+    .exp-card-animated:hover {
+      border-color: var(--accent-blue);
+      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.6), 0 0 16px rgba(56, 189, 248, 0.3);
+      transform: translateX(6px);
+    }
+
+    .timeline-node-pulse {
+      position: absolute;
+      left: -28px;
+      top: 22px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--bg-primary);
+      border: 2px solid var(--accent-blue);
+      box-shadow: 0 0 10px var(--accent-blue);
+      transition: all 0.3s ease;
+    }
+
+    .exp-card-animated:hover .timeline-node-pulse {
+      background: var(--accent-blue);
+      box-shadow: 0 0 16px var(--accent-blue);
+      transform: scale(1.25);
+    }
+
+    .exp-role { font-size: 16px; font-weight: 700; color: #ffffff; }
+    .exp-company { font-size: 13.5px; color: var(--accent-purple); font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+    .exp-date { font-size: 11px; font-family: var(--font-mono); color: var(--text-muted); margin: 4px 0 10px; }
+    .exp-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
 
     /* Links & Buttons */
     a.glass-btn, button.glass-btn {
@@ -374,7 +439,7 @@
       background: rgba(56, 189, 248, 0.15);
       border: 1px solid rgba(56, 189, 248, 0.4);
       color: #ffffff;
-      padding: 6px 14px;
+      padding: 7px 16px;
       border-radius: 8px;
       text-decoration: none;
       font-size: 12px;
@@ -456,7 +521,7 @@
   <!-- Top Control Bar -->
   <div class="controls-bar">
     <button class="control-btn" id="sound-btn" onclick="toggleSound()">🔊 Sound: ON</button>
-    <button class="control-btn active-green" id="matrix-btn" onclick="toggleMatrix()">💚 Matrix FX: ON</button>
+    <button class="control-btn active-green" id="matrix-btn" onclick="toggleMatrix()">💚 Matrix FX: ON (50%)</button>
     <button class="control-btn" onclick="cycleTheme()">🎨 Liquid Theme</button>
   </div>
 
@@ -477,16 +542,17 @@
       </div>
 
       <!-- Live Clock Bar -->
-      <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); display: flex; gap: 12px; flex-wrap: wrap;">
+      <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); display: flex; gap: 14px; flex-wrap: wrap;">
         <span>LOCAL: <strong style="color: var(--accent-blue);" id="clock-local">00:00:00</strong></span>
         <span>IST: <strong style="color: var(--accent-purple);" id="clock-ist">00:00:00</strong></span>
         <span>UTC: <strong style="color: var(--accent-green);" id="clock-utc">00:00:00</strong></span>
       </div>
     </div>
     
-    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
       <div>
-        <h1>ANKUSH <span id="brand-span">SHINDE</span></h1>
+        <!-- UNIQUE ANIMATED NAME EFFECT -->
+        <div class="animated-name" onclick="playSynthSound('success')">ANKUSH SHINDE</div>
         <p class="subtitle">Cloud Application Engineer @ Acquia • DevOps, Big Data & AI Prototyping</p>
       </div>
       <a href="https://www.linkedin.com/in/ankush-shinde-58a67a14b/" target="_blank" class="glass-btn linkedin-btn" onclick="playSynthSound('success')">
@@ -520,7 +586,7 @@
       <div class="terminal-title">bash — ankush@cloud-console:~</div>
     </div>
     <div class="terminal-body" id="term-body">
-      <div class="term-out">Welcome to Ankush Shinde's Immersive Peak Console v5.1. Type <span class="highlight">'help'</span> or press <span class="highlight">Tab</span>.</div>
+      <div class="term-out">Welcome to Ankush Shinde's Peak Console v5.2. Type <span class="highlight">'help'</span> or press <span class="highlight">Tab</span>.</div>
       <div class="term-out"><span class="prompt">ankush@cloud-console:~$</span> <span class="cmd">whoami</span></div>
       <div class="term-out">Cloud Application Engineer at Acquia specializing in cloud platform stability, big data observability, and infrastructure automation.</div>
     </div>
@@ -536,19 +602,49 @@
   <div class="glass-panel" onclick="playSynthSound('click')">
     <div class="section-title"><i class="fa-solid fa-trophy" style="color: var(--accent-amber);"></i> Key Operational Achievements</div>
     <div class="grid-3">
-      <div style="background: rgba(2, 6, 23, 0.6); padding: 14px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2);">
-        <div style="font-size: 13px; font-weight: 700; color: var(--accent-blue);"><i class="fa-solid fa-book"></i> Centralized Runbook Migration</div>
-        <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">Led the migration and standardization of operational runbooks from Confluence to Acquia's GitHub.</div>
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 16px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2);">
+        <div style="font-size: 13.5px; font-weight: 700; color: var(--accent-blue);"><i class="fa-solid fa-book"></i> Centralized Runbook Migration</div>
+        <div style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">Led the migration and standardization of operational runbooks from Confluence to Acquia's GitHub.</div>
       </div>
 
-      <div style="background: rgba(2, 6, 23, 0.6); padding: 14px; border-radius: 10px; border: 1px solid rgba(192, 132, 252, 0.2);">
-        <div style="font-size: 13px; font-weight: 700; color: var(--accent-purple);"><i class="fa-solid fa-robot"></i> Service Cloud Ticket Auto-Resolution</div>
-        <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">Engineered automation workflows for automatic ticket resolution across Service Cloud systems.</div>
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 16px; border-radius: 10px; border: 1px solid rgba(192, 132, 252, 0.2);">
+        <div style="font-size: 13.5px; font-weight: 700; color: var(--accent-purple);"><i class="fa-solid fa-robot"></i> Service Cloud Ticket Auto-Resolution</div>
+        <div style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">Engineered automation workflows for automatic ticket resolution across Service Cloud systems.</div>
       </div>
 
-      <div style="background: rgba(2, 6, 23, 0.6); padding: 14px; border-radius: 10px; border: 1px solid rgba(57, 255, 20, 0.2);">
-        <div style="font-size: 13px; font-weight: 700; color: var(--accent-green);"><i class="fa-solid fa-terminal"></i> All-In-One CDP Utility</div>
-        <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">Built unified campaign reports, workflow inspection, and kill CLI utilities for CDP operations.</div>
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 16px; border-radius: 10px; border: 1px solid rgba(57, 255, 20, 0.2);">
+        <div style="font-size: 13.5px; font-weight: 700; color: var(--accent-green);"><i class="fa-solid fa-terminal"></i> All-In-One CDP Utility</div>
+        <div style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">Built unified campaign reports, workflow inspection, and kill CLI utilities for CDP operations.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANIMATED CAREER EXPERIENCE TIMELINE -->
+  <div class="glass-panel" onclick="playSynthSound('click')">
+    <div class="section-title"><i class="fa-solid fa-briefcase" style="color: var(--accent-blue);"></i> Career Experience</div>
+    
+    <div class="timeline-container">
+      <div class="exp-card-animated">
+        <div class="timeline-node-pulse"></div>
+        <div class="exp-role">Cloud Application Engineer</div>
+        <div class="exp-company"><i class="devicon-drupal-plain colored"></i> Acquia (May 2021 – Present)</div>
+        <div class="exp-date">Full-Time • Cloud Operations & Reliability</div>
+        <div class="exp-desc">
+          • Monitoring, maintaining, and troubleshooting multi-tenant enterprise cloud environments.<br/>
+          • Provisioning and managing resources via Infrastructure as Code (IaC).<br/>
+          • Direct technical frontline for enterprise clients during cloud incidents and maintenance.<br/>
+          • Designing proactive monitoring and alerting frameworks for high-availability systems.
+        </div>
+      </div>
+
+      <div class="exp-card-animated">
+        <div class="timeline-node-pulse"></div>
+        <div class="exp-role">Customer Service Associate (CSA)</div>
+        <div class="exp-company"><i class="devicon-amazonwebservices-plain-wordmark colored"></i> Amazon (Sept 2020 – March 2021)</div>
+        <div class="exp-date">6 Months • Customer Technical Support</div>
+        <div class="exp-desc">
+          • Resolved complex customer technical issues across Prime, Shopping, Prime Video, and Fire TV platforms.
+        </div>
       </div>
     </div>
   </div>
@@ -558,51 +654,25 @@
     <div class="section-title"><i class="fa-solid fa-certificate" style="color: var(--accent-purple);"></i> Featured Certifications & Credentials</div>
     <div class="grid-2">
       <div>
-        <div style="font-size: 12px; color: var(--accent-blue); font-weight: 700; margin-bottom: 6px;"><i class="devicon-amazonwebservices-plain-wordmark colored"></i> Amazon Web Services (AWS)</div>
-        <div style="font-size: 12px; color: var(--text-main);">• AWS Cloud Practitioner Essentials (Dec 2025)</div>
-        <div style="font-size: 12px; color: var(--text-main);">• Amazon S3 Glacier Certified (Jun 2025)</div>
-        <div style="font-size: 12px; color: var(--text-main);">• Advanced Testing Practices via AWS DevOps (Sep 2024)</div>
-        <div style="font-size: 12px; color: var(--text-main);">• DevOps on AWS (Sep 2024)</div>
-        <div style="font-size: 12px; color: var(--text-main);">• Generative AI for Executives (Sep 2024)</div>
-        <div style="font-size: 12px; color: var(--text-main);">• AWS Command Line Interface (CLI) Basics (Sep 2024)</div>
-        <div style="font-size: 12px; color: var(--text-main);">• Cloud Security Essentials for Executives (Sep 2024)</div>
+        <div style="font-size: 13px; color: var(--accent-blue); font-weight: 700; margin-bottom: 8px;"><i class="devicon-amazonwebservices-plain-wordmark colored"></i> Amazon Web Services (AWS)</div>
+        <div style="font-size: 12.5px; color: var(--text-main); margin-bottom: 4px;">• AWS Cloud Practitioner Essentials (Dec 2025)</div>
+        <div style="font-size: 12.5px; color: var(--text-main); margin-bottom: 4px;">• Amazon S3 Glacier Certified (Jun 2025)</div>
+        <div style="font-size: 12.5px; color: var(--text-main); margin-bottom: 4px;">• Advanced Testing Practices via AWS DevOps (Sep 2024)</div>
+        <div style="font-size: 12.5px; color: var(--text-main); margin-bottom: 4px;">• DevOps on AWS (Sep 2024)</div>
+        <div style="font-size: 12.5px; color: var(--text-main); margin-bottom: 4px;">• Generative AI for Executives (Sep 2024)</div>
+        <div style="font-size: 12.5px; color: var(--text-main); margin-bottom: 4px;">• AWS Command Line Interface (CLI) Basics (Sep 2024)</div>
+        <div style="font-size: 12.5px; color: var(--text-main);">• Cloud Security Essentials for Executives (Sep 2024)</div>
       </div>
 
       <div>
-        <div style="font-size: 12px; color: var(--accent-purple); font-weight: 700; margin-bottom: 6px;"><i class="devicon-googlecloud-plain colored"></i> Google Cloud, Microsoft & Acquia</div>
-        <div style="font-size: 12px; color: var(--text-main);">• Transformer Models & BERT Model (Google Cloud)</div>
-        <div style="font-size: 12px; color: var(--text-main);">• Attention Mechanism & LLM Intro (Google Cloud)</div>
-        <div style="font-size: 12px; color: var(--text-main);">• Responsible AI & Generative AI (Google Cloud)</div>
-        <div style="font-size: 12px; color: var(--text-main);">• Microsoft Certified: Cloud Computing & Azure AI</div>
-        <div style="font-size: 12px; color: var(--text-main);">• Meta: Get Started with Ads Manager</div>
-        <div style="font-size: 12px; color: var(--text-main);">• Acquia Interviewer Certified (Jun 2023)</div>
-        <div style="font-size: 12px; color: var(--text-main);">• Acquia Talent Ambassador Certified (Mar 2024)</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Career Experience -->
-  <div class="glass-panel" onclick="playSynthSound('click')">
-    <div class="section-title"><i class="fa-solid fa-briefcase" style="color: var(--accent-blue);"></i> Career Experience</div>
-    
-    <div class="exp-item">
-      <div class="exp-role">Cloud Application Engineer</div>
-      <div class="exp-company">Acquia (May 2021 – Present)</div>
-      <div class="exp-date">Full-Time • Cloud Operations & Reliability</div>
-      <div class="exp-desc">
-        • Monitoring, maintaining, and troubleshooting multi-tenant enterprise cloud environments.<br/>
-        • Provisioning and managing resources via Infrastructure as Code (IaC).<br/>
-        • Direct technical frontline for enterprise clients during cloud incidents and maintenance.<br/>
-        • Designing proactive monitoring and alerting frameworks for high-availability systems.
-      </div>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-role">Customer Service Associate (CSA)</div>
-      <div class="exp-company">Amazon (Sept 2020 – March 2021)</div>
-      <div class="exp-date">6 Months • Customer Technical Support</div>
-      <div class="exp-desc">
-        • Resolved complex customer technical issues across Prime, Shopping, Prime Video, and Fire TV platforms.
+        <div style="font-size: 13px; color: var(--accent-purple); font-weight: 700; margin-bottom: 8px;"><i class="devicon-googlecloud-plain colored"></i> Google Cloud, Microsoft & Acquia</div>
+        <div style="font-size: 12.5px; color: var(--text-main); margin-bottom: 4px;">• Transformer Models & BERT Model (Google Cloud)</div>
+        <div style="font-size: 12.5px; color: var(--text-main); margin-bottom: 4px;">• Attention Mechanism & LLM Intro (Google Cloud)</div>
+        <div style="font-size: 12.5px; color: var(--text-main); margin-bottom: 4px;">• Responsible AI & Generative AI (Google Cloud)</div>
+        <div style="font-size: 12.5px; color: var(--text-main); margin-bottom: 4px;">• Microsoft Certified: Cloud Computing & Azure AI</div>
+        <div style="font-size: 12.5px; color: var(--text-main); margin-bottom: 4px;">• Meta: Get Started with Ads Manager</div>
+        <div style="font-size: 12.5px; color: var(--text-main); margin-bottom: 4px;">• Acquia Interviewer Certified (Jun 2023)</div>
+        <div style="font-size: 12.5px; color: var(--text-main);">• Acquia Talent Ambassador Certified (Mar 2024)</div>
       </div>
     </div>
   </div>
@@ -611,16 +681,16 @@
   <div class="glass-panel" onclick="playSynthSound('click')">
     <div class="section-title"><i class="fa-solid fa-graduation-cap" style="color: var(--accent-green);"></i> Education & Academic History</div>
     <div class="grid-2">
-      <div style="background: rgba(2, 6, 23, 0.6); padding: 14px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2);">
-        <div style="font-size: 14px; font-weight: 700; color: #ffffff;">Master of Computer Applications (MCA)</div>
-        <div style="font-size: 12px; color: var(--accent-blue);">Sinhgad Institute Of Management And Computer Application</div>
-        <div style="font-size: 11px; font-family: var(--font-mono); color: var(--text-muted);">2017 – 2020 • MIS & General Computer Applications</div>
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 16px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2);">
+        <div style="font-size: 14.5px; font-weight: 700; color: #ffffff;">Master of Computer Applications (MCA)</div>
+        <div style="font-size: 12.5px; color: var(--accent-blue); font-weight: 600;">Sinhgad Institute Of Management And Computer Application</div>
+        <div style="font-size: 11.5px; font-family: var(--font-mono); color: var(--text-muted); margin-top: 4px;">2017 – 2020 • MIS & General Computer Applications</div>
       </div>
 
-      <div style="background: rgba(2, 6, 23, 0.6); padding: 14px; border-radius: 10px; border: 1px solid rgba(192, 132, 252, 0.2);">
-        <div style="font-size: 14px; font-weight: 700; color: #ffffff;">Bachelor of Science (BSc ECS)</div>
-        <div style="font-size: 12px; color: var(--accent-purple);">Sahakar Maharshi Shankarrao Mohite-Patil College, Natepute</div>
-        <div style="font-size: 11px; font-family: var(--font-mono); color: var(--text-muted);">Entire Computer Science Degree</div>
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 16px; border-radius: 10px; border: 1px solid rgba(192, 132, 252, 0.2);">
+        <div style="font-size: 14.5px; font-weight: 700; color: #ffffff;">Bachelor of Science (BSc ECS)</div>
+        <div style="font-size: 12.5px; color: var(--accent-purple); font-weight: 600;">Sahakar Maharshi Shankarrao Mohite-Patil College, Natepute</div>
+        <div style="font-size: 11.5px; font-family: var(--font-mono); color: var(--text-muted); margin-top: 4px;">Entire Computer Science Degree</div>
       </div>
     </div>
   </div>
@@ -629,8 +699,8 @@
   <div class="glass-panel" onclick="playSynthSound('click')">
     <div class="section-title"><i class="fa-solid fa-code" style="color: var(--accent-blue);"></i> Technical Arsenal</div>
     
-    <div style="margin-bottom: 12px;">
-      <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Cloud & Infrastructure:</div>
+    <div style="margin-bottom: 14px;">
+      <div style="font-size: 12.5px; color: var(--text-muted); margin-bottom: 6px;">Cloud & Infrastructure:</div>
       <span class="chip" onclick="playSynthSound('key')"><i class="devicon-amazonwebservices-plain-wordmark colored"></i> AWS</span>
       <span class="chip" onclick="playSynthSound('key')"><i class="devicon-googlecloud-plain colored"></i> GCP</span>
       <span class="chip" onclick="playSynthSound('key')"><i class="devicon-linux-plain colored"></i> Linux</span>
@@ -640,8 +710,8 @@
       <span class="chip" onclick="playSynthSound('key')"><i class="fa-solid fa-network-wired"></i> Networking</span>
     </div>
 
-    <div style="margin-bottom: 12px;">
-      <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Big Data Platforms:</div>
+    <div style="margin-bottom: 14px;">
+      <div style="font-size: 12.5px; color: var(--text-muted); margin-bottom: 6px;">Big Data Platforms:</div>
       <span class="chip chip-purple" onclick="playSynthSound('key')"><i class="fa-solid fa-snowflake"></i> Snowflake</span>
       <span class="chip chip-purple" onclick="playSynthSound('key')"><i class="devicon-apachespark-original colored"></i> Apache Spark</span>
       <span class="chip chip-purple" onclick="playSynthSound('key')"><i class="devicon-hadoop-plain colored"></i> Apache Hive</span>
@@ -651,7 +721,7 @@
     </div>
 
     <div>
-      <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Observability, Scripting & AI:</div>
+      <div style="font-size: 12.5px; color: var(--text-muted); margin-bottom: 6px;">Observability, Scripting & AI:</div>
       <span class="chip chip-green" onclick="playSynthSound('key')"><i class="fa-solid fa-chart-line"></i> Splunk</span>
       <span class="chip chip-green" onclick="playSynthSound('key')"><i class="fa-solid fa-wave-square"></i> Sumo Logic</span>
       <span class="chip chip-green" onclick="playSynthSound('key')"><i class="devicon-python-plain colored"></i> Python</span>
@@ -666,9 +736,9 @@
     
     <div class="grid-2">
       <!-- Repo 1 -->
-      <div style="background: rgba(2, 6, 23, 0.6); padding: 16px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2);">
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 18px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2);">
         <h3 style="font-size: 15px; color: var(--accent-blue);">ankushshinde755 (Profile README)</h3>
-        <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Liquid Glass dynamic GitHub profile showcasing live telemetry, contribution streams, and badges.</p>
+        <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 6px;">Liquid Glass dynamic GitHub profile showcasing live telemetry, contribution streams, and badges.</p>
         <div style="display: flex; gap: 8px;">
           <a href="https://github.com/ankushshinde755/ankushshinde755" target="_blank" class="glass-btn" onclick="playSynthSound('success')">View Repository →</a>
           <button class="glass-btn" style="background: rgba(192, 132, 252, 0.15); border-color: rgba(192, 132, 252, 0.4);" onclick="openInspectModal('profile')">🔍 Tech Specs</button>
@@ -676,9 +746,9 @@
       </div>
 
       <!-- Repo 2 -->
-      <div style="background: rgba(2, 6, 23, 0.6); padding: 16px; border-radius: 10px; border: 1px solid rgba(192, 132, 252, 0.2);">
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 18px; border-radius: 10px; border: 1px solid rgba(192, 132, 252, 0.2);">
         <h3 style="font-size: 15px; color: var(--accent-purple);">The-Gym</h3>
-        <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Fitness and workout tracking web platform project.</p>
+        <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 6px;">Fitness and workout tracking web platform project.</p>
         <div style="display: flex; gap: 8px;">
           <a href="https://github.com/ankushshinde755/The-Gym" target="_blank" class="glass-btn" onclick="playSynthSound('success')">View Repository →</a>
           <button class="glass-btn" style="background: rgba(192, 132, 252, 0.15); border-color: rgba(192, 132, 252, 0.4);" onclick="openInspectModal('gym')">🔍 Tech Specs</button>
@@ -686,18 +756,18 @@
       </div>
 
       <!-- Repo 3 / Tool -->
-      <div style="background: rgba(2, 6, 23, 0.6); padding: 16px; border-radius: 10px; border: 1px solid rgba(57, 255, 20, 0.2);">
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 18px; border-radius: 10px; border: 1px solid rgba(57, 255, 20, 0.2);">
         <h3 style="font-size: 15px; color: var(--accent-green);">AgilOne CDP Campaign Tool</h3>
-        <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Interactive CLI & dashboard engine for multi-timezone orchestration inspection & Oozie management.</p>
+        <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 6px;">Interactive CLI & dashboard engine for multi-timezone orchestration inspection & Oozie management.</p>
         <div style="display: flex; gap: 8px;">
           <button class="glass-btn" style="background: rgba(57, 255, 20, 0.15); border-color: rgba(57, 255, 20, 0.4);" onclick="openInspectModal('agilone')">🔍 Architecture Specs</button>
         </div>
       </div>
 
       <!-- Repo 4 / Utilities -->
-      <div style="background: rgba(2, 6, 23, 0.6); padding: 16px; border-radius: 10px; border: 1px solid rgba(251, 191, 36, 0.2);">
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 18px; border-radius: 10px; border: 1px solid rgba(251, 191, 36, 0.2);">
         <h3 style="font-size: 15px; color: var(--accent-amber);">Cloud & SRE Automation Utilities</h3>
-        <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Shell and Python automation toolkits for log auditing, token cache renewal, and cluster telemetry.</p>
+        <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 6px;">Shell and Python automation toolkits for log auditing, token cache renewal, and cluster telemetry.</p>
         <div style="display: flex; gap: 8px;">
           <button class="glass-btn" style="background: rgba(251, 191, 36, 0.15); border-color: rgba(251, 191, 36, 0.4);" onclick="openInspectModal('sre')">🔍 Automation Specs</button>
         </div>
@@ -714,24 +784,24 @@
     </div>
 
     <div class="grid-2">
-      <div style="background: rgba(2, 6, 23, 0.6); padding: 16px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2);">
-        <h3 style="font-size: 14px; color: var(--accent-blue);">Multi-Tenant Cloud Data Platform</h3>
-        <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 18px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2);">
+        <h3 style="font-size: 14.5px; color: var(--accent-blue);">Multi-Tenant Cloud Data Platform</h3>
+        <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 6px;">
           • Infrastructure: AWS / GCP Kubernetes clusters + Snowflake Data Warehouse.<br/>
           • Operations: Managed SLA uptime, incident resolution, and IaC Terraform provisioning.
         </p>
-        <span class="chip chip-purple" style="margin-top:8px;">Acquia Platform</span>
-        <span class="chip chip-green" style="margin-top:8px;">Snowflake</span>
+        <span class="chip chip-purple" style="margin-top:10px;">Acquia Platform</span>
+        <span class="chip chip-green" style="margin-top:10px;">Snowflake</span>
       </div>
 
-      <div style="background: rgba(2, 6, 23, 0.6); padding: 16px; border-radius: 10px; border: 1px solid rgba(192, 132, 252, 0.2);">
-        <h3 style="font-size: 14px; color: var(--accent-purple);">Distributed Spark/Hive Pipeline Telemetry</h3>
-        <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 18px; border-radius: 10px; border: 1px solid rgba(192, 132, 252, 0.2);">
+        <h3 style="font-size: 14.5px; color: var(--accent-purple);">Distributed Spark/Hive Pipeline Telemetry</h3>
+        <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 6px;">
           • Processing: Cloudera Hadoop, Oozie job scheduling & Splunk log aggregation.<br/>
           • Reliability: Proactive alerting, bottleneck detection & query optimization.
         </p>
-        <span class="chip" style="margin-top:8px;">Spark</span>
-        <span class="chip chip-amber" style="margin-top:8px;">Splunk</span>
+        <span class="chip" style="margin-top:10px;">Spark</span>
+        <span class="chip chip-amber" style="margin-top:10px;">Splunk</span>
       </div>
     </div>
   </div>
@@ -903,7 +973,7 @@
     document.getElementById('brand-span').style.color = t.brand;
   }
 
-  /* ================= MATRIX RAIN EFFECT (ON BY DEFAULT) ================= */
+  /* ================= MATRIX RAIN EFFECT (50% SPEED) ================= */
   let matrixActive = true;
   const canvas = document.getElementById('matrix-canvas');
   const ctx = canvas.getContext('2d');
@@ -936,7 +1006,8 @@
       drops[i]++;
     }
   }
-  setInterval(drawMatrix, 35);
+  /* REDUCED SPEED: Set interval loop to 70ms (50% speed reduction from 35ms) */
+  setInterval(drawMatrix, 70);
 
   function toggleMatrix() {
     playSynthSound('click');
@@ -944,7 +1015,7 @@
     canvas.style.opacity = matrixActive ? '0.35' : '0';
     const btn = document.getElementById('matrix-btn');
     if (matrixActive) {
-      btn.innerHTML = '💚 Matrix FX: ON';
+      btn.innerHTML = '💚 Matrix FX: ON (50%)';
       btn.classList.add('active-green');
     } else {
       btn.innerHTML = '🖤 Matrix FX: OFF';
