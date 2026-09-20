@@ -1,23 +1,23 @@
 <!-- HIGH-TECH GLASS BANNER -->
 <p align="center">
-  <img src="https://img.shields.io/badge/ANKUSH%20SHINDE-CLOUD%20APPLICATION%20ENGINEER-0284c7?style=for-the-badge&logo=amazonaws&logoColor=white" width="100%" alt="Header Banner" />
+  <img src="https://img.shields.io/badge/ANKUSH%20SHINDE-CLOUD%20APPLICATION%20ENGINEER-0284c7?style=for-the-badge&logo=amazonaws&logoColor=white&v=1" width="100%" alt="Header Banner" />
 </p>
 
 <!-- HIGH-END SHIELDS & BADGES MATRIX -->
 <p align="center">
-  <img src="https://img.shields.io/badge/ROLE-CLOUD_APP_ENGINEER-0f172a?style=for-the-badge&logo=amazonaws&logoColor=38bdf8&labelColor=0b1120" />
-  <img src="https://img.shields.io/badge/COMPANY-ACQUIA-0f172a?style=for-the-badge&logo=drupal&logoColor=c084fc&labelColor=0b1120" />
-  <img src="https://img.shields.io/badge/FOCUS-DEVOPS_%26_AUTOMATION-0f172a?style=for-the-badge&logo=docker&logoColor=38bdf8&labelColor=0b1120" />
+  <img src="https://img.shields.io/badge/ROLE-CLOUD_APP_ENGINEER-0f172a?style=for-the-badge&logo=amazonaws&logoColor=38bdf8&labelColor=0b1120&v=1" />
+  <img src="https://img.shields.io/badge/COMPANY-ACQUIA-0f172a?style=for-the-badge&logo=drupal&logoColor=c084fc&labelColor=0b1120&v=1" />
+  <img src="https://img.shields.io/badge/FOCUS-DEVOPS_%26_AUTOMATION-0f172a?style=for-the-badge&logo=docker&logoColor=38bdf8&labelColor=0b1120&v=1" />
 </p>
 
 <!-- INTERACTIVE SITE & PORTFOLIO LAUNCHER -->
 <p align="center">
   <a href="https://ankushshinde755.github.io/ankushshinde755/" target="_blank">
-    <img src="https://img.shields.io/badge/LAUNCH%20LIVE%20CONSOLE-0284c7?style=for-the-badge&logo=googlechrome&logoColor=white" height="40" alt="Launch Live Console" />
+    <img src="https://img.shields.io/badge/LAUNCH%20LIVE%20CONSOLE-0284c7?style=for-the-badge&logo=googlechrome&logoColor=white&v=1" height="40" alt="Launch Live Console" />
   </a>
   &nbsp;&nbsp;
   <a href="https://www.linkedin.com/in/ankush-shinde-58a67a14b/" target="_blank">
-    <img src="https://img.shields.io/badge/LINKEDIN-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="40" alt="LinkedIn" />
+    <img src="https://img.shields.io/badge/LINKEDIN-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&v=1" height="40" alt="LinkedIn" />
   </a>
 </p>
 
@@ -46,4 +46,4 @@
 Run this directly in your terminal to view my interactive CLI profile:
 
 ```bash
-curl -sSL [https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py](https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py) | python3
+curl -sSL https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py | python3
