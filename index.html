@@ -47,7 +47,7 @@
       height: 100vh;
       z-index: 0;
       pointer-events: none;
-      opacity: 0.35; /* Active by default */
+      opacity: 0.35;
       transition: opacity 0.5s ease;
     }
 
@@ -193,15 +193,8 @@
       gap: 6px;
     }
 
-    .ping-val {
-      color: var(--accent-blue);
-      font-weight: 700;
-    }
-
-    .ping-online {
-      color: var(--accent-green);
-      font-size: 9px;
-    }
+    .ping-val { color: var(--accent-blue); font-weight: 700; }
+    .ping-online { color: var(--accent-green); font-size: 9px; }
 
     h1 { font-size: 34px; color: #ffffff; letter-spacing: -0.5px; }
     h1 span { color: var(--accent-blue); transition: color 0.5s ease; }
@@ -284,6 +277,12 @@
       gap: 18px;
     }
 
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
     /* Chips & Badges */
     .chip {
       display: inline-block;
@@ -305,18 +304,9 @@
     }
 
     .chip-purple { border-color: rgba(192, 132, 252, 0.4); color: var(--accent-purple); }
-    .chip-purple:hover { box-shadow: 0 0 10px rgba(192, 132, 252, 0.4); }
-
     .chip-green { border-color: rgba(57, 255, 20, 0.4); color: var(--accent-green); }
-    .chip-green:hover { box-shadow: 0 0 10px rgba(57, 255, 20, 0.4); }
-
     .chip-amber { border-color: rgba(251, 191, 36, 0.4); color: var(--accent-amber); }
-
-    .chip-linkedin {
-      border-color: rgba(0, 119, 181, 0.5);
-      color: #38bdf8;
-      background: rgba(0, 119, 181, 0.15);
-    }
+    .chip-linkedin { border-color: rgba(0, 119, 181, 0.5); color: #38bdf8; background: rgba(0, 119, 181, 0.15); }
 
     /* Timeline Styling */
     .exp-item {
@@ -458,7 +448,6 @@
         <h1>ANKUSH <span id="brand-span">SHINDE</span></h1>
         <p class="subtitle">Cloud Application Engineer @ Acquia • DevOps, Big Data & AI Prototyping</p>
       </div>
-      <!-- Direct LinkedIn Quick Connect Header Launcher -->
       <a href="https://www.linkedin.com/in/ankush-shinde-58a67a14b/" target="_blank" class="glass-btn linkedin-btn" onclick="playSynthSound('success')">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
         Connect on LinkedIn
@@ -491,44 +480,64 @@
       <div class="terminal-title">bash — ankush@cloud-console:~</div>
     </div>
     <div class="terminal-body" id="term-body">
-      <div class="term-out">Welcome to Ankush Shinde's Peak Console v4.1. Type <span class="highlight">'help'</span> or press <span class="highlight">Tab</span>.</div>
+      <div class="term-out">Welcome to Ankush Shinde's Peak Console v5.0. Type <span class="highlight">'help'</span> or press <span class="highlight">Tab</span>.</div>
       <div class="term-out"><span class="prompt">ankush@cloud-console:~$</span> <span class="cmd">whoami</span></div>
       <div class="term-out">Cloud Application Engineer at Acquia specializing in cloud platform stability, big data observability, and infrastructure automation.</div>
     </div>
     <div style="padding: 0 20px 16px;">
       <div class="terminal-input-line">
         <span class="prompt">ankush@cloud-console:~$</span>
-        <input type="text" class="term-input" id="term-input" placeholder="Type 'help', 'linkedin', 'skills', 'projects', or 'clear'..." autofocus />
+        <input type="text" class="term-input" id="term-input" placeholder="Type 'help', 'certs', 'achievements', 'education', 'linkedin', or 'clear'..." autofocus />
       </div>
     </div>
   </div>
 
-  <!-- Dedicated LinkedIn Integration Panel -->
+  <!-- Key Impact Achievements -->
   <div class="glass-panel" onclick="playSynthSound('click')">
-    <div class="section-title">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-blue)"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-      LinkedIn Profile Sync & Endorsements
-    </div>
+    <div class="section-title">🏆 Key Operational Achievements</div>
+    <div class="grid-3">
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 14px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2);">
+        <div style="font-size: 13px; font-weight: 700; color: var(--accent-blue);">Centralized Runbook Migration</div>
+        <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">Led the migration and standardization of operational runbooks from Confluence to Acquia's GitHub.</div>
+      </div>
 
-    <div style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px;">
-      Cloud Application Engineer with 4+ years of experience across Cloud Operations, Customer Support, Networking, Ethical Hacking, and AI Workflows. Direct frontline interface for enterprise client operations at Acquia.
-    </div>
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 14px; border-radius: 10px; border: 1px solid rgba(192, 132, 252, 0.2);">
+        <div style="font-size: 13px; font-weight: 700; color: var(--accent-purple);">Service Cloud Ticket Resolution</div>
+        <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">Engineered automation workflows for automatic ticket resolution across Service Cloud systems.</div>
+      </div>
 
-    <div style="margin-bottom: 12px;">
-      <span class="chip chip-linkedin">AWS & GCP Infrastructure</span>
-      <span class="chip chip-linkedin">Snowflake & Apache Spark</span>
-      <span class="chip chip-linkedin">DevOps & IaC Automation</span>
-      <span class="chip chip-linkedin">Linux & Networking</span>
-      <span class="chip chip-linkedin">AI-Assisted Prototyping</span>
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 14px; border-radius: 10px; border: 1px solid rgba(57, 255, 20, 0.2);">
+        <div style="font-size: 13px; font-weight: 700; color: var(--accent-green);">All-In-One CDP Utility</div>
+        <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">Built unified campaign reports, workflow inspection, and kill CLI utilities for CDP operations.</div>
+      </div>
     </div>
+  </div>
 
-    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-      <a href="https://www.linkedin.com/in/ankush-shinde-58a67a14b/" target="_blank" class="glass-btn linkedin-btn" onclick="playSynthSound('success')">
-        🌐 Open LinkedIn Profile
-      </a>
-      <button class="glass-btn" style="background: rgba(192, 132, 252, 0.15); border-color: rgba(192, 132, 252, 0.4);" onclick="copyLinkedInUrl()">
-        📋 Copy Profile Link
-      </button>
+  <!-- Featured Certifications & Badges Grid -->
+  <div class="glass-panel" onclick="playSynthSound('click')">
+    <div class="section-title">📜 Featured Certifications & Credentials</div>
+    <div class="grid-2">
+      <div>
+        <div style="font-size: 12px; color: var(--accent-blue); font-weight: 700; margin-bottom: 6px;">Amazon Web Services (AWS)</div>
+        <div style="font-size: 12px; color: var(--text-main);">• AWS Cloud Practitioner Essentials (Dec 2025)</div>
+        <div style="font-size: 12px; color: var(--text-main);">• Amazon S3 Glacier Certified (Jun 2025)</div>
+        <div style="font-size: 12px; color: var(--text-main);">• Advanced Testing Practices via AWS DevOps (Sep 2024)</div>
+        <div style="font-size: 12px; color: var(--text-main);">• DevOps on AWS (Sep 2024)</div>
+        <div style="font-size: 12px; color: var(--text-main);">• Generative AI for Executives (Sep 2024)</div>
+        <div style="font-size: 12px; color: var(--text-main);">• AWS Command Line Interface (CLI) Basics (Sep 2024)</div>
+        <div style="font-size: 12px; color: var(--text-main);">• Cloud Security Essentials for Executives (Sep 2024)</div>
+      </div>
+
+      <div>
+        <div style="font-size: 12px; color: var(--accent-purple); font-weight: 700; margin-bottom: 6px;">Google Cloud, Microsoft & Acquia</div>
+        <div style="font-size: 12px; color: var(--text-main);">• Transformer Models & BERT Model (Google Cloud)</div>
+        <div style="font-size: 12px; color: var(--text-main);">• Attention Mechanism & LLM Intro (Google Cloud)</div>
+        <div style="font-size: 12px; color: var(--text-main);">• Responsible AI & Generative AI (Google Cloud)</div>
+        <div style="font-size: 12px; color: var(--text-main);">• Microsoft Certified: Cloud Computing & Azure AI</div>
+        <div style="font-size: 12px; color: var(--text-main);">• Meta: Get Started with Ads Manager</div>
+        <div style="font-size: 12px; color: var(--text-main);">• Acquia Interviewer Certified (Jun 2023)</div>
+        <div style="font-size: 12px; color: var(--text-main);">• Acquia Talent Ambassador Certified (Mar 2024)</div>
+      </div>
     </div>
   </div>
 
@@ -554,6 +563,24 @@
       <div class="exp-date">6 Months • Customer Technical Support</div>
       <div class="exp-desc">
         • Resolved complex customer technical issues across Prime, Shopping, Prime Video, and Fire TV platforms.
+      </div>
+    </div>
+  </div>
+
+  <!-- Education & Degrees -->
+  <div class="glass-panel" onclick="playSynthSound('click')">
+    <div class="section-title">🎓 Education & Academic History</div>
+    <div class="grid-2">
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 14px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2);">
+        <div style="font-size: 14px; font-weight: 700; color: #ffffff;">Master of Computer Applications (MCA)</div>
+        <div style="font-size: 12px; color: var(--accent-blue);">Sinhgad Institute Of Management And Computer Application</div>
+        <div style="font-size: 11px; font-family: var(--font-mono); color: var(--text-muted);">2017 – 2020 • MIS & General Computer Applications</div>
+      </div>
+
+      <div style="background: rgba(2, 6, 23, 0.6); padding: 14px; border-radius: 10px; border: 1px solid rgba(192, 132, 252, 0.2);">
+        <div style="font-size: 14px; font-weight: 700; color: #ffffff;">Bachelor of Science (BSc ECS)</div>
+        <div style="font-size: 12px; color: var(--accent-purple);">Sahakar Maharshi Shankarrao Mohite-Patil College, Natepute</div>
+        <div style="font-size: 11px; font-family: var(--font-mono); color: var(--text-muted);">Entire Computer Science Degree</div>
       </div>
     </div>
   </div>
@@ -688,13 +715,6 @@
 </div>
 
 <script>
-  /* ================= LINKEDIN QUICK COPY ================= */
-  function copyLinkedInUrl() {
-    playSynthSound('success');
-    navigator.clipboard.writeText('https://www.linkedin.com/in/ankush-shinde-58a67a14b/');
-    alert('✅ LinkedIn profile URL copied to clipboard!');
-  }
-
   /* ================= REAL-TIME PING TELEMETRY ENGINE ================= */
   async function measurePing(url) {
     const start = performance.now();
@@ -829,7 +849,7 @@
   }
 
   /* ================= MATRIX RAIN EFFECT (ON BY DEFAULT) ================= */
-  let matrixActive = true; // Started by default!
+  let matrixActive = true;
   const canvas = document.getElementById('matrix-canvas');
   const ctx = canvas.getContext('2d');
 
@@ -882,14 +902,14 @@
   const termBody = document.getElementById('term-body');
 
   const commands = {
-    'help': 'Available commands: <span class="highlight">linkedin</span>, <span class="highlight">skills</span>, <span class="highlight">projects</span>, <span class="highlight">company-projects</span>, <span class="highlight">exp</span>, <span class="highlight">ping</span>, <span class="highlight">contact</span>, <span class="highlight">theme</span>, <span class="highlight">matrix</span>, <span class="highlight">clear</span>',
-    'linkedin': 'Opening LinkedIn Profile: <a href="https://www.linkedin.com/in/ankush-shinde-58a67a14b/" target="_blank" style="color:#38bdf8;">linkedin.com/in/ankush-shinde-58a67a14b/</a>',
+    'help': 'Available commands: <span class="highlight">certs</span>, <span class="highlight">achievements</span>, <span class="highlight">education</span>, <span class="highlight">linkedin</span>, <span class="highlight">skills</span>, <span class="highlight">projects</span>, <span class="highlight">exp</span>, <span class="highlight">clear</span>',
+    'certs': 'AWS: Cloud Practitioner, S3 Glacier, DevOps | GCP: Transformer Models, LLM, BERT | Microsoft: Cloud Computing, Azure AI | Acquia: Talent Ambassador',
+    'achievements': '1. Runbook Migration to GitHub | 2. Service Cloud Ticket Auto-Resolution | 3. All-in-One CDP CLI Utility',
+    'education': '1. MCA (Sinhgad Institute 2017-2020) | 2. BSc ECS (Sahakar Maharshi College)',
+    'linkedin': 'Opening LinkedIn: <a href="https://www.linkedin.com/in/ankush-shinde-58a67a14b/" target="_blank" style="color:#38bdf8;">linkedin.com/in/ankush-shinde-58a67a14b/</a>',
     'skills': 'Cloud: AWS, GCP, Terraform, Linux | Big Data: Snowflake, Spark, Hive, Cloudera | Tools: Python, Splunk, Sumo Logic, AI Prototyping',
     'projects': '1. ankushshinde755 (Profile README) | 2. The-Gym | 3. AgilOne Campaign CLI | 4. SRE Automation Utilities',
-    'company-projects': '1. Multi-Tenant Cloud Data Platform (Snowflake/Kubernetes) | 2. Distributed Spark/Hive Cluster Telemetry',
-    'exp': '1. Cloud Application Engineer @ Acquia (May 2021–Present) | 2. Customer Service Associate @ Amazon (2020–2021)',
-    'ping': 'Live Telemetry Active — GH Pages, AWS, GCP latencies updating every 5s above.',
-    'contact': 'LinkedIn: linkedin.com/in/ankush-shinde-58a67a14b/ | GitHub: github.com/ankushshinde755'
+    'exp': '1. Cloud Application Engineer @ Acquia (May 2021–Present) | 2. Customer Service Associate @ Amazon (2020–2021)'
   };
 
   termInput.addEventListener('keydown', (e) => {
@@ -923,12 +943,6 @@
         playSynthSound('success');
         window.open('https://www.linkedin.com/in/ankush-shinde-58a67a14b/', '_blank');
         responseLine.innerHTML = commands['linkedin'];
-      } else if (inputVal === 'theme') {
-        cycleTheme();
-        responseLine.innerHTML = '🎨 Liquid theme cycled!';
-      } else if (inputVal === 'matrix') {
-        toggleMatrix();
-        responseLine.innerHTML = '💚 Matrix stream toggled!';
       } else if (commands[inputVal]) {
         playSynthSound('success');
         responseLine.innerHTML = commands[inputVal];
