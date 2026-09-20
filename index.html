@@ -19,6 +19,7 @@
       --accent-purple: #c084fc;
       --accent-green: #39FF14;
       --accent-amber: #fbbf24;
+      --accent-red: #f87171;
       --accent-linkedin: #0077b5;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
@@ -77,7 +78,6 @@
       100% { transform: translate(-35px, -45px) scale(0.92); }
     }
 
-    /* EXPANDED CONTAINER - ELIMINATES WASTED SIDE SPACE */
     .container {
       max-width: 1400px;
       width: 94%;
@@ -197,7 +197,7 @@
       100% { transform: scale(0.9); opacity: 0.8; }
     }
 
-    /* UNIQUE ANIMATED NAME EFFECT (Glitch + Holographic Gradient) */
+    /* ANIMATED NAME EFFECT */
     .animated-name {
       font-size: 38px;
       font-weight: 800;
@@ -328,7 +328,7 @@
       gap: 10px;
     }
 
-    /* Responsive Expanded Grid Layouts */
+    /* Grids */
     .grid-2 {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -366,14 +366,10 @@
     }
 
     .chip-purple { border-color: rgba(192, 132, 252, 0.4); color: var(--accent-purple); }
-    .chip-purple:hover { box-shadow: 0 0 12px rgba(192, 132, 252, 0.4); }
-
     .chip-green { border-color: rgba(57, 255, 20, 0.4); color: var(--accent-green); }
-    .chip-green:hover { box-shadow: 0 0 12px rgba(57, 255, 20, 0.4); }
-
     .chip-amber { border-color: rgba(251, 191, 36, 0.4); color: var(--accent-amber); }
 
-    /* ANIMATED CAREER TIMELINE ENHANCEMENTS */
+    /* Timeline Styling */
     .timeline-container {
       position: relative;
       padding-left: 28px;
@@ -466,7 +462,7 @@
       box-shadow: 0 0 16px rgba(0, 119, 181, 0.6);
     }
 
-    /* Security Notice Callout Box */
+    /* Security Notice Box */
     .security-notice-box {
       background: rgba(251, 191, 36, 0.08);
       border: 1px solid rgba(251, 191, 36, 0.3);
@@ -507,6 +503,35 @@
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85);
       font-family: var(--font-mono);
     }
+
+    /* INCIDENT SIMULATOR DRAWER */
+    .sim-step-btn {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: #e2e8f0;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: block;
+      width: 100%;
+      text-align: left;
+      margin-bottom: 8px;
+    }
+
+    .sim-step-btn:hover {
+      border-color: var(--accent-blue);
+      background: rgba(56, 189, 248, 0.15);
+      color: #ffffff;
+    }
+
+    .sim-step-btn.completed {
+      border-color: var(--accent-green);
+      background: rgba(57, 255, 20, 0.12);
+      color: var(--accent-green);
+    }
   </style>
 </head>
 <body>
@@ -522,6 +547,7 @@
   <div class="controls-bar">
     <button class="control-btn" id="sound-btn" onclick="toggleSound()">🔊 Sound: ON</button>
     <button class="control-btn active-green" id="matrix-btn" onclick="toggleMatrix()">💚 Matrix FX: ON (50%)</button>
+    <button class="control-btn" style="color: var(--accent-red); border-color: rgba(248, 113, 113, 0.4);" onclick="openSimModal()">🚨 SRE Simulator</button>
     <button class="control-btn" onclick="cycleTheme()">🎨 Liquid Theme</button>
   </div>
 
@@ -551,7 +577,6 @@
     
     <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
       <div>
-        <!-- UNIQUE ANIMATED NAME EFFECT -->
         <div class="animated-name" onclick="playSynthSound('success')">ANKUSH SHINDE</div>
         <p class="subtitle">Cloud Application Engineer @ Acquia • DevOps, Big Data & AI Prototyping</p>
       </div>
@@ -586,14 +611,14 @@
       <div class="terminal-title">bash — ankush@cloud-console:~</div>
     </div>
     <div class="terminal-body" id="term-body">
-      <div class="term-out">Welcome to Ankush Shinde's Peak Console v5.2. Type <span class="highlight">'help'</span> or press <span class="highlight">Tab</span>.</div>
+      <div class="term-out">Welcome to Ankush Shinde's Peak Console v5.3. Type <span class="highlight">'help'</span> or <span class="highlight">'sre'</span> to launch the Incident Simulator.</div>
       <div class="term-out"><span class="prompt">ankush@cloud-console:~$</span> <span class="cmd">whoami</span></div>
       <div class="term-out">Cloud Application Engineer at Acquia specializing in cloud platform stability, big data observability, and infrastructure automation.</div>
     </div>
     <div style="padding: 0 20px 16px;">
       <div class="terminal-input-line">
         <span class="prompt">ankush@cloud-console:~$</span>
-        <input type="text" class="term-input" id="term-input" placeholder="Type 'help', 'certs', 'achievements', 'education', 'linkedin', or 'clear'..." autofocus />
+        <input type="text" class="term-input" id="term-input" placeholder="Type 'help', 'sre', 'certs', 'achievements', 'linkedin', or 'clear'..." autofocus />
       </div>
     </div>
   </div>
@@ -823,6 +848,35 @@
   </div>
 </div>
 
+<!-- Modal Overlay for SRE Incident Simulator -->
+<div class="modal-overlay" id="sim-modal" onclick="closeSimModal()">
+  <div class="modal-card" onclick="event.stopPropagation()">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+      <h3 style="color: var(--accent-red); font-size: 16px;"><i class="fa-solid fa-triangle-exclamation"></i> SRE Interactive Incident Simulator</h3>
+      <button class="glass-btn" onclick="closeSimModal()" style="margin:0;">✕ Exit</button>
+    </div>
+    <div style="font-size: 12.5px; color: #cbd5e1; line-height: 1.6;">
+      <div style="background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.4); padding: 10px 14px; border-radius: 8px; color: #fca5a5; margin-bottom: 14px;">
+        🚨 <strong>ALERT:</strong> Elevated 5xx API Latency Spike detected on Multi-Tenant Gateway. Execute diagnostic runbook steps below:
+      </div>
+
+      <div id="sim-step-1-btn" class="sim-step-btn" onclick="runSimStep(1)">
+        Step 1: Check Splunk Log Telemetry & Filter 5xx Status Code Errors
+      </div>
+      <div id="sim-step-2-btn" class="sim-step-btn" onclick="runSimStep(2)">
+        Step 2: Inspect Kubernetes Pod Autoscaler (HPA) & Worker Memory Metrics
+      </div>
+      <div id="sim-step-3-btn" class="sim-step-btn" onclick="runSimStep(3)">
+        Step 3: Trigger Automated Terraform Replica Scaling & Clear Connection Cache
+      </div>
+
+      <div id="sim-output-box" style="margin-top: 14px; background: rgba(2, 6, 23, 0.85); padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 11.5px; min-height: 80px; color: var(--accent-blue);">
+        Click Step 1 to initiate SRE incident post-mortem diagnostic flow...
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   /* ================= REAL-TIME PING TELEMETRY ENGINE ================= */
   async function measurePing(url) {
@@ -970,7 +1024,6 @@
     document.documentElement.style.setProperty('--orb-1-color', t.orb1);
     document.documentElement.style.setProperty('--orb-2-color', t.orb2);
     document.documentElement.style.setProperty('--orb-3-color', t.orb3);
-    document.getElementById('brand-span').style.color = t.brand;
   }
 
   /* ================= MATRIX RAIN EFFECT (50% SPEED) ================= */
@@ -1006,7 +1059,6 @@
       drops[i]++;
     }
   }
-  /* REDUCED SPEED: Set interval loop to 70ms (50% speed reduction from 35ms) */
   setInterval(drawMatrix, 70);
 
   function toggleMatrix() {
@@ -1028,7 +1080,8 @@
   const termBody = document.getElementById('term-body');
 
   const commands = {
-    'help': 'Available commands: <span class="highlight">certs</span>, <span class="highlight">achievements</span>, <span class="highlight">education</span>, <span class="highlight">linkedin</span>, <span class="highlight">skills</span>, <span class="highlight">projects</span>, <span class="highlight">exp</span>, <span class="highlight">clear</span>',
+    'help': 'Available commands: <span class="highlight">sre</span>, <span class="highlight">certs</span>, <span class="highlight">achievements</span>, <span class="highlight">education</span>, <span class="highlight">linkedin</span>, <span class="highlight">skills</span>, <span class="highlight">projects</span>, <span class="highlight">exp</span>, <span class="highlight">clear</span>',
+    'sre': 'Launching SRE Interactive Incident Simulator...',
     'certs': 'AWS: Cloud Practitioner, S3 Glacier, DevOps | GCP: Transformer Models, LLM, BERT | Microsoft: Cloud Computing, Azure AI | Acquia: Talent Ambassador',
     'achievements': '1. Runbook Migration to GitHub | 2. Service Cloud Ticket Auto-Resolution | 3. All-in-One CDP CLI Utility',
     'education': '1. MCA (Sinhgad Institute 2017-2020) | 2. BSc ECS (Sahakar Maharshi College)',
@@ -1065,6 +1118,9 @@
         playSynthSound('click');
         termBody.innerHTML = '';
         return;
+      } else if (inputVal === 'sre' || inputVal === 'simulate-incident') {
+        openSimModal();
+        responseLine.innerHTML = commands['sre'];
       } else if (inputVal === 'linkedin') {
         playSynthSound('success');
         window.open('https://www.linkedin.com/in/ankush-shinde-58a67a14b/', '_blank');
@@ -1081,6 +1137,34 @@
       termBody.scrollTop = termBody.scrollHeight;
     }
   });
+
+  /* ================= INCIDENT SIMULATOR LOGIC ================= */
+  function openSimModal() {
+    playSynthSound('warn');
+    document.getElementById('sim-modal').classList.add('active');
+  }
+
+  function closeSimModal() {
+    playSynthSound('click');
+    document.getElementById('sim-modal').classList.remove('active');
+  }
+
+  function runSimStep(step) {
+    const box = document.getElementById('sim-output-box');
+    if (step === 1) {
+      playSynthSound('click');
+      document.getElementById('sim-step-1-btn').classList.add('completed');
+      box.innerHTML = '<span style="color:var(--accent-amber);">[1/3] Splunk Telemetry Analysis:</span> Identified sudden burst in HTTP 504 Gateway Timeouts originating from worker node memory exhaustion.';
+    } else if (step === 2) {
+      playSynthSound('click');
+      document.getElementById('sim-step-2-btn').classList.add('completed');
+      box.innerHTML = '<span style="color:var(--accent-purple);">[2/3] Kubernetes HPA Diagnostics:</span> HPA triggered max pod replica limit (10/10). Pod CPU usage at 94%. Queue pressure accumulating.';
+    } else if (step === 3) {
+      playSynthSound('success');
+      document.getElementById('sim-step-3-btn').classList.add('completed');
+      box.innerHTML = '<span style="color:var(--accent-green);">[3/3] RESOLUTION APPLIED:</span> Automated scale-out dispatched via Terraform. Latency normalized to 28ms. HTTP 200 OK restored across cluster!';
+    }
+  }
 
   /* ================= PROJECT INSPECTION MODAL ================= */
   const inspectData = {
@@ -1140,7 +1224,10 @@
   window.addEventListener('keydown', (e) => {
     if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
     if (e.key === 'm' || e.key === 'M') toggleSound();
-    if (e.key === 'Escape') closeInspectModal();
+    if (e.key === 'Escape') {
+      closeInspectModal();
+      closeSimModal();
+    }
   });
 </script>
 
