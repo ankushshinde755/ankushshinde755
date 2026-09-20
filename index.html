@@ -597,6 +597,17 @@
       </a>
     </div>
 
+    <!-- TERMINAL QUICK RUN COPY BAR -->
+    <div style="background: rgba(2, 6, 23, 0.9); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 10px; padding: 10px 16px; margin-top: 16px; font-family: var(--font-mono); font-size: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; backdrop-filter: blur(12px);">
+      <div>
+        <span style="color: var(--accent-green); font-weight: bold;">⚡ Terminal Profile:</span>
+        <span style="color: var(--accent-blue); margin-left: 8px;" id="cli-cmd-text">curl -sSL https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py | python3</span>
+      </div>
+      <button onclick="navigator.clipboard.writeText('curl -sSL https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py | python3'); this.innerText='✅ Copied!'; setTimeout(()=>this.innerText='📋 Copy', 2000);" style="background: rgba(56, 189, 248, 0.2); border: 1px solid rgba(56, 189, 248, 0.5); color: #fff; padding: 4px 12px; border-radius: 6px; cursor: pointer; font-size: 11px; font-weight: 600;">
+        📋 Copy
+      </button>
+    </div>
+
     <!-- LIVE TELEMETRY & HARDWARE METRICS HUD -->
     <div class="ping-telemetry-bar">
       <span class="ping-chip">
@@ -1064,7 +1075,7 @@
       btn.style.color = 'var(--accent-blue)';
       playSynthSound('click');
     } else {
-      btn.innerHTML = '🔇 Synth FX: OFF';
+      btn.innerHTML = 'cat';
       btn.style.color = 'var(--text-muted)';
     }
   }
@@ -1200,7 +1211,7 @@
   const commands = {
     'help': 'Available commands: <span class="highlight">ai</span>, <span class="highlight">cli</span>, <span class="highlight">certs</span>, <span class="highlight">achievements</span>, <span class="highlight">education</span>, <span class="highlight">linkedin</span>, <span class="highlight">skills</span>, <span class="highlight">projects</span>, <span class="highlight">exp</span>, <span class="highlight">clear</span>',
     'ai': 'Opening Interactive AI Knowledge Assistant...',
-    'cli': 'Local Terminal CLI Command: <span class="highlight">pip install ankush-cli</span> (Run: ankush info)',
+    'cli': 'Local Terminal CLI Command: <span class="highlight">curl -sSL https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py | python3</span>',
     'certs': 'AWS: Cloud Practitioner, S3 Glacier, DevOps | GCP: Transformer Models, LLM, BERT | Microsoft: Cloud Computing, Azure AI | Acquia: Talent Ambassador',
     'achievements': '1. Runbook Migration to GitHub | 2. Service Cloud Ticket Auto-Resolution | 3. All-in-One CDP CLI Utility',
     'education': '1. MCA (Sinhgad Institute 2017-2020) | 2. BSc ECS (Sahakar Maharshi College)',
