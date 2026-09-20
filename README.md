@@ -53,4 +53,5 @@
 Run this directly in your terminal to view my interactive CLI profile:
 
 ```bash
-curl -sSL [https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py](https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py) | python3
+curl -sSL https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py | python3
+```
