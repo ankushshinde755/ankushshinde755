@@ -19,7 +19,7 @@
 
 <!-- INTERACTIVE SITE & PORTFOLIO LAUNCHER -->
 <p align="center">
-  <a href="https://ankushshinde755.github.io/" target="_blank">
+  <a href="https://ankushshinde755.github.io/ankushshinde755/" target="_blank">
     <img src="https://img.shields.io/badge/🚀_LAUNCH_LIVE_INTERACTIVE_CONSOLE-0f172a?style=for-the-badge&logo=firefox&logoColor=38bdf8&labelColor=0b1120" height="42" alt="Launch Live Console" />
   </a>
   &nbsp;&nbsp;
@@ -40,7 +40,7 @@
         <li>🛠️ <b>Domain Expertise:</b> DevOps, SRE, Cloud Infrastructure (AWS/GCP), Terraform & Containerization</li>
         <li>🚀 <b>Core Focus:</b> Multi-tenant application stability, big data observability, and deployment pipelines</li>
         <li>🎓 <b>Education:</b> Master of Computer Applications (MCA) & B.Sc. Entire Computer Science (ECS)</li>
-        <li>🌐 <b>Interactive Web Console:</b> <a href="https://ankushshinde755.github.io/" style="color:#38bdf8; font-weight:bold;">ankushshinde755.github.io</a></li>
+        <li>🌐 <b>Interactive Web Console:</b> <a href="https://ankushshinde755.github.io/ankushshinde755/" style="color:#38bdf8; font-weight:bold;">ankushshinde755.github.io/ankushshinde755/</a></li>
       </ul>
     </td>
   </tr>
