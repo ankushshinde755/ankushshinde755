@@ -17,6 +17,17 @@
   <img src="https://img.shields.io/badge/FOCUS-DEVOPS_%26_AUTOMATION-0f172a?style=for-the-badge&logo=docker&logoColor=38bdf8&labelColor=0b1120" />
 </p>
 
+<!-- INTERACTIVE SITE & PORTFOLIO LAUNCHER -->
+<p align="center">
+  <a href="https://ankushshinde755.github.io/" target="_blank">
+    <img src="https://img.shields.io/badge/🚀_LAUNCH_LIVE_INTERACTIVE_CONSOLE-0f172a?style=for-the-badge&logo=firefox&logoColor=38bdf8&labelColor=0b1120" height="42" alt="Launch Live Console" />
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://www.linkedin.com/in/ankush-shinde-58a67a14b/" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="42" alt="LinkedIn" />
+  </a>
+</p>
+
 ---
 
 ### ⚡ OPERATIONAL PROFILE
@@ -25,10 +36,11 @@
   <tr>
     <td style="background: #0f172a; border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; padding: 18px;">
       <ul>
-        <li>👨‍💻 <b>Current Role:</b> Cloud Application Engineer at <a href="https://www.acquia.com/" style="color:#c084fc; font-weight:bold;">Acquia</a></li>
-        <li>🛠️ <b>Domain Expertise:</b> DevOps, SRE, Automation & Cloud Infrastructure</li>
-        <li>🚀 <b>Core Focus:</b> Designing high-availability application delivery pipelines</li>
-        <li>🌟 <b>Community:</b> Active in Open Source tooling and infrastructure automation</li>
+        <li>👨‍💻 <b>Current Role:</b> Cloud Application Engineer at <a href="https://www.acquia.com/" style="color:#c084fc; font-weight:bold;">Acquia</a> (May 2021 – Present)</li>
+        <li>🛠️ <b>Domain Expertise:</b> DevOps, SRE, Cloud Infrastructure (AWS/GCP), Terraform & Containerization</li>
+        <li>🚀 <b>Core Focus:</b> Multi-tenant application stability, big data observability, and deployment pipelines</li>
+        <li>🎓 <b>Education:</b> Master of Computer Applications (MCA) & B.Sc. Entire Computer Science (ECS)</li>
+        <li>🌐 <b>Interactive Web Console:</b> <a href="https://ankushshinde755.github.io/" style="color:#38bdf8; font-weight:bold;">ankushshinde755.github.io</a></li>
       </ul>
     </td>
   </tr>
@@ -38,7 +50,7 @@
 
 ### 💻 QUICK TERMINAL COMMAND
 
-Run this directly in your terminal to view my interactive profile:
+Run this directly in your terminal to view my interactive CLI profile:
 
 ```bash
 curl -sSL [https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py](https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py) | python3
