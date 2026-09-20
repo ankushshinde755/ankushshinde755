@@ -4,6 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ankush Shinde — Cloud Console Peak Edition</title>
+  
+  <!-- Live Tech Icons (Devicon & FontAwesome) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
   <style>
     :root {
       --bg-primary: #060913;
@@ -125,11 +130,30 @@
       box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6), var(--glass-specular);
       transition: transform 0.2s cubic-bezier(0.2, 0, 0.2, 1), border-color 0.2s ease, box-shadow 0.2s ease;
       transform-style: preserve-3d;
+      position: relative;
+      overflow: hidden;
     }
 
     .glass-panel:hover {
       border-color: rgba(56, 189, 248, 0.6);
       box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.7), 0 0 20px rgba(56, 189, 248, 0.2);
+    }
+
+    /* Audio Equalizer Visualizer Bars */
+    .audio-viz-container {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 16px;
+      margin-left: 10px;
+    }
+
+    .viz-bar {
+      width: 3px;
+      background: var(--accent-blue);
+      border-radius: 2px;
+      height: 4px;
+      transition: height 0.1s ease;
     }
 
     /* Header Styling */
@@ -283,30 +307,37 @@
       gap: 14px;
     }
 
-    /* Chips & Badges */
+    /* Interactive Icon Chips */
     .chip {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       background: rgba(15, 23, 42, 0.9);
       border: 1px solid rgba(56, 189, 248, 0.3);
       color: var(--accent-blue);
-      padding: 3px 10px;
-      border-radius: 6px;
-      font-size: 11px;
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 11.5px;
       font-family: var(--font-mono);
-      margin: 2px;
+      margin: 3px;
       transition: all 0.2s ease;
       cursor: default;
     }
 
+    .chip i { font-size: 14px; }
+
     .chip:hover {
       transform: translateY(-2px);
-      box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
     }
 
     .chip-purple { border-color: rgba(192, 132, 252, 0.4); color: var(--accent-purple); }
+    .chip-purple:hover { box-shadow: 0 0 12px rgba(192, 132, 252, 0.4); }
+
     .chip-green { border-color: rgba(57, 255, 20, 0.4); color: var(--accent-green); }
+    .chip-green:hover { box-shadow: 0 0 12px rgba(57, 255, 20, 0.4); }
+
     .chip-amber { border-color: rgba(251, 191, 36, 0.4); color: var(--accent-amber); }
-    .chip-linkedin { border-color: rgba(0, 119, 181, 0.5); color: #38bdf8; background: rgba(0, 119, 181, 0.15); }
 
     /* Timeline Styling */
     .exp-item {
@@ -432,9 +463,19 @@
   <!-- Header Glass Card -->
   <div class="glass-panel" onclick="playSynthSound('click')">
     <div class="header-top">
-      <div class="status-badge">
-        <span class="dot"></span> SYSTEMS ONLINE
+      <div style="display: flex; align-items: center;">
+        <div class="status-badge">
+          <span class="dot"></span> SYSTEMS ONLINE
+        </div>
+        <!-- Live Equalizer Visualizer -->
+        <div class="audio-viz-container">
+          <div class="viz-bar" id="vbar-1"></div>
+          <div class="viz-bar" id="vbar-2"></div>
+          <div class="viz-bar" id="vbar-3"></div>
+          <div class="viz-bar" id="vbar-4"></div>
+        </div>
       </div>
+
       <!-- Live Clock Bar -->
       <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); display: flex; gap: 12px; flex-wrap: wrap;">
         <span>LOCAL: <strong style="color: var(--accent-blue);" id="clock-local">00:00:00</strong></span>
@@ -449,8 +490,7 @@
         <p class="subtitle">Cloud Application Engineer @ Acquia • DevOps, Big Data & AI Prototyping</p>
       </div>
       <a href="https://www.linkedin.com/in/ankush-shinde-58a67a14b/" target="_blank" class="glass-btn linkedin-btn" onclick="playSynthSound('success')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-        Connect on LinkedIn
+        <i class="fa-brands fa-linkedin"></i> Connect on LinkedIn
       </a>
     </div>
 
@@ -480,7 +520,7 @@
       <div class="terminal-title">bash — ankush@cloud-console:~</div>
     </div>
     <div class="terminal-body" id="term-body">
-      <div class="term-out">Welcome to Ankush Shinde's Peak Console v5.0. Type <span class="highlight">'help'</span> or press <span class="highlight">Tab</span>.</div>
+      <div class="term-out">Welcome to Ankush Shinde's Immersive Peak Console v5.1. Type <span class="highlight">'help'</span> or press <span class="highlight">Tab</span>.</div>
       <div class="term-out"><span class="prompt">ankush@cloud-console:~$</span> <span class="cmd">whoami</span></div>
       <div class="term-out">Cloud Application Engineer at Acquia specializing in cloud platform stability, big data observability, and infrastructure automation.</div>
     </div>
@@ -494,20 +534,20 @@
 
   <!-- Key Impact Achievements -->
   <div class="glass-panel" onclick="playSynthSound('click')">
-    <div class="section-title">🏆 Key Operational Achievements</div>
+    <div class="section-title"><i class="fa-solid fa-trophy" style="color: var(--accent-amber);"></i> Key Operational Achievements</div>
     <div class="grid-3">
       <div style="background: rgba(2, 6, 23, 0.6); padding: 14px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2);">
-        <div style="font-size: 13px; font-weight: 700; color: var(--accent-blue);">Centralized Runbook Migration</div>
+        <div style="font-size: 13px; font-weight: 700; color: var(--accent-blue);"><i class="fa-solid fa-book"></i> Centralized Runbook Migration</div>
         <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">Led the migration and standardization of operational runbooks from Confluence to Acquia's GitHub.</div>
       </div>
 
       <div style="background: rgba(2, 6, 23, 0.6); padding: 14px; border-radius: 10px; border: 1px solid rgba(192, 132, 252, 0.2);">
-        <div style="font-size: 13px; font-weight: 700; color: var(--accent-purple);">Service Cloud Ticket Resolution</div>
+        <div style="font-size: 13px; font-weight: 700; color: var(--accent-purple);"><i class="fa-solid fa-robot"></i> Service Cloud Ticket Auto-Resolution</div>
         <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">Engineered automation workflows for automatic ticket resolution across Service Cloud systems.</div>
       </div>
 
       <div style="background: rgba(2, 6, 23, 0.6); padding: 14px; border-radius: 10px; border: 1px solid rgba(57, 255, 20, 0.2);">
-        <div style="font-size: 13px; font-weight: 700; color: var(--accent-green);">All-In-One CDP Utility</div>
+        <div style="font-size: 13px; font-weight: 700; color: var(--accent-green);"><i class="fa-solid fa-terminal"></i> All-In-One CDP Utility</div>
         <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">Built unified campaign reports, workflow inspection, and kill CLI utilities for CDP operations.</div>
       </div>
     </div>
@@ -515,10 +555,10 @@
 
   <!-- Featured Certifications & Badges Grid -->
   <div class="glass-panel" onclick="playSynthSound('click')">
-    <div class="section-title">📜 Featured Certifications & Credentials</div>
+    <div class="section-title"><i class="fa-solid fa-certificate" style="color: var(--accent-purple);"></i> Featured Certifications & Credentials</div>
     <div class="grid-2">
       <div>
-        <div style="font-size: 12px; color: var(--accent-blue); font-weight: 700; margin-bottom: 6px;">Amazon Web Services (AWS)</div>
+        <div style="font-size: 12px; color: var(--accent-blue); font-weight: 700; margin-bottom: 6px;"><i class="devicon-amazonwebservices-plain-wordmark colored"></i> Amazon Web Services (AWS)</div>
         <div style="font-size: 12px; color: var(--text-main);">• AWS Cloud Practitioner Essentials (Dec 2025)</div>
         <div style="font-size: 12px; color: var(--text-main);">• Amazon S3 Glacier Certified (Jun 2025)</div>
         <div style="font-size: 12px; color: var(--text-main);">• Advanced Testing Practices via AWS DevOps (Sep 2024)</div>
@@ -529,7 +569,7 @@
       </div>
 
       <div>
-        <div style="font-size: 12px; color: var(--accent-purple); font-weight: 700; margin-bottom: 6px;">Google Cloud, Microsoft & Acquia</div>
+        <div style="font-size: 12px; color: var(--accent-purple); font-weight: 700; margin-bottom: 6px;"><i class="devicon-googlecloud-plain colored"></i> Google Cloud, Microsoft & Acquia</div>
         <div style="font-size: 12px; color: var(--text-main);">• Transformer Models & BERT Model (Google Cloud)</div>
         <div style="font-size: 12px; color: var(--text-main);">• Attention Mechanism & LLM Intro (Google Cloud)</div>
         <div style="font-size: 12px; color: var(--text-main);">• Responsible AI & Generative AI (Google Cloud)</div>
@@ -543,7 +583,7 @@
 
   <!-- Career Experience -->
   <div class="glass-panel" onclick="playSynthSound('click')">
-    <div class="section-title">💼 Career Experience</div>
+    <div class="section-title"><i class="fa-solid fa-briefcase" style="color: var(--accent-blue);"></i> Career Experience</div>
     
     <div class="exp-item">
       <div class="exp-role">Cloud Application Engineer</div>
@@ -569,7 +609,7 @@
 
   <!-- Education & Degrees -->
   <div class="glass-panel" onclick="playSynthSound('click')">
-    <div class="section-title">🎓 Education & Academic History</div>
+    <div class="section-title"><i class="fa-solid fa-graduation-cap" style="color: var(--accent-green);"></i> Education & Academic History</div>
     <div class="grid-2">
       <div style="background: rgba(2, 6, 23, 0.6); padding: 14px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2);">
         <div style="font-size: 14px; font-weight: 700; color: #ffffff;">Master of Computer Applications (MCA)</div>
@@ -585,45 +625,44 @@
     </div>
   </div>
 
-  <!-- Technical Arsenal -->
+  <!-- Technical Arsenal with HD Brand Icons -->
   <div class="glass-panel" onclick="playSynthSound('click')">
-    <div class="section-title">🛠️ Technical Arsenal</div>
+    <div class="section-title"><i class="fa-solid fa-code" style="color: var(--accent-blue);"></i> Technical Arsenal</div>
     
     <div style="margin-bottom: 12px;">
-      <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">Cloud & Infrastructure:</div>
-      <span class="chip" onclick="playSynthSound('key')">AWS</span>
-      <span class="chip" onclick="playSynthSound('key')">Google Cloud (GCP)</span>
-      <span class="chip" onclick="playSynthSound('key')">Linux</span>
-      <span class="chip" onclick="playSynthSound('key')">Terraform</span>
-      <span class="chip" onclick="playSynthSound('key')">Docker</span>
-      <span class="chip" onclick="playSynthSound('key')">Teleport</span>
-      <span class="chip" onclick="playSynthSound('key')">Networking</span>
+      <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Cloud & Infrastructure:</div>
+      <span class="chip" onclick="playSynthSound('key')"><i class="devicon-amazonwebservices-plain-wordmark colored"></i> AWS</span>
+      <span class="chip" onclick="playSynthSound('key')"><i class="devicon-googlecloud-plain colored"></i> GCP</span>
+      <span class="chip" onclick="playSynthSound('key')"><i class="devicon-linux-plain colored"></i> Linux</span>
+      <span class="chip" onclick="playSynthSound('key')"><i class="devicon-terraform-plain colored"></i> Terraform</span>
+      <span class="chip" onclick="playSynthSound('key')"><i class="devicon-docker-plain colored"></i> Docker</span>
+      <span class="chip" onclick="playSynthSound('key')"><i class="fa-solid fa-shield-halved"></i> Teleport</span>
+      <span class="chip" onclick="playSynthSound('key')"><i class="fa-solid fa-network-wired"></i> Networking</span>
     </div>
 
     <div style="margin-bottom: 12px;">
-      <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">Big Data Platforms:</div>
-      <span class="chip chip-purple" onclick="playSynthSound('key')">Snowflake</span>
-      <span class="chip chip-purple" onclick="playSynthSound('key')">Apache Spark</span>
-      <span class="chip chip-purple" onclick="playSynthSound('key')">Apache Hive</span>
-      <span class="chip chip-purple" onclick="playSynthSound('key')">Cloudera</span>
-      <span class="chip chip-purple" onclick="playSynthSound('key')">Oozie</span>
-      <span class="chip chip-purple" onclick="playSynthSound('key')">CDP</span>
+      <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Big Data Platforms:</div>
+      <span class="chip chip-purple" onclick="playSynthSound('key')"><i class="fa-solid fa-snowflake"></i> Snowflake</span>
+      <span class="chip chip-purple" onclick="playSynthSound('key')"><i class="devicon-apachespark-original colored"></i> Apache Spark</span>
+      <span class="chip chip-purple" onclick="playSynthSound('key')"><i class="devicon-hadoop-plain colored"></i> Apache Hive</span>
+      <span class="chip chip-purple" onclick="playSynthSound('key')"><i class="fa-solid fa-server"></i> Cloudera</span>
+      <span class="chip chip-purple" onclick="playSynthSound('key')"><i class="fa-solid fa-gears"></i> Oozie</span>
+      <span class="chip chip-purple" onclick="playSynthSound('key')"><i class="fa-solid fa-database"></i> CDP</span>
     </div>
 
     <div>
-      <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">Observability, Scripting & AI:</div>
-      <span class="chip chip-green" onclick="playSynthSound('key')">Splunk</span>
-      <span class="chip chip-green" onclick="playSynthSound('key')">Sumo Logic</span>
-      <span class="chip chip-green" onclick="playSynthSound('key')">Looker</span>
-      <span class="chip chip-green" onclick="playSynthSound('key')">Python</span>
-      <span class="chip chip-green" onclick="playSynthSound('key')">Shell Scripting</span>
-      <span class="chip chip-green" onclick="playSynthSound('key')">AI-Assisted Prototyping</span>
+      <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Observability, Scripting & AI:</div>
+      <span class="chip chip-green" onclick="playSynthSound('key')"><i class="fa-solid fa-chart-line"></i> Splunk</span>
+      <span class="chip chip-green" onclick="playSynthSound('key')"><i class="fa-solid fa-wave-square"></i> Sumo Logic</span>
+      <span class="chip chip-green" onclick="playSynthSound('key')"><i class="devicon-python-plain colored"></i> Python</span>
+      <span class="chip chip-green" onclick="playSynthSound('key')"><i class="devicon-bash-plain colored"></i> Shell Scripting</span>
+      <span class="chip chip-green" onclick="playSynthSound('key')"><i class="fa-solid fa-brain"></i> AI Prototyping</span>
     </div>
   </div>
 
   <!-- Featured Projects Grid -->
   <div class="glass-panel" onclick="playSynthSound('click')">
-    <div class="section-title">🚀 Featured Projects & Repositories</div>
+    <div class="section-title"><i class="fa-solid fa-cubes" style="color: var(--accent-amber);"></i> Featured Projects & Repositories</div>
     
     <div class="grid-2">
       <!-- Repo 1 -->
@@ -668,7 +707,7 @@
 
   <!-- Enterprise / Company Projects Architecture (Security Compliant) -->
   <div class="glass-panel" onclick="playSynthSound('click')">
-    <div class="section-title">🛡️ Enterprise & Platform Architectures</div>
+    <div class="section-title"><i class="fa-solid fa-shield-halved" style="color: var(--accent-blue);"></i> Enterprise & Platform Architectures</div>
     
     <div class="security-notice-box">
       <span>🔒 <strong>Security & Compliance Guardrail:</strong> Company source code, credentials, and confidential client configurations are protected under NDAs. Below are high-level, generalized architectural highlights of production systems engineered.</span>
@@ -752,6 +791,21 @@
   setInterval(updateClocks, 1000);
   updateClocks();
 
+  /* ================= AUDIO EQUALIZER VISUALIZER ================= */
+  function triggerAudioViz() {
+    for (let i = 1; i <= 4; i++) {
+      const h = Math.floor(4 + Math.random() * 12);
+      const bar = document.getElementById(`vbar-${i}`);
+      if (bar) bar.style.height = `${h}px`;
+    }
+    setTimeout(() => {
+      for (let i = 1; i <= 4; i++) {
+        const bar = document.getElementById(`vbar-${i}`);
+        if (bar) bar.style.height = '4px';
+      }
+    }, 150);
+  }
+
   /* ================= WEB AUDIO SYNTHESIZER ================= */
   let soundEnabled = true;
   let audioCtx = null;
@@ -765,6 +819,7 @@
   }
 
   function playSynthSound(type) {
+    triggerAudioViz();
     if (!soundEnabled) return;
     try {
       initAudio();
