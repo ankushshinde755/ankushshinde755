@@ -1,6 +1,6 @@
 <!-- HIGH-TECH GLASS BANNER -->
 <p align="center">
-  <img src="https://img.shields.io/badge/ANKUSH%20SHINDE-CLOUD%20APPLICATION%20ENGINEER-0284c7?style=for-the-badge&logo=amazonaws&logoColor=white" width="100%" height="45" alt="Header Banner" />
+  <img src="https://img.shields.io/badge/ANKUSH%20SHINDE-CLOUD%20APPLICATION%20ENGINEER-0284c7?style=for-the-badge&logo=amazonaws&logoColor=white" width="100%" alt="Header Banner" />
 </p>
 
 <!-- HIGH-END SHIELDS & BADGES MATRIX -->
@@ -13,11 +13,11 @@
 <!-- INTERACTIVE SITE & PORTFOLIO LAUNCHER -->
 <p align="center">
   <a href="https://ankushshinde755.github.io/ankushshinde755/" target="_blank">
-    <img src="https://img.shields.io/badge/🚀_LAUNCH_LIVE_INTERACTIVE_CONSOLE-0284c7?style=for-the-badge&logo=firefox&logoColor=white" height="40" alt="Launch Live Console" />
+    <img src="https://img.shields.io/badge/LAUNCH%20LIVE%20CONSOLE-0284c7?style=for-the-badge&logo=googlechrome&logoColor=white" height="40" alt="Launch Live Console" />
   </a>
   &nbsp;&nbsp;
   <a href="https://www.linkedin.com/in/ankush-shinde-58a67a14b/" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="40" alt="LinkedIn" />
+    <img src="https://img.shields.io/badge/LINKEDIN-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" height="40" alt="LinkedIn" />
   </a>
 </p>
 
@@ -46,4 +46,4 @@
 Run this directly in your terminal to view my interactive CLI profile:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py | python3
+curl -sSL [https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py](https://raw.githubusercontent.com/ankushshinde755/ankushshinde755/main/cli.py) | python3
