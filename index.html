@@ -45,6 +45,30 @@
       overflow-x: hidden;
       line-height: 1.5;
     }
+
+    /* Floating Top-Right Visitor Counter */
+    .top-visitor-counter {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--border-color);
+      padding: 6px 12px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+    .top-visitor-counter span {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--accent-blue);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
     
     /* Interactive Fluid Particle Canvas */
     #particle-canvas {
