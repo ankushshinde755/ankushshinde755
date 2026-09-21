@@ -47,34 +47,49 @@
     }
 
     /* Controls Header Bar */
-.controls-bar {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-  flex-wrap: wrap;
-}
+    .controls-bar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
 
-/* Visitor Counter Pill */
-.top-visitor-counter {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  padding: 4px 12px;
-  border-radius: 8px;
-  backdrop-filter: blur(10px);
-  height: 29px;
-}
-.top-visitor-counter span {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--accent-blue);
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
+    /* Visitor Counter Pill with Neon Glow */
+    .top-visitor-counter {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--accent-blue);
+      padding: 4px 12px;
+      border-radius: 8px;
+      backdrop-filter: blur(10px);
+      height: 29px;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.35), inset 0 0 8px rgba(56, 189, 248, 0.15);
+      animation: neonPulse 3s infinite alternate;
+    }
+
+    .top-visitor-counter span {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--accent-blue);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-shadow: 0 0 6px rgba(56, 189, 248, 0.6);
+    }
+
+    @keyframes neonPulse {
+      0% {
+        border-color: rgba(56, 189, 248, 0.5);
+        box-shadow: 0 0 8px rgba(56, 189, 248, 0.3), inset 0 0 6px rgba(56, 189, 248, 0.1);
+      }
+      100% {
+        border-color: rgba(56, 189, 248, 0.9);
+        box-shadow: 0 0 16px rgba(56, 189, 248, 0.65), inset 0 0 10px rgba(56, 189, 248, 0.3);
+      }
+    }
     
     /* Interactive Fluid Particle Canvas */
     #particle-canvas {
@@ -116,15 +131,6 @@
       margin: 0 auto;
       position: relative;
       z-index: 1;
-    }
-
-    /* Controls Header Bar */
-    .controls-bar {
-      display: flex;
-      justify-content: flex-end;
-      gap: 10px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
     }
 
     .control-btn {
@@ -587,8 +593,12 @@
 <div class="liquid-orb orb-3"></div>
 
 <div class="container">
-  <!-- Top Control Bar -->
+  <!-- Top Control Bar with Visitor Counter -->
   <div class="controls-bar">
+    <div class="top-visitor-counter">
+      <span>VISITS</span>
+      <img src="https://profile-counter.glitch.me/ankushshinde755/count.svg" alt="Visitor Count" style="height: 18px; display: block;" />
+    </div>
     <button class="control-btn" id="sound-btn" onclick="toggleSound()">🔊 Synth FX: ON</button>
     <button class="control-btn active-green" id="particle-btn" onclick="toggleParticles()">✨ Fluid Particles: ON</button>
     <button class="control-btn" style="color: var(--accent-purple); border-color: rgba(192, 132, 252, 0.4);" onclick="openAiModal()">🤖 AI Console</button>
